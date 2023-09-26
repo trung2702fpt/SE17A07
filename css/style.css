@@ -949,7 +949,9 @@ line-height: 35px;
 }
 
 /* REPORT */
-
+.report_main{
+     height: 250px;
+}
 .report_title{
      display: flex;
      justify-content: center;
