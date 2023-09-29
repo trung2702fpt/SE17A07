@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- basic -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- mobile metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <!-- site metas -->
+        <title>Blog</title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- bootstrap css -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <!-- style css -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!-- Responsive-->
+        <link rel="stylesheet" href="css/responsive.css">
+
+        <link rel="stylesheet" href="/a-world-1.0.0/fontawesome-free-6.4.0-web/css/all.min.css">
+        
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+        <!-- Tweaks for older IEs-->
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <!-- fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Righteous&display=swap" rel="stylesheet">
+        <!-- owl stylesheets -->
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+              media="screen">
+    </head>
+
+    <body>
+        
+        <!-- header section start -->
+        <div class="header">
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                  <div class="full">
+                     <div class="center-desk">
+                        <div class="logo">
+                           <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                  <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarsExample04">
+                        <ul class="navbar-nav mr-auto">
+                           <li class="nav-item active">
+                              <a class="nav-link" href="index.html">Home</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="about.html">About</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="room.html">Our room</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="gallery.html">Gallery</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="blog.html">Blog</a>
+                           </li>
+                           
+                        </ul>
+                     </div>
+                  </nav>
+               </div>
+            </div>
+         </div>
+      </div>
+        <div class="header_section">
+            <jsp:include page="Navbar.jsp"></jsp:include>
+            </div>
+            <style>
+                .booking-main {
+                    padding-top: 250px;
+                }
+
+                #book_room {
+                    font-size: 15px;
+                }
+
+                #book_room .form-control {
+                    height: 34px;
+                }
+
+                #book_room [name="Request"] {
+                    height: auto;
+                }
+
+                .book-img {
+                    position: relative;
+                    margin-bottom: 15px;
+                }
+
+                .book-img::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.151);
+                    z-index: 1;
+                }
+
+                .room-slected {
+                    position: absolute;
+                    bottom: 10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100%;
+                    text-align: center;
+                    z-index: 5;
+                }
+
+                .room-slected span {
+                    display: inline-block;
+                    color: #fff;
+                    background-color: #1490ac;
+                    font-size: 15px;
+                    text-transform: uppercase;
+                    padding: 5px 15px;
+                    border-radius: 3px;
+                }
+
+                .book-img img {
+                    height: 246px;
+                    border-radius: 5px;
+                }
+
+                .book_info-left {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 30px 15px;
+                    border-radius: 5px;
+                    background-color: #14404a;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                .group-left {
+                    width: 48%;
+                    text-align: center;
+                    background-color: #1490ac;
+                    color: #fff;
+                    padding: 15px 0px;
+                    border-radius: 5px;
+                    margin-bottom: 15px;
+                    position: relative;
+                    cursor: pointer;
+                }
+
+                .b-info-title {
+                    text-transform: uppercase;
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+
+                .b-info-number {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .b-info-number select {
+                    background: #1490ac;
+                    color: #fff;
+                    font-size: 22px;
+                    width: 80px;
+                    font-weight: 500;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 50%;
+                    opacity: 0;
+                    transform: translateX(-50%);
+                }
+
+                [name="CheckIn"] {
+                    opacity: 0;
+                    position: absolute;
+                    bottom: 10px;
+                }
+
+                [name="CheckOut"] {
+                    opacity: 0;
+                    position: absolute;
+                    bottom: 10px;
+                }
+
+                .b-number {
+                    font-size: 40px;
+                    font-weight: 500;
+                }
+
+                .b-date {
+                    font-size: 40px;
+                    font-weight: 500;
+                }
+
+                .arow-select {
+                    font-size: 18px;
+                    margin-left: 6px;
+                }
+
+                .hidden-arow {
+                    -o-appearance: none;
+                    -ms-appearance: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                }
+
+                .change-info {
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    display: block;
+                    background-color: #1490ac;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 5px;
+                    font-weight: 500;
+                    transition: all 0.5s ease;
+                }
+
+                .change-info:hover {
+                    color: #fff;
+                    background: linear-gradient(#27d7ff, #0bc4ee, #00bae4, #00bae4);
+                    transition: all 0.5s ease;
+                }
+
+                .book-right {
+                    padding: 0 30px;
+                }
+
+                #book_room label {
+                    font-weight: 500;
+                }
+
+                span.required {
+                    color: red;
+                }
+
+                .submit-btn {
+                    background-color: #1490ac;
+                    color: #fff;
+                    font-weight: 500;
+                }
+
+                .submit-btn:hover {
+                    color: #fff;
+                    background-color: #14404a;
+                }
+
+                .change-form_wp {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: #1490ac;
+                    z-index: 10;
+                    border-radius: 5px;
+                    overflow: hidden;
+                }
+
+                .change-form {
+                    position: relative;
+                    z-index: 20;
+                    display: inline-flex;
+                    flex-wrap: wrap;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                .change-form .form-group {
+                    width: 50%;
+                    padding: 0 10px;
+                }
+
+                .change-form label {
+                    color: #fff;
+                    font-weight: 500;
+                }
+
+                .change-btn {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                }
+                
+                .input-hidden{
+                    display:none;
+                }
+            </style>
+            <!-- header section end --><div class="container container-content">
+                <div class="booking-main box">
+                    <div class="container">
+                        <form action="AddThuePhong" id="book_room" method="get">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="book-left mb-4">
+                                        <div class="book_info-left">
+
+                                            <div class=" group-left date_in">
+                                                <div class="b-info-title">Check In</div>
+                                                <input style="text-align:center; border:none;background:#1490AC;color:white" name="checkIn" type="date" class="form-control" value="1"   id="CheckIn">
+
+                                            </div>
+                                            <div class=" group-left date_out">
+                                                <div class="b-info-title">Slot</div>
+                                                <div class="dropdown">
+                                                   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                     Slot  <span class="caret"></span>
+                                                   </button>
+                                                   <div class="dropdown-menu">
+                                                     <a class="dropdown-item" href="#">Link 1</a>
+                                                     <a class="dropdown-item" href="#">Link 2</a>
+                                                     <a class="dropdown-item" href="#">Link 3</a>
+                                                   </div>
+                                                 </div>
+
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="book-right mb-4">
+                                        <div class="row">
+
+                                            <div class="col-md-12" style="margin:20px 0px;">
+                                                <table class="table">
+                                                    <tr>
+                                                        <td class="td-name"><strong>Image</strong></td>
+                                                        <td class="td-price"><strong>Name Room</strong></td>
+                                       
+                                                        <td class="td-idRoom"><strong>Room </strong></td>
+                                                        <td class="td-choose"><strong>Your choose</strong></td>
+                                                    </tr>
+                                                <c:forEach items="6" var ="s">
+
+                                                    <tr>
+                                                    <input data-val="true" data-val-number="The field RoomId must be a number." data-val-required="The RoomId field is required." id="ListRoomBookings_0__RoomId" name="ListRoomBookings[0].RoomId" type="hidden" value="2019" />
+
+                                                    <td class="td-name">
+
+                                                        <span id="0">  </span>
+                                                        <input id="ListRoomBookings_0__NameRoom" name="tenPhong" type="hidden" value=" Deluxe City View" />
+                                                    </td>
+                                                    <td class="td-price">
+                                                        <span></span>
+                                                        <input data-val="true" data-val-number="The field Price must be a number." id="ListRoomBookings_0__Price" name="price" type="hidden" value="30" />
+                                                    </td>
+                                                    <td class="td-max">
+                                                        
+                                                        <input data-val="true" data-val-number="The field MaxPeople must be a number." data-val-required="The MaxPeople field is required." id="ListRoomBookings_0__MaxPeople" name="ListRoomBookings[0].MaxPeople" type="hidden" value="2" />
+                                                    </td>
+                                                    <td class="td-max">
+                                                        
+                                                        <input data-val="true" data-val-number="The field MaxPeople must be a number." data-val-required="The MaxPeople field is required." id="ListRoomBookings_0__MaxPeople" name="ListRoomBookings[0].MaxPeople" type="hidden" value="2" />
+                                                    </td>
+                                                    <td class="td-max text-center">
+                                                        <input type="checkbox" name="choose" value="11"/>
+                                                    </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-8">
+                                <div class="book-right mb-4">
+                                    <div class="row">
+
+                                        <div class="col-md-12" style="margin:20px 0px;">
+
+                                        </div>
+
+                                        <div class="col-md-12 agree">
+                                            <input type="checkbox" name="agree" id="agree" /> <span>I read and agree with the  <a href="javascript:void(0)" onclick="ShowCondition()">terms & conditions </a> of the  Hotale Hotel</span>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input type="submit" value="Send" class="submit-btn btn send-btn">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+
+        <footer>
+         <div class="footer">
+            <div class="container">
+               <div class="row">
+                  <div class=" col-md-4">
+                     <h3>Contact US</h3>
+                     <ul class="conta">
+                        <li><i class="fa fa-map-marker" aria-hidden="true"></i> Address</li>
+                        <li><i class="fa fa-mobile" aria-hidden="true"></i> +01 1234569540</li>
+                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="#"> demo@gmail.com</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-md-4">
+                     <h3>Menu Link</h3>
+                     <ul class="link_menu">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="about.html"> about</a></li>
+                        <li><a href="room.html">Our Room</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-md-4">
+                     <h3>News letter</h3>
+                     <form class="bottom_form">
+                        <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
+                        <button class="sub_btn">subscribe</button>
+                     </form>
+                     <ul class="social_icon">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-10 offset-md-1">
+                        
+                        <p>
+                        © 2019 All Rights Reserved. Design by <a href="https://html.design/"> Free Html Templates</a>
+                        <br><br>
+                        Distributed by <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+                        </p>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+        <!-- copyright section end -->
+        <!-- Javascript files-->
+        <!-- <script src="js/jquery.min.js"></script> -->
+<!--        <script>
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = String(date.getMonth() + 1).padStart(2, '0');
+            var todayDate = String(date.getDate()).padStart(2, '0');
+            var todayDate1 = String(date.getDate() + 1).padStart(2, '0');
+            var datePattern = year + '-' + month + '-' + todayDate;
+            var datePattern1 = year + '-' + month + '-' + todayDate1 ;
+            
+            
+            document.getElementById("CheckIn").value = datePattern;
+            document.getElementById("CheckIn").min = datePattern;
+
+            document.getElementById("CheckOut").value = datePattern1;
+            document.getElementById("CheckOut").min = datePattern1;
+        </script>-->
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.0.0.min.js"></script>
+        <script src="js/plugin.js"></script>
+        <!-- sidebar -->
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="js/custom.js"></script>
+        <!-- javascript -->
+        <script src="js/owl.carousel.js"></script>
+        <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    </body>
+
+</html>
