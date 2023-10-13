@@ -13,12 +13,12 @@
             <div class="login_main row">
                 <div class="login_body col-md-4">
                     <h1>LOGIN</h1>
+                    <span>${requestScope.ErrorMessage}</span>
                     <form>
                         <div clas="btn-control" style="padding: 20px 0;">
                             <button class="btn-login">
                                 <i class="fa fa-google-plus" aria-hidden="true"></i>
-                                <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/Roombooking/Login&response_type=code
-                                   &client_id=736414221460-j11uh421nakm2uh81c0dun13u6kvs0ou.apps.googleusercontent.com&approval_prompt=force">Login With Google</a>	
+                                <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/RoomBooking/Login&response_type=code&client_id=89306432316-rs2mce69g2ta88splene875bpvihem12.apps.googleusercontent.com&approval_prompt=force">Login With Google</a>	
                             </button>
                         </div>
 
