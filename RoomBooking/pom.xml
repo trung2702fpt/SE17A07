@@ -65,8 +65,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version> <!-- Update to a newer version -->
                 <configuration>
-                    <source>16</source> <!-- Updated to Java 17 -->
-                    <target>16</target> <!-- Updated to Java 17 -->
+                    <source>11</source> <!-- Updated to Java 17 nhớ đổi ở đây nữa nha, xong clean and build--> 
+                    <target>11</target> <!-- Updated to Java 17 -->
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>

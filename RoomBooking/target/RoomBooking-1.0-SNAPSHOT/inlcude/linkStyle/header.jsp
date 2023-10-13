@@ -20,19 +20,19 @@
                     <div class="collapse navbar-collapse" id="navbarsExample04">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home</a>
+                                <a class="nav-link" href="home.jsp">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../../roomStatus.jsp">Room Status</a>
+                                <a class="nav-link" href="roomStatus.jsp">Room Status</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../../report.jsp">Report</a>
+                                <a class="nav-link" href="report.jsp">Report</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../../history.jsp">History</a>
+                                <a class="nav-link" href="history.jsp">History</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../../login.jsp">Login</a>
+                                <a class="nav-link" href="login.jsp">Login</a>
                             </li>
                         </ul>
                     </div>

@@ -997,6 +997,9 @@ line-height: 35px;
      width: 80%;
      padding: 20px 0;
 }
+/*.btn-control a{
+    padding: 10px;
+}*/
 .btn-login{
      width: 80%;
      background-color: #dfdbdb;

@@ -20,7 +20,7 @@ public class Connect {
     public static void main(String[] args) {
         String jdbcUrl = "jdbc:sqlserver://localhost:1433;databaseName=FPTBooking;trustServerCertificate=true";
         String username = "sa";
-        String password = "123456";
+        String password = "123";
         // Set the trustCertificate property to true
         try {
             // Establish a database connection
