@@ -16,7 +16,7 @@ import java.sql.Statement;
 public class Connect {
 
     private static String username = "sa";
-    private static String password = "123456";
+    private static String password = "123";
     private static String databaseName = "FPTBooking";
     private static String serverName = "localhost";
     private static int port = 1433;
