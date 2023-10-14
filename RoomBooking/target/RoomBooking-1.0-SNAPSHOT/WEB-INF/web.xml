@@ -4,9 +4,25 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>Controller.Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetRooms</servlet-name>
+        <servlet-class>Controller.GetRooms</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetEquipments</servlet-name>
+        <servlet-class>Controller.GetEquipments</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetRooms</servlet-name>
+        <url-pattern>/GetRooms</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetEquipments</servlet-name>
+        <url-pattern>/GetEquipments</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
