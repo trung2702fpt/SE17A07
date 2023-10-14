@@ -51,7 +51,7 @@
                                             <td>${equipment.id}</td>
                                             <td class="title">
                                                 <div class="thumb">
-                                                    <img class="img-fluid w-25" src="inlcude/asset/images/gallery1.jpg" alt="">
+                                                    <img class="img-fluid w-25" src="inlcude/asset/images/equipment/${equipment.type.name}.png" alt="">
                                                 </div>
                                             </td>
                                             <td>${equipment.name}</td>
