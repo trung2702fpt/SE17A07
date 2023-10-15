@@ -20,7 +20,40 @@
                 </div>
             </div>
         </div>
-        
+
+
+        <div class="container pt-5">
+            <div class="row justify-content-around align-items-center">
+                <div class="card containerOverlay" style="width: 18rem;">
+                    <img class="card-img-top imageOverlay" src="https://th.bing.com/th/id/R.f07f8993ae15cbe4a2566bb3c111cdf4?rik=08RwNdxH5ATdJg&pid=ImgRaw&r=0" alt="Card image cap">
+                    <div class="middleOverlay">
+                        <div class="textOverlay">Equipment</div>
+                    </div>
+                </div>  
+                <div class="card containerOverlay" style="width: 18rem;">
+                    <img class="card-img-top imageOverlay" src="https://th.bing.com/th/id/R.f07f8993ae15cbe4a2566bb3c111cdf4?rik=08RwNdxH5ATdJg&pid=ImgRaw&r=0" alt="Card image cap">
+                    <div class="middleOverlay">
+                        <div class="textOverlay">List Room</div>
+                    </div>
+                </div> 
+            </div>    
+            <div class="row justify-content-around align-items-center pt-5">
+                <div class="card containerOverlay" style="width: 18rem;">
+                    <img class="card-img-top imageOverlay" src="https://th.bing.com/th/id/R.f07f8993ae15cbe4a2566bb3c111cdf4?rik=08RwNdxH5ATdJg&pid=ImgRaw&r=0" alt="Card image cap">
+                    <div class="middleOverlay">
+                        <div class="textOverlay">Booking Room</div>
+                    </div>
+                </div>  
+                <div class="card containerOverlay" style="width: 18rem;">
+                    <img class="card-img-top imageOverlay" src="https://th.bing.com/th/id/R.f07f8993ae15cbe4a2566bb3c111cdf4?rik=08RwNdxH5ATdJg&pid=ImgRaw&r=0" alt="Card image cap">
+                    <div class="middleOverlay">
+                        <div class="textOverlay">Report</div>
+                    </div>
+                </div> 
+            </div>  
+        </div>
+
+
         <%@include file="inlcude/linkStyle/footer.jsp" %>
         <%@include file="inlcude/linkStyle/js_link.jsp" %>
     </body>
