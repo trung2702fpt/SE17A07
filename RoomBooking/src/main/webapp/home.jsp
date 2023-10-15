@@ -27,13 +27,13 @@
                 <div class="card containerOverlay" style="width: 18rem;">
                     <img class="card-img-top imageOverlay" src="https://th.bing.com/th/id/R.f07f8993ae15cbe4a2566bb3c111cdf4?rik=08RwNdxH5ATdJg&pid=ImgRaw&r=0" alt="Card image cap">
                     <div class="middleOverlay">
-                        <div class="textOverlay">Equipment</div>
+                        <div class="textOverlay"><a href="listEquipments.jsp">Equipment</a></div>
                     </div>
                 </div>  
                 <div class="card containerOverlay" style="width: 18rem;">
                     <img class="card-img-top imageOverlay" src="https://th.bing.com/th/id/R.f07f8993ae15cbe4a2566bb3c111cdf4?rik=08RwNdxH5ATdJg&pid=ImgRaw&r=0" alt="Card image cap">
                     <div class="middleOverlay">
-                        <div class="textOverlay">List Room</div>
+                        <div class="textOverlay"><a href="listRooms.jsp">List Room</a></div>
                     </div>
                 </div> 
             </div>    
@@ -41,13 +41,13 @@
                 <div class="card containerOverlay" style="width: 18rem;">
                     <img class="card-img-top imageOverlay" src="https://th.bing.com/th/id/R.f07f8993ae15cbe4a2566bb3c111cdf4?rik=08RwNdxH5ATdJg&pid=ImgRaw&r=0" alt="Card image cap">
                     <div class="middleOverlay">
-                        <div class="textOverlay">Booking Room</div>
+                        <div class="textOverlay"><a href="book.jsp">Booking Room</a></div>
                     </div>
                 </div>  
                 <div class="card containerOverlay" style="width: 18rem;">
                     <img class="card-img-top imageOverlay" src="https://th.bing.com/th/id/R.f07f8993ae15cbe4a2566bb3c111cdf4?rik=08RwNdxH5ATdJg&pid=ImgRaw&r=0" alt="Card image cap">
                     <div class="middleOverlay">
-                        <div class="textOverlay">Report</div>
+                        <div class="textOverlay"><a href="report.jsp">Report</a></div>
                     </div>
                 </div> 
             </div>  
