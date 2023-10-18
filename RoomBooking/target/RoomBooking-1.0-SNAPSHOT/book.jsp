@@ -1,8 +1,3 @@
-<%-- 
-    Document   : templateFile
-    Created on : Oct 10, 2023, 4:29:36 PM
-    Author     : nhonvn2509
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

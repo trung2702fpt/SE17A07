@@ -4,10 +4,6 @@
  */
 package model;
 
-/**
- *
- * @author thong
- */
 public class User {
     public String id;
     public String email;

@@ -4,10 +4,6 @@
  */
 package model;
 
-/**
- *
- * @author thong
- */
 public class Equipment {
     public int id;
     public String name;

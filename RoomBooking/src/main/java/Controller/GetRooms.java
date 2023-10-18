@@ -15,10 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Room;
 
-/**
- *
- * @author thong
- */
 public class GetRooms extends HttpServlet {
 
     /**

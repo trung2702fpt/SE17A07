@@ -14,10 +14,6 @@ import model.Equipment;
 import model.Room;
 import model.typeEquipment;
 
-/**
- *
- * @author thong
- */
 public class EquipmentDAO extends Connect {
 
     public List<Equipment> GetEquipments() throws ClassNotFoundException {
