@@ -1,15 +1,18 @@
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\model\User.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\DataAsset\EquipmentDAO.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\Controller\Login.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\model\google\GooglePojo.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\model\google\GoogleUtils.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\Utils\Connect.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\DataAsset\RoomDAO.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\model\Room.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\model\google\Constants.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\Controller\GetEquipments.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\model\Connect.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\Controller\GetRooms.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\DataAsset\UserDAO.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\model\typeEquipment.java
-C:\New folder (3)\SE17A07\RoomBooking\src\main\java\model\Equipment.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\model\User.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\Controller\GetHistory.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\model\google\GoogleUtils.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\model\Equipment.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\DataAsset\RoomDAO.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\model\History.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\model\Room.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\model\google\GooglePojo.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\Controller\GetEquipments.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\model\google\Constants.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\Controller\Login.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\model\typeEquipment.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\Controller\GetRooms.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\DataAsset\UserDAO.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\Utils\Connect.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\DataAsset\HistoryDAO.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\DataAsset\EquipmentDAO.java
+C:\Users\nguye\OneDrive\Documents\NetBeansProjects\SE17A07\RoomBooking\src\main\java\model\Connect.java

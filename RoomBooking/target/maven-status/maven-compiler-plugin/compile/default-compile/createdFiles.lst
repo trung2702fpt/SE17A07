@@ -1,5 +1,6 @@
 Controller\GetRooms.class
 model\typeEquipment.class
+Controller\GetHistory.class
 model\google\GooglePojo.class
 DataAsset\EquipmentDAO.class
 model\Connect.class
@@ -8,7 +9,9 @@ model\Room.class
 Utils\Connect.class
 DataAsset\RoomDAO.class
 DataAsset\UserDAO.class
+DataAsset\HistoryDAO.class
 model\Equipment.class
+model\History.class
 model\google\Constants.class
 Controller\GetEquipments.class
 Controller\Login.class
