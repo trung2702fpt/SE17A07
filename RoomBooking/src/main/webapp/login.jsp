@@ -14,21 +14,17 @@
                 <div class="login_body col-md-4">
                     <h1>LOGIN</h1>
                     <span>${requestScope.ErrorMessage}</span>
-                    <form>
+                    <form class="form-group">
                         <div clas="btn-control" style="padding: 20px 0;">
-                            <button class="btn-login">
-                                <i class="fa fa-google-plus" aria-hidden="true"></i>
-                                <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/RoomBooking/Login&response_type=code&client_id=89306432316-rs2mce69g2ta88splene875bpvihem12.apps.googleusercontent.com&approval_prompt=force">Login With Google</a>	
-                            </button>
+                            <a class="btn-login btn bg-primary" href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/RoomBooking/Login&response_type=code&client_id=89306432316-rs2mce69g2ta88splene875bpvihem12.apps.googleusercontent.com&approval_prompt=force">Login With Google</a>	
                         </div>
-
-                        <div clas="btn-control">
+<!--                        <div clas="btn-control">
                             <button class="btn-login">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                                 Login with FEID
                             </button>
                         </div>
-                        <p>With user from K19 login with FEID</p>
+                        <p>With user from K19 login with FEID</p>-->
                         <img src="inlcude/asset/images/logo.webp" alt="#" />
                     </form>
 

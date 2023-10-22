@@ -9,23 +9,20 @@
     </head>
     <body class="main-layout">
         <%@include file="inlcude/linkStyle/header.jsp" %>
-<%
-    List<Room> rooms = (List<Room>)session.getAttribute("ListRooms");
-    if(rooms == null){
-        response.sendRedirect("GetRooms");
-    }
-%>
         <div class="back_re">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="title">
-                            <h2>Rooms</h2>
+                        
+                        <div class="title d-flex">
+                            <button id="goBackButton" class="btn btn-dark my-auto">Back</button>
+                            <h2 class="ml-5">Rooms</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
         <!-- History -->
         <div  class="our_room">
             <div class="container-fluid">
@@ -39,47 +36,28 @@
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Room</th>
-                                                <th class="">Number Room</th>
-                                                <th class="">Money</th>
+                                                <th>Number Room</th>
+                                                <th>Money</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <c:forEach items="${sessionScope.ListRooms}" var="room">
-                                                <tr class="candidates-list">
-                                                    <td>${room.id}</td>
-                                                    <td class="title">
-                                                        <div class="thumb">
-                                                            <img class="img-fluid w-25" src="inlcude/asset/images/gallery1.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>${room.roomNumber}</td>
-                                                    <td>${room.price}</td>
-                                                </tr>
-                                            </c:forEach>
-                                                </tbody>
-                                            </table>
-<!--                                            <div class="text-center mt-3 mt-sm-3">
-                                                <ul class="pagination justify-content-center mb-0">
-                                                    <li class="page-item disabled"> <span class="page-link">Prev</span> </li>
-                                                    <li class="page-item active" aria-current="page"><span class="page-link">1 </span> <span class="sr-only">(current)</span></li>
-                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">25</a></li>
-                                                    <li class="page-item"> <a class="page-link" href="#">Next</a> </li>
-                                                </ul>
-                                            </div>-->
-                                        </div>
-                                    </div>
+                                        <tbody id="bodyTableRoom">
+                                            <tr>
+                                                <td colspan="4"><h2 class='text-center'>LOADING....</h2></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- end gallery -->
+            </div>
+        </div>
+        <!-- end gallery -->
 
-                <!--  footer -->
-                <%@include file="inlcude/linkStyle/footer.jsp" %>
-                <%@include file="inlcude/linkStyle/js_link.jsp" %>
-            </body>
-        </html>
+        <!--  footer -->
+        <%@include file="inlcude/linkStyle/footer.jsp" %>
+        <%@include file="inlcude/linkStyle/js_link.jsp" %>
+        <script src="inlcude/asset/responseData/ListRoom.js"></script>
+    </body>
+</html>

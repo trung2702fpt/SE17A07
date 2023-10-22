@@ -17,19 +17,24 @@ import model.History;
 public class GetHistory extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet GetHistory</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet GetHistory at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        PrintWriter out = response.getWriter();
+        HistoryDAO historyDAO = new HistoryDAO();
+        List<History> histories = historyDAO.GetBookings();
+        if (histories.size() > 0) {
+            for (History history : histories) {
+                out.println("<tr>"
+                        + "<td>" + history.getRoomID() + "</td>"
+                        + "<td>" + history.getBookingDate().toString() + "</td>"
+                        + "<td>" + history.getSlotID() + "</td>"
+                        + "<td>" + history.getPrice() + "</td>"
+                        + "</tr>");
+            }
+        }else{
+            out.println("<tr>"
+                        + "<td colspan=\"4\"><h2 class='text-center'>EMPTY HISTORY!!</h2></td>"
+                        + "</tr>");
         }
     }
 
@@ -37,26 +42,24 @@ public class GetHistory extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            HistoryDAO historyDAO = new HistoryDAO();
-            List<History> histories = historyDAO.GetBookings();
-            ObjectMapper objectMapper = new ObjectMapper();
-            String jsonUsers = objectMapper.writeValueAsString(histories);
-
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(jsonUsers);
+            processRequest(request, response);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GetHistory.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(GetHistory.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GetHistory.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GetHistory.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

@@ -8,6 +8,8 @@ import DataAsset.RoomDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,37 +29,41 @@ public class GetRooms extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "listRooms.jsp";
-        try {
-            HttpSession session = request.getSession();
-            RoomDAO roomDao = new RoomDAO();
-            List<Room> rooms = roomDao.GetRooms();
-            if(rooms.size()>0){
-                session.setAttribute("ListRooms", rooms);
+        PrintWriter out = response.getWriter();
+        RoomDAO roomDao = new RoomDAO();
+        List<Room> Listrooms = roomDao.GetRooms();
+        if (Listrooms.size() > 0) {
+            for (Room room : Listrooms) {
+                out.println("<tr class=\"candidates-list\">\n"
+                        + " <td>" + room.id + "</td>\n"
+                        + " <td class=\"title\">\n"
+                        + "      <div class=\"thumb\">\n"
+                        + "           <img class=\"img-fluid w-25\" src=\"inlcude/asset/images/gallery1.jpg\" alt=\"\">\n"
+                        + "       </div>\n"
+                        + " </td>\n"
+                        + " <td>" + room.roomNumber + "</td>\n"
+                        + " <td>" + room.price + "</td>\n"
+                        + "</tr>");
             }
-        } catch (Exception e) {
-            url = "error.jsp";
-            e.printStackTrace();
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+        } else {
+            out.println("<tr>"
+                    + "<td colspan=\"4\"><h2 class='text-center'>EMPTY ROOM!!</h2></td>"
+                    + "</tr>");
+
         }
+
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GetRooms.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -71,7 +77,11 @@ public class GetRooms extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GetRooms.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

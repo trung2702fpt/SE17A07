@@ -7,7 +7,7 @@
                 <div class="full">
                     <div class="center-desk">
                         <div class="logo">
-                            <a href="index.html"><img src="inlcude/asset/images/logo.webp" alt="#" /></a>
+                            <a href="home.jsp"><img src="inlcude/asset/images/logo.webp" alt="#" /></a>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                                 <a class="nav-link" href="home.jsp">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="roomStatus.jsp">Room Status</a>
+                                <a class="nav-link" href="listRooms.jsp">Room</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="report.jsp">Report</a>
@@ -41,3 +41,15 @@
         </div>
     </div>
 </div>
+
+<!--<div id="loadingScreen" class="position-absolute hide" style="display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     width: 100vw;
+     z-index: 10000000;
+     background-color: #3f50605e">
+    <div class="spinner-border text-primary" style="width: 5rem; height: 5rem; color: orange !important;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>-->

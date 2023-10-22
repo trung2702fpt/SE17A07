@@ -6,11 +6,23 @@
         <%@include file="inlcude/linkStyle/head_link.jsp" %>
     </head>
     <body>
-    <%@include file="inlcude/linkStyle/header.jsp" %> 
-    
-    
-    
-    <%@include file="inlcude/linkStyle/footer.jsp" %>
-    <%@include file="inlcude/linkStyle/js_link.jsp" %>
+        <%@include file="inlcude/linkStyle/header.jsp" %> 
+        <div class="back_re">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="title d-flex">
+                            <button id="goBackButton" class="btn btn-dark my-auto">Back</button>
+                            <h2 class="ml-5">Report</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <%@include file="inlcude/linkStyle/footer.jsp" %>
+        <%@include file="inlcude/linkStyle/js_link.jsp" %>
     </body>
 </html>
