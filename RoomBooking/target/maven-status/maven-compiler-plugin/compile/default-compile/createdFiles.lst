@@ -1,6 +1,8 @@
 Controller\GetRooms.class
+Controller\NewServlet.class
 model\typeEquipment.class
 Controller\GetHistory.class
+Controller\SearchApi.class
 model\google\GooglePojo.class
 DataAsset\EquipmentDAO.class
 model\Connect.class

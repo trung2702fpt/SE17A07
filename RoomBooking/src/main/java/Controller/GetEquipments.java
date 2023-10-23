@@ -1,11 +1,6 @@
 package Controller;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 import DataAsset.EquipmentDAO;
-import DataAsset.RoomDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -15,24 +10,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.Equipment;
 
-/**
- *
- * @author thong
- */
 public class GetEquipments extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String url = "listEquipments.jsp";
-        HttpSession session = request.getSession();
         EquipmentDAO eqDao = new EquipmentDAO();
         List<Equipment> equipments = eqDao.GetEquipments();
-        if (equipments.size() > 0) {
+        if (!equipments.isEmpty()) {
             for (Equipment equipment : equipments) {
                 out.println("<tr class=\"candidates-list\">\n"
                         + "                                            <td>" + equipment.id + "</td>\n"

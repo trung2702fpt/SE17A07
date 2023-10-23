@@ -10,10 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.History;
 
-/**
- *
- * @author nhonvn2509
- */
 public class HistoryDAO extends Connect {
 
     public List<History> GetBookings() throws ClassNotFoundException, SQLException {
@@ -39,20 +35,5 @@ public class HistoryDAO extends Connect {
             e.printStackTrace();
         }
         return historys;
-    }
-
-    public static void main(String[] args) {
-        HistoryDAO his = new HistoryDAO();
-        try {
-            List<History> histories = his.GetBookings();
-            System.out.println("Test DAO History");
-            for (History history : histories) {
-                System.out.println(history.toString());
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(HistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(HistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

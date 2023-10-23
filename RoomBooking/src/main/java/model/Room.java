@@ -11,6 +11,10 @@ public class Room {
 
     public Room() {
     }
+    
+    public Room(int id) {
+        this.id = id;
+    }
 
     public Room(int id, String roomNumber, double price) {
         this.id = id;

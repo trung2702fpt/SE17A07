@@ -12,7 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.History;
+import model.User;
 
 public class GetHistory extends HttpServlet {
 
@@ -21,8 +23,14 @@ public class GetHistory extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HistoryDAO historyDAO = new HistoryDAO();
+        HttpSession session = request.getSession();
         List<History> histories = historyDAO.GetBookings();
-        if (histories.size() > 0) {
+        User user = (User) session.getAttribute("ACCOUNT_USER");
+        if (user == null) {
+            out.println("<tr>"
+                    + "<td colspan=\"4\"><h2 class='text-center'><a class='btn btn-dark my-auto text-light nav-link' href=\"login.jsp\">Login</a></h2></td>"
+                    + "</tr>");
+        } else if (!histories.isEmpty()) {
             for (History history : histories) {
                 out.println("<tr>"
                         + "<td>" + history.getRoomID() + "</td>"
@@ -31,10 +39,10 @@ public class GetHistory extends HttpServlet {
                         + "<td>" + history.getPrice() + "</td>"
                         + "</tr>");
             }
-        }else{
+        } else {
             out.println("<tr>"
-                        + "<td colspan=\"4\"><h2 class='text-center'>EMPTY HISTORY!!</h2></td>"
-                        + "</tr>");
+                    + "<td colspan=\"4\"><h2 class='text-center'>EMPTY HISTORY!!</h2></td>"
+                    + "</tr>");
         }
     }
 

@@ -12,14 +12,14 @@ import java.sql.Statement;
 public class Connect {
 
     private static String username = "sa";
-    private static String password = "123456";
+    private static String password = "123";
     private static String databaseName = "FPTBooking";
     private static String serverName = "localhost";
     private static int port = 1433;
     private static String jdbcUrl = "jdbc:sqlserver://" + serverName + ":" + port + ";databaseName=" + databaseName + ";trustServerCertificate=true";
     private static Connection connection;
 
-    protected static Connection getConnection() throws ClassNotFoundException {
+    protected static Connection getConnection() throws ClassNotFoundException{
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         try {
             if (connection == null || connection.isClosed()) {
