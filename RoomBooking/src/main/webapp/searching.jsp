@@ -16,9 +16,6 @@
                         <div class="title d-flex">
                             <button id="goBackButton" class="btn btn-dark my-auto">Back</button>
                             <h2 class="ml-5">Search room</h2>
-                            <div class="title">
-                                <h2>Search Rooms</h2>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -35,8 +32,9 @@
                         <select class="form-select" id="slotSelected">
                             <option value="1">Slot 1 (7-9 AM)</option>
                             <option value="2">Slot 2 (9-11 AM)</option>
-                            <option value="3">Slot 3 (11-1 PM)</option>
+                            <option value="3">Slot 3 (11 AM - 1 PM)</option>
                             <option value="4">Slot 4 (1-3 PM)</option>
+                            <option value="5">Slot 5 (3-5 PM)</option>
                         </select>
                     </div>
                     <a href="#" class="btn btn-dark my-auto" onclick="searchByName(); return false;">Search</a>
