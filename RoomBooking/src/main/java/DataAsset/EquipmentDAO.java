@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Equipment;
-import model.Room;
 import model.typeEquipment;
 
 public class EquipmentDAO extends Connect {

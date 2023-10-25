@@ -24,6 +24,14 @@
         <servlet-name>SearchApi</servlet-name>
         <servlet-class>Controller.SearchApi</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>loginAdmin</servlet-name>
+        <servlet-class>Controller.Admin.loginAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>Controller.logout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>SearchApi</servlet-name>
         <url-pattern>/searchApi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginAdmin</servlet-name>
+        <url-pattern>/loginAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
