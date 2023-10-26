@@ -4,13 +4,16 @@ model\typeEquipment.class
 Controller\GetHistory.class
 Controller\SearchApi.class
 model\google\GooglePojo.class
+Controller\Admin\loginAdmin.class
 DataAsset\EquipmentDAO.class
 model\Connect.class
 model\google\GoogleUtils.class
+Controller\logout.class
 model\Room.class
 Utils\Connect.class
 DataAsset\RoomDAO.class
 DataAsset\UserDAO.class
+DataAsset\LoginAdmin.class
 DataAsset\HistoryDAO.class
 model\Equipment.class
 model\History.class
