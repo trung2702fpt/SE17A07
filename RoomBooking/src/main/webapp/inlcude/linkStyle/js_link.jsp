@@ -5,3 +5,17 @@
 <script type="text/javascript" src="inlcude/asset/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript" src="inlcude/asset/js/custom.js"></script>
 <script type="text/javascript" src="inlcude/asset/responseData/mainProcess.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="inlcude/asset/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<script type="text/javascript" src="inlcude/asset/js/sb-admin-2.min.js"></script>
+
+<script type="text/javascript" src="inlcude/asset/vendor/chart.js/Chart.min.js"></script>
+
+<script type="text/javascript" src="inlcude/asset/js/demo/chart-area-demo.js"></script>
+<script type="text/javascript" src="inlcude/asset/js/demo/chart-pie-demo.js"></script>
+
+<script type="text/javascript">
+    var newURL = "FPTBooking";
+    history.pushState({}, '', newURL);
+</script>
