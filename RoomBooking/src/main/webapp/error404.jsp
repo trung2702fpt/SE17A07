@@ -9,18 +9,20 @@
 <html>
     <head>
         <%@include file="inlcude/linkStyle/head_link.jsp" %>
-        <style>
-            body {
-                background-image: url('inlcude/asset/images/fptuni.jpg');
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                color: white;
-            }
-        </style>
+        
     </head>
     <body>
-        <h1>Error 404 - Page Not Found</h1>
-        <p>The requested page could not be found.</p>
+        <div id="notfound">
+		<div class="notfound-bg"></div>
+		<div class="notfound">
+			<div class="notfound-404">
+				<h1>404</h1>
+			</div>
+			<h2>Oops! Page Not Found</h2>
+			<div class="linkBack">
+				<a href="#">Back To Homepage</a>
+			</div>
+		</div>
+	</div>
     </body>
 </html>

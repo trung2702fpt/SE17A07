@@ -28,3 +28,8 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="inlcude/asset/css/styleErrorPage.css"/>
+<link href="https://fonts.googleapis.com/css?family=Muli:400" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+<<link rel="stylesheet" href="../asset/css/font-awesome.min.css"/>
