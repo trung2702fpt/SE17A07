@@ -4,23 +4,23 @@
     Author     : dungnguyen
 --%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Error 404 - Page Not Found</title>
-    <style>
-        body {
-            background-image: url('inlcude/asset/images/fptuni.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: white; 
-        }
-    </style>
-    
-</head>
-<body>
-    <h1>Error 404 - Page Not Found</h1>
-    <p>The requested page could not be found.</p>
-</body>
+    <head>
+        <%@include file="inlcude/linkStyle/head_link.jsp" %>
+        <style>
+            body {
+                background-image: url('inlcude/asset/images/fptuni.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Error 404 - Page Not Found</h1>
+        <p>The requested page could not be found.</p>
+    </body>
 </html>
