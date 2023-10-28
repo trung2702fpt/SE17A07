@@ -7,6 +7,9 @@ public class History {
     private Date bookingDate;
     private int slotID;
     private float price;
+    private boolean isUsed;
+    private Date cancelDate;
+    
     public History() {
     }
 
@@ -47,6 +50,22 @@ public class History {
 
     public void setSlotID(int slotID) {
         this.slotID = slotID;
+    }
+
+    public boolean isIsUsed() {
+        return isUsed;
+    }
+
+    public void setIsUsed(boolean isUsed) {
+        this.isUsed = isUsed;
+    }
+
+    public Date getCancelDate() {
+        return cancelDate;
+    }
+
+    public void setCancelDate(Date cancelDate) {
+        this.cancelDate = cancelDate;
     }
 
     @Override

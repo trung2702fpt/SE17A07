@@ -12,10 +12,4 @@
 
 <script type="text/javascript" src="inlcude/asset/vendor/chart.js/Chart.min.js"></script>
 
-<script type="text/javascript" src="inlcude/asset/js/demo/chart-area-demo.js"></script>
-<script type="text/javascript" src="inlcude/asset/js/demo/chart-pie-demo.js"></script>
-
-<script type="text/javascript">
-    var newURL = "FPTBooking";
-    history.pushState({}, '', newURL);
-</script>
+<!--<script type="text/javascript" src="inlcude/asset/js/demo/chart-area-demo.js"></script>-->

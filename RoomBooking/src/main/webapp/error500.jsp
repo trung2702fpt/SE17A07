@@ -1,9 +1,3 @@
-<%-- 
-    Document   : error500
-    Created on : Oct 27, 2023, 9:02:23 PM
-    Author     : dungnguyen
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

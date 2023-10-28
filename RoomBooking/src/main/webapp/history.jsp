@@ -34,8 +34,8 @@
                                             <tr>
                                                 <th>Room ID</th>
                                                 <th>Booking Date</th>
-                                                <th>Slot ID</th>
-                                                <th>Price</th>
+                                                <th>Slot</th>
+                                                <th>Cancel</th>
                                             </tr>
                                         </thead>
                                         <tbody id="historyTableBody">

@@ -28,7 +28,7 @@ public class GetHistory extends HttpServlet {
         User user = (User) session.getAttribute("ACCOUNT_USER");
         if (user == null) {
             out.println("<tr>"
-                    + "<td colspan=\"4\"><h2 class='text-center'><a class='btn btn-dark my-auto text-light nav-link' href=\"login.jsp\">Login</a></h2></td>"
+                    + "<td colspan=\"5\"><h2 class='text-center'><a class='btn btn-dark my-auto text-light nav-link' href=\"login.jsp\">Login</a></h2></td>"
                     + "</tr>");
         } else if (!histories.isEmpty()) {
             for (History history : histories) {
@@ -41,7 +41,7 @@ public class GetHistory extends HttpServlet {
             }
         } else {
             out.println("<tr>"
-                    + "<td colspan=\"4\"><h2 class='text-center'>EMPTY HISTORY!!</h2></td>"
+                    + "<td colspan=\"5\"><h2 class='text-center'>EMPTY HISTORY!!</h2></td>"
                     + "</tr>");
         }
     }

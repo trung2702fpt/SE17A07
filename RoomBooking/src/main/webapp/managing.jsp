@@ -11,7 +11,7 @@
     </head>
     <body>
         <%
-            if(session.getAttribute("isAdmin") == null){
+            if (session.getAttribute("isAdmin") == null) {
                 response.sendRedirect("admin.jsp");
             }
         %>
@@ -19,74 +19,7 @@
             <!-- Page Wrapper -->
             <div id="wrapper">
                 <!-- Sidebar -->
-                <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-                    <!-- Sidebar - Brand -->
-                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                        <div class="sidebar-brand-icon rotate-n-15">
-                            <i class="fas fa-school"></i>
-                        </div>
-                        <div class="sidebar-brand-text mx-3">FPT BOOKING</div>
-                    </a>
-                    <!-- Divider -->
-                    <hr class="sidebar-divider">
-                    <!-- Admin heading -->
-                    <div class="sidebar-heading text-white">
-                        Admin
-                    </div>
-                    <!-- Nav Item - Page Collapse Menu -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage"
-                           aria-expanded="true" aria-controls="collapsePage">
-                            <i class="fas fa-fw fa-inbox"></i>
-                            <span>Room</span>
-                        </a>
-                        <div id="collapsePage" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
-                            <div class="bg-white py-2 collapse-inner rounded">
-                                <h6 class="collapse-header">Some pages:</h6>
-                                <a class="collapse-item" href="index_template.html">Index Template</a>
-                                <a class="collapse-item" href="login.html">Login</a>
-                                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- Nav Item - User Collapse Menu -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
-                           aria-expanded="true" aria-controls="collapseUser">
-                            <i class="fas fa-fw fa-user"></i>
-                            <span>Equipment</span>
-                        </a>
-                        <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
-                            <div class="bg-white py-2 collapse-inner rounded">
-                                <h6 class="collapse-header">User:</h6>
-                                <a class="collapse-item" href="userManagement.html">Management</a>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- Nav Item - Categories Collapse Menu -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
-                           aria-expanded="true" aria-controls="collapseUser">
-                            <i class="fas fa-fw fa-list"></i>
-                            <span>Feedback</span>
-                        </a>
-                        <div id="collapseCategories" class="collapse" aria-labelledby="headingCategories" data-parent="#accordionSidebar">
-                            <div class="bg-white py-2 collapse-inner rounded">
-                                <h6 class="collapse-header">Categories:</h6>
-                                <a class="collapse-item" href="categoryAdd.html">Category Add</a>
-                                <a class="collapse-item" href="categoryManagement.html">Management</a>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- Divider -->
-                    <hr class="sidebar-divider d-none d-md-block">
-
-                    <!-- Sidebar Toggler (Sidebar) -->
-                    <div class="text-center d-none d-md-inline">
-                        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                    </div>
-                </ul>
+                <%@include file="inlcude/linkStyle/admin/SidebarAdmin.jsp" %>
                 <!-- End of Sidebar -->
 
                 <!-- Content Wrapper -->
@@ -104,127 +37,12 @@
                                         class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                             </div>
                             <!-- Content Row -->
-                            <div class="row">
-                                <div class="col-xl-3 col-md-3 mb-4">
-                                    <div class="card border-left-primary shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                        Earnings (Daily)</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Earnings (Monthly) Card Example -->
-                                <div class="col-xl-3 col-md-3 mb-4">
-                                    <div class="card border-left-success shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                        Earnings (Daily)</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Earnings (Monthly) Card Example -->
-                                <div class="col-xl-3 col-md-3 mb-4">
-                                    <div class="card border-left-info shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks (Daily)
-                                                    </div>
-                                                    <div class="row no-gutters align-items-center">
-                                                        <div class="col-auto">
-                                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                                        </div>
-                                                        <div class="col">
-                                                            <div class="progress progress-sm mr-2">
-                                                                <div class="progress-bar bg-info" role="progressbar"
-                                                                     style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                                     aria-valuemax="100"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Pending Requests Card Example -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-warning shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                        Pending Requests (Daily)</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <%@include file="inlcude/linkStyle/admin/StaticBooked.jsp" %>
 
                             <!-- Content Row -->
-                            <div class="row">
-
-                                <!-- Area Chart -->
-                                <div class="col-xl-12 col-lg-12">
-                                    <div class="card shadow mb-4">
-                                        <!-- Card Header - Dropdown -->
-                                        <!--                                        <div
-                                                                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                                                                    <div class="dropdown no-arrow">
-                                                                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                                                                        </a>
-                                                                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                                                                             aria-labelledby="dropdownMenuLink">
-                                                                                            <div class="dropdown-header">Dropdown Header:</div>
-                                                                                            <a class="dropdown-item" href="#">Action</a>
-                                                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                                                            <div class="dropdown-divider"></div>
-                                                                                            <a class="dropdown-item" href="#">Something else here</a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>-->
-                                        <!-- Card Body -->
-                                        <div class="card-body">
-                                            <div class="chart-area">
-                                                <canvas id="myAreaChart"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <%@include file="inlcude/linkStyle/admin/chartInMain.jsp" %>
                         </div>
                         <!-- /.container-fluid -->
-
                     </div>
                     <!-- End of Main Content -->
                 </div>
@@ -259,5 +77,10 @@
             </div>
         </div>
         <%@include file="inlcude/linkStyle/js_link.jsp" %>
+        <script type="text/javascript">
+            var newURL = "managing.jsp";
+            history.pushState({}, '', newURL);
+        </script>
+        <script src="inlcude/asset/admin/js/homeAdmin.js"></script>
     </body>
 </html>
