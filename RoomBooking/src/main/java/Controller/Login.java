@@ -33,25 +33,21 @@ public class Login extends HttpServlet {
                 String emailUser = googlePojo.getEmail();
                 if (!emailUser.split("@")[1].equals("fpt.edu.vn")) {
                     request.setAttribute("ErrorMessage", "Your email is not email FPT");
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                    url = "login.jsp";
                 } else {
                     //String idUser = googlePojo.getId();
                     String picture = googlePojo.getPicture();
                     String idStudent = matcherSplit(emailUser.split("@")[0], "([a-z]{2})([0-9]{6})");
                     String nameUser = emailUser.split("@")[0].replace(idStudent, "");
-                    User user = new User(emailUser, nameUser, 1, idStudent, picture);
-                    if (uDao.checkUser(user) == null) {
-                        if (uDao.InsertUser(user)) {
-                            session.setAttribute("ACCOUNT_USER", user);
-                        }
-                    }else{
-                        session.setAttribute("ACCOUNT_USER", user);
-                    }
+                    User user = new User(nameUser, emailUser, 1, idStudent, picture);
+                    User userLogin = uDao.InsertUser(user);
+                    session.setAttribute("ACCOUNT_USER", userLogin);
+                    url = "home.jsp";
                 }
-                url = "home.jsp";
             }
         } catch (Exception e) {
             e.printStackTrace();
+            url = "login.jsp";
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

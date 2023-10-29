@@ -54,7 +54,7 @@
         </div>
 
         <script type="text/javascript">
-            var newURL = "FPTBooking";
+            var newURL = "home.jsp";
             history.pushState({}, '', newURL);
         </script>
         <%@include file="inlcude/linkStyle/footer.jsp" %>

@@ -11,23 +11,27 @@ import model.Room;
 
 public class RoomDAO extends Connect {
 
+    public static List<Room> rooms;
     public RoomDAO() {
-
+        if(rooms == null){
+            rooms = new ArrayList<>();
+        }
     }
 
     public List<Room> GetRooms() throws ClassNotFoundException {
-        List<Room> rooms = new ArrayList<Room>();
-        try {
-            String sqlQuery = "SELECT * FROM Rooms";
-            PreparedStatement st = getConnection().prepareStatement(sqlQuery);
-            ResultSet resultSet = st.executeQuery();
+        if(rooms.size() <= 0 ){
+            try {
+                String sqlQuery = "SELECT * FROM Rooms";
+                PreparedStatement st = getConnection().prepareStatement(sqlQuery);
+                ResultSet resultSet = st.executeQuery();
 
-            while (resultSet.next()) {
-                rooms.add(new Room(resultSet.getInt("RoomID"), resultSet.getString("RoomNumber"), resultSet.getDouble("Price")));
+                while (resultSet.next()) {
+                    rooms.add(new Room(resultSet.getInt("RoomID"), resultSet.getString("RoomNumber"), resultSet.getDouble("Price")));
+                }
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            resultSet.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return rooms;
     }

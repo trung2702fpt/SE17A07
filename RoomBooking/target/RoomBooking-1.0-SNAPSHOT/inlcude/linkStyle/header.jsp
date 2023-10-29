@@ -39,7 +39,7 @@
                             </c:if>
                             <c:if test="${sessionScope.ACCOUNT_USER == null}">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="login.jsp">Login</a>
+                                    <a class="btn-login btn bg-primary" href="javascript:void(0);" onclick="openGoogleLoginPopup()">Login</a>	
                                 </li>
                             </c:if>
                         </ul>
@@ -49,7 +49,7 @@
         </div>
     </div>
 </div>
-
+<script src="inlcude/asset/responseData/loginWithGoogle.js"></script>
 <!--<div id="loadingScreen" class="position-absolute hide" style="display: flex;
      justify-content: center;
      align-items: center;

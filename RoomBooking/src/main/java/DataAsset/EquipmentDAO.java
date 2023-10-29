@@ -15,26 +15,35 @@ import model.typeEquipment;
 
 public class EquipmentDAO extends Connect {
 
-    public List<Equipment> GetEquipments() throws ClassNotFoundException {
-        List<Equipment> equipments = new ArrayList<Equipment>();
-        try {
-            String sqlQuery = "SELECT * FROM Equipment, TypeEquipment\n"
-                    + "where Equipment.TypeID = TypeEquipment.TypeID";
-            PreparedStatement st = getConnection().prepareStatement(sqlQuery);
-            ResultSet resultSet = st.executeQuery();
+    public static List<Equipment> equipments;
 
-            while (resultSet.next()) {
-                typeEquipment type = new typeEquipment(resultSet.getInt("TypeID"), resultSet.getString("Name"));
-                Equipment eq = new Equipment(resultSet.getInt("EquipmentID"),
-                         resultSet.getString("EquipmentName"),
-                         resultSet.getString("Description"),
-                         resultSet.getDouble("Price"),
-                         type);
-                equipments.add(eq);
+    public EquipmentDAO() {
+        if (equipments == null) {
+            equipments = new ArrayList<Equipment>();
+        }
+    }
+
+    public List<Equipment> GetEquipments() throws ClassNotFoundException {
+        if (equipments.size() <= 0) {
+            try {
+                String sqlQuery = "SELECT * FROM Equipment, TypeEquipment\n"
+                        + "where Equipment.TypeID = TypeEquipment.TypeID";
+                PreparedStatement st = getConnection().prepareStatement(sqlQuery);
+                ResultSet resultSet = st.executeQuery();
+
+                while (resultSet.next()) {
+                    typeEquipment type = new typeEquipment(resultSet.getInt("TypeID"), resultSet.getString("Name"));
+                    Equipment eq = new Equipment(resultSet.getInt("EquipmentID"),
+                            resultSet.getString("EquipmentName"),
+                            resultSet.getString("Description"),
+                            resultSet.getDouble("Price"),
+                            type);
+                    equipments.add(eq);
+                }
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            resultSet.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return equipments;
     }

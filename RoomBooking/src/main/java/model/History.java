@@ -1,20 +1,27 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class History {
 
     private int roomID;
-    private Date bookingDate;
+    private Timestamp bookingDate;
     private int slotID;
     private float price;
     private boolean isUsed;
-    private Date cancelDate;
+    private Timestamp cancelDate;
 
     public History() {
     }
 
-    public History(int roomID, Date bookingDate, int slotID, float price, boolean isUsed, Date cancelDate) {
+    public History(int roomID, Timestamp bookingDate, int slotID) {
+        this.roomID = roomID;
+        this.bookingDate = bookingDate;
+        this.slotID = slotID;
+    }
+    
+    public History(int roomID, Timestamp bookingDate, int slotID, float price, boolean isUsed, Timestamp cancelDate) {
         this.roomID = roomID;
         this.bookingDate = bookingDate;
         this.slotID = slotID;
@@ -35,7 +42,7 @@ public class History {
         return bookingDate;
     }
 
-    public void setBookingDate(Date bookingDate) {
+    public void setBookingDate(Timestamp bookingDate) {
         this.bookingDate = bookingDate;
     }
 
@@ -67,7 +74,7 @@ public class History {
         return cancelDate;
     }
 
-    public void setCancelDate(Date cancelDate) {
+    public void setCancelDate(Timestamp cancelDate) {
         this.cancelDate = cancelDate;
     }
 
