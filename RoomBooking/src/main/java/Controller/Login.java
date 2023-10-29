@@ -42,6 +42,7 @@ public class Login extends HttpServlet {
                     User user = new User(nameUser, emailUser, 1, idStudent, picture);
                     User userLogin = uDao.InsertUser(user);
                     session.setAttribute("ACCOUNT_USER", userLogin);
+                    session.setAttribute("user", user);
                     url = "home.jsp";
                 }
             }

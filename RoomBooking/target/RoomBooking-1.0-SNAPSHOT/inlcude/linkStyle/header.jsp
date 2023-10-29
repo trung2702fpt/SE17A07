@@ -33,6 +33,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="history.jsp">History</a>
                                 </li>
+                                <li style="margin-top: 5px;">
+                                    <p>${sessionScope.user.getEmail()}</p>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="logout">Log Out</a>
                                 </li>
