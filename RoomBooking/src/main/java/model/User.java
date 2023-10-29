@@ -5,7 +5,7 @@
 package model;
 
 public class User {
-    public String id;
+    public int id;
     public String email;
     public String name;
     public int roleid;
@@ -15,7 +15,7 @@ public class User {
     public User() {
     }
 
-    public User(String email, String name, int roleid, String idStudent, String image) {
+    public User(String name,String email,  int roleid, String idStudent, String image) {
         this.email = email;
         this.name = name;
         this.roleid = roleid;
@@ -23,7 +23,7 @@ public class User {
         this.image = image;
     }
     
-    public User(String id, String email, String name, int roleid, String idStudent, String image) {
+    public User(int id, String name, String email, int roleid, String idStudent, String image) {
         this.id = id;
         this.email = email;
         this.name = name;
@@ -48,11 +48,11 @@ public class User {
         this.image = image;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

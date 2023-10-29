@@ -11,13 +11,19 @@ public class UserDAO extends Utils.Connect {
     public User checkUser(User user) throws ClassNotFoundException {
         User userCheck = null;
         try {
-            String sqlQuery = "SELECT * FROM Users WHERE Email = ?";
+            String sqlQuery = "SELECT TOP 1 * FROM Users WHERE Email = ?";
             PreparedStatement st = getConnection().prepareStatement(sqlQuery);
             st.setString(1, user.getEmail());
             ResultSet resultSet = st.executeQuery();
 
             if (resultSet.isBeforeFirst()) {
-                userCheck = user;
+                userCheck = new User(
+                        resultSet.getInt("UserID"),
+                        resultSet.getString("Name"),
+                        resultSet.getString("Email"),
+                        resultSet.getInt("RoleID"),
+                        resultSet.getString("IDStudent"),
+                        resultSet.getString("Image"));
             }
             resultSet.close();
         } catch (SQLException e) {

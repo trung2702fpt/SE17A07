@@ -24,8 +24,8 @@ public class GetHistory extends HttpServlet {
         PrintWriter out = response.getWriter();
         HistoryDAO historyDAO = new HistoryDAO();
         HttpSession session = request.getSession();
-        List<History> histories = historyDAO.GetBookings();
         User user = (User) session.getAttribute("ACCOUNT_USER");
+        List<History> histories = historyDAO.GetBookings(user.getId());
         if (user == null) {
             out.println("<tr>"
                     + "<td colspan=\"5\"><h2 class='text-center'><a class='btn btn-dark my-auto text-light nav-link' href=\"login.jsp\">Login</a></h2></td>"
@@ -36,7 +36,7 @@ public class GetHistory extends HttpServlet {
                         + "<td>" + history.getRoomID() + "</td>"
                         + "<td>" + history.getBookingDate().toString() + "</td>"
                         + "<td>" + history.getSlotID() + "</td>"
-                        + "<td>" + history.getPrice() + "</td>"
+                        + "<td>" + history.getCancelDate() + "</td>"
                         + "</tr>");
             }
         } else {
