@@ -55,16 +55,18 @@
                             <p>Phone:  +01 1234569540</p>
                             <p>Email: bookingroom@fpt.edu.vn</p>
                         </div>
-                        <div class="report_message col-md-4">
+                        <form action="sendMailServlet">
+                            <div class="report_message col-md-4">
                             <p>Email</p>
-                            <input type="text" class="report_input_title">
+                            <input type="text" class="report_input_title" name="email">
                             <p>Title</p>
-                            <input type="text" class="report_input_title">
+                            <input type="text" class="report_input_title" name="title">
                             <p>Message</p>
-                            <textarea id="comment" rows="3" cols="60">
+                            <textarea id="comment" rows="3" cols="60" name="message">
                             </textarea>
-                            <button class="btn-sendfeedback">Send Feedback</button>
+                            <button class="btn-sendfeedback" type="submit">Send Feedback</button>
                         </div>
+                        </form>
                     </div>
                 </section>
         </div>
