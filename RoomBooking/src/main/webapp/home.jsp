@@ -25,13 +25,13 @@
         <div class="container pt-5">
             <div class="row justify-content-around align-items-center">
                 <div class="card containerOverlay" style="width: 18rem;">
-                    <img class="card-img-top imageOverlay" src="https://th.bing.com/th/id/R.f07f8993ae15cbe4a2566bb3c111cdf4?rik=08RwNdxH5ATdJg&pid=ImgRaw&r=0" alt="Card image cap">
+                    <img class="card-img-top imageOverlay" src="inlcude/asset/images/equipmentItem.png" alt="Card image cap">
                     <div class="middleOverlay">
                         <div class="textOverlay"><a href="listEquipments.jsp">Equipment</a></div>
                     </div>
                 </div>  
                 <div class="card containerOverlay" style="width: 18rem;">
-                    <img class="card-img-top imageOverlay" src="https://th.bing.com/th/id/R.f07f8993ae15cbe4a2566bb3c111cdf4?rik=08RwNdxH5ATdJg&pid=ImgRaw&r=0" alt="Card image cap">
+                    <img class="card-img-top imageOverlay" src="inlcude/asset/images/bgitems.png" alt="Card image cap">
                     <div class="middleOverlay">
                         <div class="textOverlay"><a href="listRooms.jsp">List Room</a></div>
                     </div>
@@ -39,13 +39,13 @@
             </div>    
             <div class="row justify-content-around align-items-center pt-5">
                 <div class="card containerOverlay" style="width: 18rem;">
-                    <img class="card-img-top imageOverlay" src="https://th.bing.com/th/id/R.f07f8993ae15cbe4a2566bb3c111cdf4?rik=08RwNdxH5ATdJg&pid=ImgRaw&r=0" alt="Card image cap">
+                    <img class="card-img-top imageOverlay w-100 h-100" src="inlcude/asset/images/listroomItem.png" alt="Card image cap">
                     <div class="middleOverlay">
                         <div class="textOverlay"><a href="searching.jsp">Booking Room</a></div>
                     </div>
                 </div>  
                 <div class="card containerOverlay" style="width: 18rem;">
-                    <img class="card-img-top imageOverlay" src="https://th.bing.com/th/id/R.f07f8993ae15cbe4a2566bb3c111cdf4?rik=08RwNdxH5ATdJg&pid=ImgRaw&r=0" alt="Card image cap">
+                    <img class="card-img-top imageOverlay w-100 h-100" src="inlcude/asset/images/reportsItems.png" alt="Card image cap">
                     <div class="middleOverlay">
                         <div class="textOverlay"><a href="report.jsp">Report</a></div>
                     </div>
