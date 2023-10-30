@@ -33,16 +33,16 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="history.jsp">History</a>
                                 </li>
-                                <li style="margin-top: 5px;">
-                                    <p>${sessionScope.user.getEmail()}</p>
+                                <li style="margin-top: 2px;">
+                                    <p class="bg-success p-1" style="color: white; border-radius: 2px">${sessionScope.user.getEmail()}</p>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="logout">Log Out</a>
+                                    <a class="btn-login btn bg-success" style="color: white" href="logout">Log Out</a>
                                 </li>
                             </c:if>
                             <c:if test="${sessionScope.ACCOUNT_USER == null}">
                                 <li class="nav-item">
-                                    <a class="btn-login btn bg-primary" href="javascript:void(0);" onclick="openGoogleLoginPopup()">Login</a>	
+                                    <a class="btn-login btn bg-success" style="color: white" href="javascript:void(0);" onclick="openGoogleLoginPopup()">Login</a>	
                                 </li>
                             </c:if>
                         </ul>
