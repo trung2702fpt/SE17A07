@@ -6,6 +6,7 @@
 <html lang="en">
     <head>
         <%@include file="inlcude/linkStyle/head_link.jsp" %>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     </head>
     <body class="main-layout">
         <%@include file="inlcude/linkStyle/header.jsp" %>
@@ -13,7 +14,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        
+
                         <div class="title d-flex">
                             <!--<button id="goBackButton" class="btn btn-dark my-auto">Back</button>-->
                             <a href="home.jsp" class="btn btn-dark my-auto">Back</a>
@@ -23,16 +24,15 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- History -->
-        <div  class="our_room">
-            <div class="container-fluid">
+        <div class="container-fluid">
                 <div class="container mb-4">
                     <div class="col-lg-12 mt-lg-0">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
-                                    <table class="table manage-candidates-top mb-0">
+                                <div class="card-body">
+                                    <table id="tableListRooms" class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -53,7 +53,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         <!-- end gallery -->
 
         <!--  footer -->

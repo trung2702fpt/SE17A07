@@ -6,6 +6,7 @@ $(document).ready(function () {
         method: "GET",
         success: function (data) {
             $("#bodyTableEquipments").html(data);
+            SetDataTable();
             U.hideProcess();
         },
         error: function () {
@@ -13,3 +14,15 @@ $(document).ready(function () {
         }
     });
 });
+
+function SetDataTable() {
+    $('#tableListEquipments').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+    });
+}

@@ -51,7 +51,7 @@ public class SearchApi extends HttpServlet {
                 + "                                    <td>" + o.getRoomNumber() + "</td>\n"
                 + "                                    <td>" + o.getPrice() + "</td>\n"
                 + "                                    <td>\n"
-                + "                                        <a class='btn btn-dark my-auto text-light' >Booking</a>\n"
+                + "                                        <a href='#' onclick='booking()' class='btn btn-dark my-auto text-light' >Booking</a>\n"
                 + "                                    </td>\n"
                 + "                                </tr>";
     }

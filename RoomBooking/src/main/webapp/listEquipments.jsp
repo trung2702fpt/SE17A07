@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        
+
                         <div class="title d-flex">
                             <!--<button id="goBackButton" class="btn btn-dark my-auto">Back</button>-->
                             <a href="home.jsp" class="btn btn-dark my-auto">Back</a>
@@ -30,8 +30,8 @@
                 <div class="col-lg-12 mt-lg-0">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
-                                <table class="table manage-candidates-top mb-0">
+                            <div class="card-body">
+                                <table id="tableListEquipments" class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>ID</th>

@@ -42,8 +42,8 @@
                 </div>
 
                 <div class="mt-3 col-md-12">
-                    <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
-                        <table class="table manage-candidates-top mb-0">
+                    <div class="card-body">
+                        <table id="tableListSearchrooms" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>No</th>

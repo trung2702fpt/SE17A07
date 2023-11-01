@@ -8,6 +8,7 @@ model\google\GoogleUtils.class
 Controller\logout.class
 Utils\Connect.class
 DataAsset\UserDAO.class
+DataAsset\Admin.class
 model\Report.class
 model\Equipment.class
 model\History.class
@@ -16,12 +17,13 @@ model\User.class
 Controller\GetRooms.class
 model\typeEquipment.class
 Controller\SearchApi.class
+model\StaticBooking.class
 model\Room.class
 DataAsset\ReportDAO.class
 Controller\sendMailServlet.class
 DataAsset\RoomDAO.class
-DataAsset\LoginAdmin.class
 DataAsset\HistoryDAO.class
+Controller\StaticAdmin.class
 model\google\Constants.class
 Utils\Validate.class
 Controller\GetEquipments.class

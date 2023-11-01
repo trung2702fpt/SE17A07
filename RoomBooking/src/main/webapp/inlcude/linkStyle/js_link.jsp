@@ -11,5 +11,6 @@
 <script type="text/javascript" src="inlcude/asset/js/sb-admin-2.min.js"></script>
 
 <script type="text/javascript" src="inlcude/asset/vendor/chart.js/Chart.min.js"></script>
-
+ <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 <!--<script type="text/javascript" src="inlcude/asset/js/demo/chart-area-demo.js"></script>-->

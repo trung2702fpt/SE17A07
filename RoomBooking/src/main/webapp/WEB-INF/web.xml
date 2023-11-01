@@ -36,6 +36,10 @@
         <servlet-name>sendMailServlet</servlet-name>
         <servlet-class>Controller.sendMailServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StaticAdmin</servlet-name>
+        <servlet-class>Controller.StaticAdmin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>sendMailServlet</servlet-name>
         <url-pattern>/sendMailServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaticAdmin</servlet-name>
+        <url-pattern>/StaticAdmin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

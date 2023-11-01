@@ -1,6 +1,6 @@
 package Controller.Admin;
 
-import DataAsset.LoginAdmin;
+import DataAsset.Admin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -20,7 +20,7 @@ public class loginAdmin extends HttpServlet {
         String password = request.getParameter("password");
         String url = "admin.jsp";
         try {
-            boolean check = LoginAdmin.Login(email, password);
+            boolean check = Admin.Login(email, password);
             if (check) {
                 url="managing.jsp";
                 HttpSession session = request.getSession();

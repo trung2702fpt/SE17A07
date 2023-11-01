@@ -40,114 +40,131 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     return s.join(dec);
 }
 
-var ctx = document.getElementById("myAreaChart");
-var myLineChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-                label: "Booked",
-                lineTension: 0.3,
-                backgroundColor: "rgba(78, 115, 223, 0.05)",
-                borderColor: "rgba(78, 115, 223, 1)",
-                pointRadius: 3,
-                pointBackgroundColor: "rgba(78, 115, 223, 1)",
-                pointBorderColor: "rgba(78, 115, 223, 1)",
-                pointHoverRadius: 3,
-                pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-                pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-                pointHitRadius: 10,
-                pointBorderWidth: 2,
-                data: [0, 100, 500, 1500, 1000, 2000, 1500, 2000, 2000, 3000, 2123, 1000],
-            }, {
-                label: "Cancelation",
-                lineTension: 0.3,
-                backgroundColor: "rgba(255, 0, 0, 0.05)",
-                borderColor: "rgba(255, 0, 0, 1)",
-                pointRadius: 3,
-                pointBackgroundColor: "rgba(255, 0, 0, 1)",
-                pointBorderColor: "rgba(255, 0, 0, 1)",
-                pointHoverRadius: 3,
-                pointHoverBackgroundColor: "rgba(255, 0, 0, 1)",
-                pointHoverBorderColor: "rgba(255, 0, 0, 1)",
-                pointHitRadius: 10,
-                pointBorderWidth: 2,
-                data: [0, 10, 50, 150, 100, 200, 150, 200, 200, 300, 211, 100],
-            }]
-    },
-    options: {
-        maintainAspectRatio: false,
-        layout: {
-            padding: {
-                left: 10,
-                right: 25,
-                top: 25,
-                bottom: 0
+var labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+var layoutChart = {
+    padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+    }
+}
+
+var scaleChart = {
+    xAxes: [{
+            time: {
+                unit: 'date'
+            },
+            gridLines: {
+                display: false,
+                drawBorder: false
+            },
+            ticks: {
+                maxTicksLimit: 7
             }
+        }],
+    yAxes: [{
+            ticks: {
+                maxTicksLimit: 5,
+                padding: 10,
+                // Include a dollar sign in the ticks
+                callback: function (value, index, values) {
+                    return number_format(value);
+                }
+            },
+            gridLines: {
+                color: "rgb(234, 236, 244)",
+                zeroLineColor: "rgb(234, 236, 244)",
+                drawBorder: false,
+                borderDash: [2],
+                zeroLineBorderDash: [2]
+            }
+        }],
+};
+
+var toolTipChart = {backgroundColor: "rgb(255,255,255)",
+    bodyFontColor: "#858796",
+    titleMarginBottom: 10,
+    titleFontColor: '#6e707e',
+    titleFontSize: 14,
+    borderColor: '#dddfeb',
+    borderWidth: 1,
+    xPadding: 15,
+    yPadding: 15,
+    displayColors: false,
+    intersect: false,
+    mode: 'index',
+    caretPadding: 10, }
+
+function setChartBookingAndCanel(data) {
+    console.log(data);
+    var booked = new Array();
+    var cancel = new Array();
+    var cancelpersent = new Array();
+    for (var i = 0, max = 12; i < max; i++) {
+         booked.push(data[i].booing);
+        cancel.push(data[i].cancel);
+        cancelpersent.push(data[i].persentCancelation);
+    }
+    var ctx = document.getElementById("myAreaChart");
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                    label: "Booked",
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(78, 115, 223, 0.05)",
+                    borderColor: "rgba(78, 115, 223, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                    pointBorderColor: "rgba(78, 115, 223, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                    pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: booked,
+                }, {
+                    label: "Cancelation",
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(255, 0, 0, 0.05)",
+                    borderColor: "rgba(255, 0, 0, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(255, 0, 0, 1)",
+                    pointBorderColor: "rgba(255, 0, 0, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(255, 0, 0, 1)",
+                    pointHoverBorderColor: "rgba(255, 0, 0, 1)",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: cancel,
+                }]
         },
-        scales: {
-            xAxes: [{
-                    time: {
-                        unit: 'date'
-                    },
-                    gridLines: {
-                        display: false,
-                        drawBorder: false
-                    },
-                    ticks: {
-                        maxTicksLimit: 7
+        options: {
+            maintainAspectRatio: false,
+            layout: layoutChart,
+            scales: scaleChart,
+            legend: {
+                display: false
+            },
+            tooltips: {
+                ...toolTipChart,
+                callbacks: {
+                    label: function (tooltipItem, chart) {
+                        var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                        return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
                     }
-                }],
-            yAxes: [{
-                    ticks: {
-                        maxTicksLimit: 5,
-                        padding: 10,
-                        // Include a dollar sign in the ticks
-                        callback: function (value, index, values) {
-                            return number_format(value);
-                        }
-                    },
-                    gridLines: {
-                        color: "rgb(234, 236, 244)",
-                        zeroLineColor: "rgb(234, 236, 244)",
-                        drawBorder: false,
-                        borderDash: [2],
-                        zeroLineBorderDash: [2]
-                    }
-                }],
-        },
-        legend: {
-            display: false
-        },
-        tooltips: {
-            backgroundColor: "rgb(255,255,255)",
-            bodyFontColor: "#858796",
-            titleMarginBottom: 10,
-            titleFontColor: '#6e707e',
-            titleFontSize: 14,
-            borderColor: '#dddfeb',
-            borderWidth: 1,
-            xPadding: 15,
-            yPadding: 15,
-            displayColors: false,
-            intersect: false,
-            mode: 'index',
-            caretPadding: 10,
-            callbacks: {
-                label: function (tooltipItem, chart) {
-                    var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                    return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
                 }
             }
         }
-    }
-});
-
-var cancelationElement = document.getElementById("cancelationChart");
-var cancelChart = new Chart(cancelationElement, {
+    });
+    var cancelationElement = document.getElementById("cancelationChart");
+    var cancelChart = new Chart(cancelationElement, {
     type: 'line',
     data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: labels,
         datasets: [{
                 label: "Cancelation",
                 lineTension: 0.3,
@@ -161,67 +178,18 @@ var cancelChart = new Chart(cancelationElement, {
                 pointHoverBorderColor: "rgba(255, 0, 0, 1)",
                 pointHitRadius: 10,
                 pointBorderWidth: 2,
-                data: [0, 12, 50, 15, 10, 26, 15, 20, 32, 3, 21, 100],
+                data: cancelpersent,
             }]
     },
     options: {
         maintainAspectRatio: false,
-        layout: {
-            padding: {
-                left: 10,
-                right: 25,
-                top: 25,
-                bottom: 0
-            }
-        },
-        scales: {
-            xAxes: [{
-                    time: {
-                        unit: 'date'
-                    },
-                    gridLines: {
-                        display: false,
-                        drawBorder: false
-                    },
-                    ticks: {
-                        maxTicksLimit: 7
-                    }
-                }],
-            yAxes: [{
-                    ticks: {
-                        maxTicksLimit: 5,
-                        padding: 10,
-                        // Include a dollar sign in the ticks
-                        callback: function (value, index, values) {
-                            return number_format(value);
-                        }
-                    },
-                    gridLines: {
-                        color: "rgb(234, 236, 244)",
-                        zeroLineColor: "rgb(234, 236, 244)",
-                        drawBorder: false,
-                        borderDash: [2],
-                        zeroLineBorderDash: [2]
-                    }
-                }],
-        },
+        layout: layoutChart,
+        scales: scaleChart,
         legend: {
             display: false
         },
         tooltips: {
-            backgroundColor: "rgb(255,255,255)",
-            bodyFontColor: "#858796",
-            titleMarginBottom: 10,
-            titleFontColor: '#6e707e',
-            titleFontSize: 14,
-            borderColor: '#dddfeb',
-            borderWidth: 1,
-            xPadding: 15,
-            yPadding: 15,
-            displayColors: false,
-            intersect: false,
-            mode: 'index',
-            caretPadding: 10,
+            ...toolTipChart,
             callbacks: {
                 label: function (tooltipItem, chart) {
                     var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
@@ -229,5 +197,23 @@ var cancelChart = new Chart(cancelationElement, {
                 }
             }
         }
+    }
+});
+}
+
+
+
+$.ajax({
+    url: "/RoomBooking/StaticAdmin",
+    method: "GET",
+    dataType: "json",
+    data: {
+        action: "Chart",
+    },
+    success: function (data) {
+        setChartBookingAndCanel(data);
+    },
+    error: function () {
+        alert("ERROR to process call api!!");
     }
 });
