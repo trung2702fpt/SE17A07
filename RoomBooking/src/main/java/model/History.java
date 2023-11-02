@@ -21,6 +21,13 @@ public class History {
         this.slotID = slotID;
     }
     
+    public History(int roomID, Timestamp bookingDate, int slotID, Timestamp cancelDate) {
+        this.roomID = roomID;
+        this.slotID = slotID;
+        this.cancelDate = cancelDate;
+        this.bookingDate = bookingDate;
+    }
+    
     public History(int roomID, Timestamp bookingDate, int slotID, float price, boolean isUsed, Timestamp cancelDate) {
         this.roomID = roomID;
         this.bookingDate = bookingDate;

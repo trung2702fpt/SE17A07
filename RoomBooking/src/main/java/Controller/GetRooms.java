@@ -1,4 +1,3 @@
-
 package Controller;
 
 import DataAsset.RoomDAO;
@@ -18,28 +17,29 @@ public class GetRooms extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         RoomDAO roomDao = new RoomDAO();
         PrintWriter out = response.getWriter();
-        List<Room> Listrooms = roomDao.GetRooms();
-        
+        List<Room> Listrooms = roomDao.getList();
+
         if (Listrooms.size() <= 0) {
             out.println("<tr>"
                     + "<td colspan=\"4\"><h2 class='text-center'>EMPTY ROOM!!</h2></td>"
                     + "</tr>");
-        } else {
-            for (Room room : Listrooms) {
-                out.println("<tr class=\"candidates-list\">\n"
-                        + " <td>" + room.id + "</td>\n"
-                                + " <td class=\"title\">\n"
-                                + "      <div class=\"thumb\">\n"
-                                + "           <img class=\"img-fluid w-25\" src=\"inlcude/asset/images/gallery1.jpg\" alt=\"\">\n"
-                                + "       </div>\n"
-                                + " </td>\n"
-                                + " <td>" + room.roomNumber + "</td>\n"
-                                        + " <td>" + room.price + "</td>\n"
-                                                + "</tr>");
-            }
+            return;
+        }
+
+        for (Room room : Listrooms) {
+            out.println("<tr class=\"candidates-list\">\n"
+                    + " <td>" + room.id + "</td>\n"
+                    + " <td class=\"title\">\n"
+                    + "      <div class=\"thumb\">\n"
+                    + "           <img class=\"img-fluid w-25\" src=\"inlcude/asset/images/gallery1.jpg\" alt=\"\">\n"
+                    + "       </div>\n"
+                    + " </td>\n"
+                    + " <td>" + room.roomNumber + "</td>\n"
+                    + " <td>" + room.price + "</td>\n"
+                    + "</tr>");
         }
 
     }
@@ -54,14 +54,6 @@ public class GetRooms extends HttpServlet {
         }
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -72,11 +64,6 @@ public class GetRooms extends HttpServlet {
         }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

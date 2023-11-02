@@ -1,7 +1,6 @@
 package Controller;
 
 import DataAsset.HistoryDAO;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -30,28 +29,32 @@ public class GetHistory extends HttpServlet {
             out.println("<tr>"
                     + "<td colspan=\"4\"><h2 class='text-center'><a class='btn btn-dark my-auto text-light nav-link' href=\"login.jsp\">Login</a></h2></td>"
                     + "</tr>");
-        } else if (!histories.isEmpty()) {
-            for (History history : histories) {
-                String cancel = "";
-                if (history.getCancelDate() != null) {
-                    cancel = "<td>" + history.getCancelDate() + "</td>";
-                } else {
-                    if(history.isIsUsed()){
-                        cancel = " <td> Time was over </td>";
-                    }else{
-                        cancel = " <td> <a href='#' onclick='alert(123)' class='btn btn-dark my-auto text-light nav-link'>Cancel</a> </td>";
-                    }
-                }
-                out.println("<tr>"
-                        + "<td>" + history.getRoomID() + "</td>"
-                        + "<td>" + history.getBookingDate().toString() + "</td>"
-                        + "<td>" + history.getSlotID() + "</td>"
-                        + cancel
-                        + "</tr>");
-            }
-        } else {
+            return;
+        }
+
+        if (histories.isEmpty()) {
             out.println("<tr>"
                     + "<td colspan=\"4\"><h2 class='text-center'>EMPTY HISTORY!!</h2></td>"
+                    + "</tr>");
+            return;
+        }
+
+        for (History history : histories) {
+            String cancel;
+            if (history.getCancelDate() != null) {
+                cancel = "<td>" + history.getCancelDate() + "</td>";
+            } else {
+                if (history.isIsUsed()) {
+                    cancel = " <td> Time was over </td>";
+                } else {
+                    cancel = " <td> <a href='#' onclick='alert(123)' class='btn btn-dark my-auto text-light nav-link'>Cancel</a> </td>";
+                }
+            }
+            out.println("<tr>"
+                    + "<td>" + history.getRoomID() + "</td>"
+                    + "<td>" + history.getBookingDate().toString() + "</td>"
+                    + "<td>" + history.getSlotID() + "</td>"
+                    + cancel
                     + "</tr>");
         }
     }
