@@ -42,6 +42,8 @@ public class StaticAdmin extends HttpServlet {
                 case "Chart":
                     objectJSON = objectMapper.writeValueAsString(Admin.GetNumberBookingAndCancel(2023));
                     break;
+                case "Static":
+                    objectJSON = "";
                 default:
                     throw new AssertionError();
             }

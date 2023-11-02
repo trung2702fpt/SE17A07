@@ -103,7 +103,7 @@ function setChartBookingAndCanel(data) {
     var cancel = new Array();
     var cancelpersent = new Array();
     for (var i = 0, max = 12; i < max; i++) {
-         booked.push(data[i].booing);
+        booked.push(data[i].booing);
         cancel.push(data[i].cancel);
         cancelpersent.push(data[i].persentCancelation);
     }
@@ -162,46 +162,44 @@ function setChartBookingAndCanel(data) {
     });
     var cancelationElement = document.getElementById("cancelationChart");
     var cancelChart = new Chart(cancelationElement, {
-    type: 'line',
-    data: {
-        labels: labels,
-        datasets: [{
-                label: "Cancelation",
-                lineTension: 0.3,
-                backgroundColor: "rgba(255, 0, 0, 0.05)",
-                borderColor: "rgba(255, 0, 0, 1)",
-                pointRadius: 3,
-                pointBackgroundColor: "rgba(255, 0, 0, 1)",
-                pointBorderColor: "rgba(255, 0, 0, 1)",
-                pointHoverRadius: 3,
-                pointHoverBackgroundColor: "rgba(255, 0, 0, 1)",
-                pointHoverBorderColor: "rgba(255, 0, 0, 1)",
-                pointHitRadius: 10,
-                pointBorderWidth: 2,
-                data: cancelpersent,
-            }]
-    },
-    options: {
-        maintainAspectRatio: false,
-        layout: layoutChart,
-        scales: scaleChart,
-        legend: {
-            display: false
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                    label: "Cancelation",
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(255, 0, 0, 0.05)",
+                    borderColor: "rgba(255, 0, 0, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(255, 0, 0, 1)",
+                    pointBorderColor: "rgba(255, 0, 0, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(255, 0, 0, 1)",
+                    pointHoverBorderColor: "rgba(255, 0, 0, 1)",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: cancelpersent,
+                }]
         },
-        tooltips: {
-            ...toolTipChart,
-            callbacks: {
-                label: function (tooltipItem, chart) {
-                    var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                    return datasetLabel + " " + number_format(tooltipItem.yLabel) + ' %';
+        options: {
+            maintainAspectRatio: false,
+            layout: layoutChart,
+            scales: scaleChart,
+            legend: {
+                display: false
+            },
+            tooltips: {
+                ...toolTipChart,
+                callbacks: {
+                    label: function (tooltipItem, chart) {
+                        var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                        return datasetLabel + " " + number_format(tooltipItem.yLabel) + ' %';
+                    }
                 }
             }
         }
-    }
-});
+    });
 }
-
-
 
 $.ajax({
     url: "/RoomBooking/StaticAdmin",

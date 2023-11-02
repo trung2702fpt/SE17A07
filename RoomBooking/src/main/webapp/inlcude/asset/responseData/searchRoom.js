@@ -2,8 +2,8 @@ var dateSelect;
 var slotSelect;
 
 $(document).ready(function () {
-    dateSelect = $("#dateSelected");
-    slotSelect = $("#slotSelected");
+    dateSelect = $("#dateSelect");
+    slotSelect = $("#slotSelect");
 
     var currentDate = new Date().toISOString().slice(0, 10);
     dateSelect.attr("min", currentDate);
@@ -18,8 +18,8 @@ function setSlotByDate() {
         return;
     }
     var currentTime = new Date();
-    var dateInput = document.getElementById("dateSelected");
-    var slotSelect = document.getElementById("slotSelected");
+    var dateInput = document.getElementById("dateSelect");
+    var slotSelect = document.getElementById("slotSelect");
 
     slotSelect.innerHTML = "";
 
@@ -61,7 +61,7 @@ function setSlotByDate() {
 
 function addOption(text, value) {
     var option = document.createElement("option");
-    var slotSelect = document.getElementById("slotSelected");
+    var slotSelect = document.getElementById("slotSelect");
 
     option.text = text;
     option.value = value;
@@ -109,27 +109,39 @@ function SetDataTable() {
     });
 }
 
-function booking(){
-  $("#bookingDialog").dialog({
-    autoOpen: false, // Tự động không hiển thị khi trang tải
-    width: 400, // Độ rộng của hộp thoại
-    modal: true, // Chế độ modal để không tương tác với nền
-    buttons: {
-      "Đặt phòng": function() {
-        var selectedDate = "2";
-        var bookingInfo = "2";
-        
-        alert("Bạn đã đặt phòng vào ngày " + selectedDate + " với thông tin: " + bookingInfo);
-        $(this).dialog("close"); 
-      },
-      Hủy: function() {
-        $(this).dialog("close");
-      }
-    }
-  });
+function booking() {
+    $("#bookingDialog").dialog({
+        autoOpen: false, // Tự động không hiển thị khi trang tải
+        width: 400, // Độ rộng của hộp thoại
+        modal: true, // Chế độ modal để không tương tác với nền
+        buttons: {
+            "Đặt phòng": function () {
+                var selectedDate = "2";
+                var bookingInfo = "2";
 
-  // Kích hoạt hộp thoại khi nút "Đặt phòng" được bấm
-  $("#openDialog").on("click", function() {
-    $("#bookingDialog").dialog("open");
-  });
+                alert("Bạn đã đặt phòng vào ngày " + selectedDate + " với thông tin: " + bookingInfo);
+                $(this).dialog("close");
+            },
+            Hủy: function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+
+    // Kích hoạt hộp thoại khi nút "Đặt phòng" được bấm
+    $("#openDialog").on("click", function () {
+        $("#bookingDialog").dialog("open");
+    });
+}
+
+function openDialog(idRoom) {
+    $('#contentPopupBooking').html(`<div class="p-2">
+                                <h2 id="titleRoom" class="card-title"> Room ${idRoom}</h2>
+                            </div>
+                            <div class="p-2">
+                                <p id="dateSelected" class="card-text"> Date: ${$("#dateSelect").val()}</p>
+                            </div>
+                            <div class="p-2">
+                                <p id="slotSelected" class="card-text"> Slot: ${$("#slotSelect").val()}</p>
+                            </div>`);
 }

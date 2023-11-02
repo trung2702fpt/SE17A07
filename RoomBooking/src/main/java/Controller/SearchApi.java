@@ -51,8 +51,8 @@ public class SearchApi extends HttpServlet {
                 + "                                    <td>" + o.getRoomNumber() + "</td>\n"
                 + "                                    <td>" + o.getPrice() + "</td>\n"
                 + "                                    <td>\n"
-                + "                                        <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\"\n"
-                + "            data-target=\".bd-example-modal-lg\">Large modal</button>\n"
+                + "                                        <a type=\"button\" href='#' onclick='openDialog(" + o.getId() + ")' class=\"btn btn-primary\" data-toggle=\"modal\"\n"
+                + "            data-target=\".bd-example-modal-lg\">Booking</a>\n"
                 + "                                    </td>\n"
                 + "                                </tr>";
     }
