@@ -39,7 +39,7 @@ public class SearchApi extends HttpServlet {
             e.printStackTrace();
         }
     }
-    
+
     private String getHTMLText(Room o, int index) {
         return "<tr class=\"candidates-list\">\n"
                 + "                                    <td>" + index + "</td>\n"
@@ -51,7 +51,8 @@ public class SearchApi extends HttpServlet {
                 + "                                    <td>" + o.getRoomNumber() + "</td>\n"
                 + "                                    <td>" + o.getPrice() + "</td>\n"
                 + "                                    <td>\n"
-                + "                                        <a href='#' onclick='booking()' class='btn btn-dark my-auto text-light' >Booking</a>\n"
+                + "                                        <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\"\n"
+                + "            data-target=\".bd-example-modal-lg\">Large modal</button>\n"
                 + "                                    </td>\n"
                 + "                                </tr>";
     }
