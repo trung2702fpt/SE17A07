@@ -40,6 +40,14 @@
         <servlet-name>StaticAdmin</servlet-name>
         <servlet-class>Controller.StaticAdmin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditRoom</servlet-name>
+        <servlet-class>Controller.Admin.EditRoom</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListRoom</servlet-name>
+        <servlet-class>Controller.Admin.ListRoom</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -79,6 +87,14 @@
     <servlet-mapping>
         <servlet-name>StaticAdmin</servlet-name>
         <url-pattern>/StaticAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditRoom</servlet-name>
+        <url-pattern>/EditRoom</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListRoom</servlet-name>
+        <url-pattern>/ListRoom</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

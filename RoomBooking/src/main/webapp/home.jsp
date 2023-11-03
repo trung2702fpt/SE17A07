@@ -27,13 +27,13 @@
                 <div class="card containerOverlay" style="width: 18rem;">
                     <img class="card-img-top imageOverlay" src="inlcude/asset/images/equipmentItem.png" alt="Card image cap">
                     <div class="middleOverlay">
-                        <div class="textOverlay"><a href="listEquipments.jsp">Equipment</a></div>
+                        <div class="textOverlay"><a href="listEquipments.jsp" class="text-white">Equipment</a></div>
                     </div>
                 </div>  
                 <div class="card containerOverlay" style="width: 18rem;">
                     <img class="card-img-top imageOverlay" src="inlcude/asset/images/bgitems.png" alt="Card image cap">
                     <div class="middleOverlay">
-                        <div class="textOverlay"><a href="listRooms.jsp">List Room</a></div>
+                        <div class="textOverlay"><a href="listRooms.jsp" class="text-white">List Room</a></div>
                     </div>
                 </div> 
             </div>    
@@ -41,13 +41,13 @@
                 <div class="card containerOverlay" style="width: 18rem;">
                     <img class="card-img-top imageOverlay w-100 h-100" src="inlcude/asset/images/listroomItem.png" alt="Card image cap">
                     <div class="middleOverlay">
-                        <div class="textOverlay"><a href="searching.jsp">Booking Room</a></div>
+                        <div class="textOverlay"><a href="searching.jsp" class="text-white">Booking Room</a></div>
                     </div>
                 </div>  
                 <div class="card containerOverlay" style="width: 18rem;">
                     <img class="card-img-top imageOverlay w-100 h-100" src="inlcude/asset/images/reportsItems.png" alt="Card image cap">
                     <div class="middleOverlay">
-                        <div class="textOverlay"><a href="report.jsp">Report</a></div>
+                        <div class="textOverlay"><a href="report.jsp" class="text-white">Report</a></div>
                     </div>
                 </div> 
             </div>  

@@ -22,10 +22,9 @@
         </a>
         <div id="collapsePage" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Some pages:</h6>
-                <a class="collapse-item" href="home.jsp">Index Template</a>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                <h6 class="collapse-header">Pages:</h6>
+                <a class="collapse-item" href="viewListRoom.jsp">View List</a>
+                <a class="collapse-item" href="editRoom.jsp">Edit</a>
             </div>
         </div>
     </li>
@@ -38,8 +37,9 @@
         </a>
         <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">User:</h6>
-                <a class="collapse-item" href="userManagement.html">Management</a>
+                <h6 class="collapse-header">Pages:</h6>
+                <a class="collapse-item" href="">View List</a>
+                <a class="collapse-item" href="">Edit</a>
             </div>
         </div>
     </li>
@@ -52,7 +52,7 @@
         </a>
         <div id="collapseCategories" class="collapse" aria-labelledby="headingCategories" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Categories:</h6>
+                <h6 class="collapse-header">Pages:</h6>
                 <a class="collapse-item" href="categoryAdd.html">Category Add</a>
                 <a class="collapse-item" href="categoryManagement.html">Management</a>
             </div>
