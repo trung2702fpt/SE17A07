@@ -12,6 +12,11 @@ public class Room {
         this.id = id;
     }
 
+    public Room(int id, double price) {
+        this.id = id;
+        this.price = price;
+    }
+    
     public Room(int id, String roomNumber, double price) {
         this.id = id;
         this.roomNumber = roomNumber;
@@ -40,12 +45,5 @@ public class Room {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "Room{" + "id=" + id + ", roomNumber=" + roomNumber + ", price=" + price + '}';
-    }
-    
-            
+    }       
 }

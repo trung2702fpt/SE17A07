@@ -95,7 +95,7 @@ public class UserDAO extends BaseDataAsset<User> {
     }
 
     @Override
-    public void update(int id, User newData) throws SQLException, ClassNotFoundException {
+    public boolean update(int id, User newData) throws SQLException, ClassNotFoundException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

@@ -19,14 +19,23 @@
             <div id="wrapper">
                 <%@include file="inlcude/linkStyle/admin/SidebarAdmin.jsp" %>
                 <!-- Content start -->
-                
+                <div>
+                    <label>Room: </label>
+                    <input type="text" id="roomSearch">
+                    <input type="button" value="Search" onclick="Search();" />
+                    <div>
+                        <h2>Edit Room</h2>
+                        <p id="idRoom"></p>
+                        <p id="numberRoom"></p>
+                        <input type="text" id="priceRoom" value="">
+                        <input type="button" onclick="Update();" value="Update">
+                    </div>
+                </div>
                 <!-- Content end -->
             </div>
         </div>
         <%@include file="inlcude/linkStyle/js_link.jsp" %>
         <script type="text/javascript">
-            var newURL = "managing.jsp";
-            history.pushState({}, '', newURL);
         </script>
         <script src="inlcude/asset/admin/js/EditRoom.js"></script>
     </body>

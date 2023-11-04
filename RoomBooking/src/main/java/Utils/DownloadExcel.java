@@ -1,21 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Utils;
 
 import DataAsset.HistoryCheckoutDAO;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.List;
-
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import model.HistoryCheckout;
 
@@ -25,7 +15,7 @@ public class DownloadExcel {
         List<HistoryCheckout> historyList = HistoryCheckoutDAO.GetHistoryCheckout();
         try (Workbook workbook = new XSSFWorkbook()) {
             Sheet sheet = workbook.createSheet("HistoryCheckout");
-
+            
             // Create a header row
             Row headerRow = sheet.createRow(0);
             headerRow.createCell(0).setCellValue("Usre Name");
@@ -41,7 +31,6 @@ public class DownloadExcel {
                 row.createCell(1).setCellValue(user.getRoomID());
                 row.createCell(2).setCellValue(user.getBookingDate().toString());
                 row.createCell(3).setCellValue(user.getCancelDate().toString());
-
             }
 
             // Write the workbook to the output file

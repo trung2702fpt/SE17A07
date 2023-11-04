@@ -39,7 +39,7 @@ public abstract class BaseDataAsset<T> extends Connect {
 
     public abstract T read(int id) throws SQLException, ClassNotFoundException;
 
-    public abstract void update(int id, T newData) throws SQLException, ClassNotFoundException;
+    public abstract boolean update(int id, T newData) throws SQLException, ClassNotFoundException;
 
     public abstract void delete(int id) throws SQLException, ClassNotFoundException;
 

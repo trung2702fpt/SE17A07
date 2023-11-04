@@ -69,12 +69,45 @@ public class RoomDAO extends BaseDataAsset<Room> {
 
     @Override
     public Room read(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       Room room = null;
+        String searchSql = """
+                           SELECT *
+                           FROM rooms
+                           WHERE RoomId = ? """;
+        try {
+            PreparedStatement st = getConnection().prepareStatement(searchSql);
+            st.setInt(1,id);
+            ResultSet resultSet = st.executeQuery();
+            if (resultSet.next()) {
+               room = new Room(resultSet.getInt("RoomID")
+                       , resultSet.getString("RoomNumber")
+                       , resultSet.getDouble("Price"));
+               return room;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return room;
     }
 
     @Override
-    public void update(int id, Room newData) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean update(int id, Room newData) {
+        String searchSql = """
+                           UPDATE Rooms
+                           SET Price = ?
+                           WHERE RoomID = ? """;
+        try {
+            PreparedStatement st = getConnection().prepareStatement(searchSql);
+            st.setDouble(1,newData.getPrice());
+            st.setInt(2,newData.id);
+            boolean result = st.executeUpdate() > 1;
+            if(result){
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override

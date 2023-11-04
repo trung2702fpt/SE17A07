@@ -12,6 +12,7 @@ DataAsset\Admin.class
 model\Report.class
 model\Equipment.class
 model\History.class
+Controller\Admin\SearchRoom.class
 Controller\Login.class
 model\User.class
 Utils\DownloadExcel.class

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.util.Date;
@@ -19,7 +15,6 @@ public class HistoryCheckout {
         this.cancelDate = cancelDate;
     }
 
-    // Getter và Setter cho các trường
     public String getUserName() {
         return userName;
     }
@@ -50,15 +45,5 @@ public class HistoryCheckout {
 
     public void setCancelDate(Date cancelDate) {
         this.cancelDate = cancelDate;
-    }
-
-    @Override
-    public String toString() {
-        return "History{" +
-                "userName='" + userName + '\'' +
-                ", roomID=" + roomID +
-                ", bookingDate=" + bookingDate +
-                ", cancelDate=" + cancelDate +
-                '}';
     }
 }

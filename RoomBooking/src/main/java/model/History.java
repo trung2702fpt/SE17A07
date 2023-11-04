@@ -84,10 +84,4 @@ public class History {
     public void setCancelDate(Timestamp cancelDate) {
         this.cancelDate = cancelDate;
     }
-
-    @Override
-    public String toString() {
-        return "History{" + "roomID=" + roomID + ", bookingDate=" + bookingDate + ", slotID=" + slotID + ", price=" + price + ", isUsed=" + isUsed + ", cancelDate=" + cancelDate + '}';
-    }
-
 }

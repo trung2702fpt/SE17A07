@@ -60,7 +60,7 @@ public class EquipmentDAO extends BaseDataAsset<Equipment> {
     }
 
     @Override
-    public void update(int id, Equipment newData) {
+    public boolean update(int id, Equipment newData) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

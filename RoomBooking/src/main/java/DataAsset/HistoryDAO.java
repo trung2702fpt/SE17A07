@@ -66,7 +66,7 @@ public class HistoryDAO extends BaseDataAsset<History> {
     }
 
     @Override
-    public void update(int id, History newData) throws SQLException, ClassNotFoundException {
+    public boolean update(int id, History newData) throws SQLException, ClassNotFoundException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

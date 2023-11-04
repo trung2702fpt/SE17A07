@@ -48,6 +48,10 @@
         <servlet-name>ListRoom</servlet-name>
         <servlet-class>Controller.Admin.ListRoom</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchRoom</servlet-name>
+        <servlet-class>Controller.Admin.SearchRoom</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>ListRoom</servlet-name>
         <url-pattern>/ListRoom</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchRoom</servlet-name>
+        <url-pattern>/SearchRoom</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

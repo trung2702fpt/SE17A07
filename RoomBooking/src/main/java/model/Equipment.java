@@ -56,11 +56,5 @@ public class Equipment {
 
     public void setType(typeEquipment type) {
         this.type = type;
-    }
-
-    @Override
-    public String toString() {
-        return "Equipment{" + "id=" + id + ", name=" + name + ", des=" + des + ", price=" + price + ", type=" + type + '}';
-    }
-    
+    }    
 }

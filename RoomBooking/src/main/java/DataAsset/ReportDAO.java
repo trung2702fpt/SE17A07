@@ -68,7 +68,7 @@ public class ReportDAO extends BaseDataAsset<Report> {
     }
 
     @Override
-    public void update(int id, Report newData) throws SQLException, ClassNotFoundException {
+    public boolean update(int id, Report newData) throws SQLException, ClassNotFoundException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
