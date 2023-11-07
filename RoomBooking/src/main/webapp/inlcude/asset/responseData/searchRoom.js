@@ -81,11 +81,12 @@ function searchByName() {
     }
     U.showProcess();
     $.ajax({
-        url: "/RoomBooking/searchApi",
+        url: "/RoomBooking/Room",
         type: "get",
         data: {
             dateSelect: dateSelect.val(),
-            slotSelect: slotSelect.val()
+            slotSelect: slotSelect.val(),
+            action: "filterRoom",
         },
         success: function (rop) {
             $("#contentSearchroom").html(rop);
@@ -94,6 +95,7 @@ function searchByName() {
         },
         error: function (e) {
             U.messageBox("ERROR", "ERROR to process call api!!");
+            U.hideProcess();
         }
     });
 }

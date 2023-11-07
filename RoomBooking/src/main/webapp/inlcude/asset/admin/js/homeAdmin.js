@@ -211,5 +211,6 @@ $.ajax({
     },
     error: function () {
         U.messageBox("ERROR", "ERROR to process call api!!");
+        U.hideProcess();
     }
 });

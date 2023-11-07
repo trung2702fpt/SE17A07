@@ -3,12 +3,13 @@ function SendReport(){
     var content = $("#report").val();
     var time = new Date().toLocaleString();
     $.ajax({
-        url: "/RoomBooking/sendReport",
+        url: "/RoomBooking/Report",
         method: "GET",
         data:{
             title: title,
             content: content,
-            time: time
+            time: time,
+            action: "sendReport"
         },
         success: function (data) {
             if (data == "fail") {
@@ -22,6 +23,7 @@ function SendReport(){
         },
         error: function () {
             U.messageBox("ERROR", "ERROR to process call api!!");
+            U.hideProcess();
         }
     });
 }

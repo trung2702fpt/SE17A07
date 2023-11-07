@@ -53,7 +53,7 @@
         <div id="collapseCategories" class="collapse" aria-labelledby="headingCategories" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Pages:</h6>
-                <a class="collapse-item" href="categoryAdd.html">Category Add</a>
+                <a class="collapse-item" href="feedback.jsp">View list</a>
                 <a class="collapse-item" href="categoryManagement.html">Management</a>
             </div>
         </div>

@@ -1,9 +1,10 @@
 function SearchForEdit(id) {
     $.ajax({
-        url: "/RoomBooking/SearchEquipment",
+        url: "/RoomBooking/Equipment",
         method: "GET",
         data: {
-            idEquipment: id
+            idEquipment: id,
+            action:"search"
         },
         success: function (data) {
             data = JSON.parse(data);
@@ -20,6 +21,7 @@ function SearchForEdit(id) {
         },
         error: function () {
             U.messageBox("ERROR", "ERROR to process call api!!");
+            U.hideProcess();
         }
     });
 }
@@ -35,7 +37,7 @@ function Update() {
         return;
     }
     $.ajax({
-        url: "/RoomBooking/updateEquipment",
+        url: "/RoomBooking/Equipment",
         method: "GET",
         data: {
             id: id,
@@ -43,6 +45,7 @@ function Update() {
             des: des,
             type: type,
             price: price,
+            action: "edit"
         },
         success: function (data) {
             if (data == "fail") {
@@ -51,12 +54,13 @@ function Update() {
             } else {
                 $("#bodyTableEquipments").empty();
                 U.messageBox("Message Box","update success");
-                U.showProcess();
+                U.hideProcess();
                 setDataEquipment();
             }
         },
         error: function () {
             U.messageBox("ERROR", "ERROR to process call api!!");
+            U.hideProcess();
         }
     });
 }
@@ -79,6 +83,7 @@ $(document).ready(function () {
         },
         error: function () {
             U.messageBox("ERROR", "ERROR to process call api!!");
+            U.hideProcess();
         }
     });
     SetDataTable();
@@ -86,10 +91,11 @@ $(document).ready(function () {
 
 function setDataEquipment() {
     $.ajax({
-        url: "/RoomBooking/GetEquipments",
+        url: "/RoomBooking/Equipment",
         method: "GET",
         data: {
-            admin: "admin"
+            admin: "admin",
+            action: "getList"
         },
         success: function (data) {
             $("#bodyTableEquipments").html(data);
@@ -97,6 +103,7 @@ function setDataEquipment() {
         },
         error: function () {
             U.messageBox("ERROR", "ERROR to process call api!!");
+            U.hideProcess();
         }
     });
 }

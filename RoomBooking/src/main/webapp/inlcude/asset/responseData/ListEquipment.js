@@ -2,10 +2,11 @@
 $(document).ready(function () {
     U.showProcess();
     $.ajax({
-        url: "/RoomBooking/GetEquipments",
+        url: "/RoomBooking/Equipment",
         method: "GET",
-        data:{
-            admin: "user"
+        data: {
+            admin: "admin",
+            action: "getList"
         },
         success: function (data) {
             $("#bodyTableEquipments").html(data);
@@ -14,6 +15,7 @@ $(document).ready(function () {
         },
         error: function () {
             U.messageBox("ERROR", "ERROR to process call api!!");
+            U.hideProcess();
         }
     });
 });

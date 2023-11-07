@@ -5,14 +5,6 @@
         <servlet-class>Controller.Login</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>GetRooms</servlet-name>
-        <servlet-class>Controller.GetRooms</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetEquipments</servlet-name>
-        <servlet-class>Controller.GetEquipments</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>GetHistory</servlet-name>
         <servlet-class>Controller.GetHistory</servlet-class>
     </servlet>
@@ -21,12 +13,8 @@
         <servlet-class>Controller.NewServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SearchApi</servlet-name>
-        <servlet-class>Controller.SearchApi</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>loginAdmin</servlet-name>
-        <servlet-class>Controller.Admin.loginAdmin</servlet-class>
+        <servlet-class>Controller.loginAdmin</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>logout</servlet-name>
@@ -41,44 +29,24 @@
         <servlet-class>Controller.StaticAdmin</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EditRoom</servlet-name>
-        <servlet-class>Controller.Admin.EditRoom</servlet-class>
+        <servlet-name>Room</servlet-name>
+        <servlet-class>Controller.Room</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListRoom</servlet-name>
-        <servlet-class>Controller.Admin.ListRoom</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SearchRoom</servlet-name>
-        <servlet-class>Controller.Admin.SearchRoom</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SearchEquipment</servlet-name>
-        <servlet-class>Controller.Admin.SearchEquipment</servlet-class>
+        <servlet-name>Equipment</servlet-name>
+        <servlet-class>Controller.Equipment</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>getTypeEquipment</servlet-name>
-        <servlet-class>Controller.Admin.getTypeEquipment</servlet-class>
+        <servlet-class>Controller.getTypeEquipment</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>updateEquipment</servlet-name>
-        <servlet-class>Controller.Admin.updateEquipment</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>sendReport</servlet-name>
-        <servlet-class>Controller.sendReport</servlet-class>
+        <servlet-name>Report</servlet-name>
+        <servlet-class>Controller.Report</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GetRooms</servlet-name>
-        <url-pattern>/GetRooms</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GetEquipments</servlet-name>
-        <url-pattern>/GetEquipments</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GetHistory</servlet-name>
@@ -87,10 +55,6 @@
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchApi</servlet-name>
-        <url-pattern>/searchApi</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>loginAdmin</servlet-name>
@@ -109,32 +73,20 @@
         <url-pattern>/StaticAdmin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>EditRoom</servlet-name>
-        <url-pattern>/EditRoom</url-pattern>
+        <servlet-name>Room</servlet-name>
+        <url-pattern>/Room</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListRoom</servlet-name>
-        <url-pattern>/ListRoom</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchRoom</servlet-name>
-        <url-pattern>/SearchRoom</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchEquipment</servlet-name>
-        <url-pattern>/SearchEquipment</url-pattern>
+        <servlet-name>Equipment</servlet-name>
+        <url-pattern>/Equipment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>getTypeEquipment</servlet-name>
         <url-pattern>/getTypeEquipment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>updateEquipment</servlet-name>
-        <url-pattern>/updateEquipment</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>sendReport</servlet-name>
-        <url-pattern>/sendReport</url-pattern>
+        <servlet-name>Report</servlet-name>
+        <url-pattern>/Report</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

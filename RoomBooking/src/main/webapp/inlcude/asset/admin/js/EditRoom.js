@@ -1,20 +1,21 @@
 function Search() {
     var idSearchRoom = $('#roomSearch').val();
     if(!idSearchRoom || idSearchRoom.trim() == ""){
-        alert("Pls input id room");
+        U.messageBox("ERROR", "Pls input id room");
         return;
     }
     
     $.ajax({
-        url: "/RoomBooking/SearchRoom",
+        url: "/RoomBooking/Room",
         method: "GET",
         data:{
-            idRoom: idSearchRoom
+            idRoom: idSearchRoom,
+            action: "search",
         },
         success: function (data) {
             data = JSON.parse(data);
             if(!data){
-                alert(`not found id room : ${idSearchRoom}`);
+                U.messageBox("ERROR", `not found id room : ${idSearchRoom}`);
                 return;
             }
             $('#idRoom').val(data.id);
@@ -23,6 +24,7 @@ function Search() {
         },
         error: function () {
             U.messageBox("ERROR", "ERROR to process call api!!");
+            U.hideProcess();
         }
     });
 }
@@ -36,23 +38,25 @@ function Update() {
     }
     
     $.ajax({
-        url: "/RoomBooking/EditRoom",
+        url: "/RoomBooking/Room",
         method: "GET",
         data:{
             idRoom: $('#idRoom').val(),
             price: price,
+            action: "edit"
         },
         success: function (data) {
             if(data == "fail"){
-                alert("fail to update");
+                U.messageBox("ERROR", "fail to update");
                 return;
             }else{
-                alert("update success");
+                U.messageBox("Message Box", "update success");
             }
             
         },
         error: function () {
             U.messageBox("ERROR", "ERROR to process call api!!");
+            U.hideProcess();
         }
     });
 }

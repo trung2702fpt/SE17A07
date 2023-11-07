@@ -56,10 +56,6 @@
             </div>
         </div>
         <%@include file="inlcude/linkStyle/js_link.jsp" %>
-        <script type="text/javascript">
-            var newURL = "managing.jsp";
-            history.pushState({}, '', newURL);
-        </script>
         <script src="inlcude/asset/admin/js/ListEquipments.js"></script>
     </body>
 </html>

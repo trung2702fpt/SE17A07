@@ -9,10 +9,22 @@ public class Report {
     private String content;
     private boolean status;
     private String reply;
-
+    private String emailUser;
+        
     public Report() {
     }
 
+    public Report(int reportID, int userID, String time, String title, String content, boolean status, String reply, String emailUser) {
+        this.reportID = reportID;
+        this.userID = userID;
+        this.time = time;
+        this.title = title;
+        this.content = content;
+        this.status = status;
+        this.reply = reply;
+        this.emailUser = emailUser;
+    }
+    
     public Report(int reportID, int userID, String time, String title, String content, boolean status, String reply) {
         this.reportID = reportID;
         this.userID = userID;
@@ -21,6 +33,13 @@ public class Report {
         this.content = content;
         this.status = status;
         this.reply = reply;
+    }
+    
+    public Report(int reportID, boolean status, String reply, String emailUser) {
+        this.reportID = reportID;
+        this.status = status;
+        this.reply = reply;
+        this.emailUser = emailUser;
     }
     
     public Report(int userID, String time, String title, String content, boolean status) {
@@ -82,6 +101,14 @@ public class Report {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getEmailUser() {
+        return emailUser;
+    }
+
+    public void setEmailUser(String emailUser) {
+        this.emailUser = emailUser;
     }
     
 }
