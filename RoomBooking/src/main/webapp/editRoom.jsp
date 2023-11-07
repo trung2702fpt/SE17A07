@@ -15,20 +15,41 @@
                 response.sendRedirect("admin.jsp");
             }
         %>
+
         <div id="page-top">
+
             <div id="wrapper">
                 <%@include file="inlcude/linkStyle/admin/SidebarAdmin.jsp" %>
-                <!-- Content start -->
-                <div>
-                    <label>Room: </label>
-                    <input type="text" id="roomSearch">
-                    <input type="button" value="Search" onclick="Search();" />
-                    <div>
+                <div class="row container mt-5">
+                    <div class="col-md-4 container">
                         <h2>Edit Room</h2>
-                        <p id="idRoom"></p>
-                        <p id="numberRoom"></p>
-                        <input type="text" id="priceRoom" value="">
-                        <input type="button" onclick="Update();" value="Update">
+                        <form>
+                            <div class="form-group">
+                                <label for="roomSearch">Room:</label>
+                                <input type="text" class="form-control" id="roomSearch">
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="Search()">Search</button>
+                        </form>
+
+                        <div>
+                            <div class="form-group">
+                                <label for="priceRoom">Id Room:</label>
+                                <input type="text" class="form-control" id="idRoom" value="" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="priceRoom">Number Room:</label>
+                                <input type="text" class="form-control" id="numberRoom" value="" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="priceRoom">Price:</label>
+                                <input type="text" class="form-control" id="priceRoom" value="">
+                            </div>
+                            <button type="button" class="btn btn-success" onclick="Update()">Update</button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <img src="./inlcude/asset/images/gallery1.jpg" alt="alt" class="img-fluid w-100">
                     </div>
                 </div>
                 <!-- Content end -->

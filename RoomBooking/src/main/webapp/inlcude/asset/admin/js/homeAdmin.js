@@ -1,7 +1,6 @@
 $(document).ready(() => {
     Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#858796';
-
     var yearSelect = document.getElementById("yearSelect");
 
     var currentYear = new Date().getFullYear();
@@ -98,7 +97,6 @@ var toolTipChart = {backgroundColor: "rgb(255,255,255)",
     caretPadding: 10, }
 
 function setChartBookingAndCanel(data) {
-    console.log(data);
     var booked = new Array();
     var cancel = new Array();
     var cancelpersent = new Array();
@@ -212,6 +210,6 @@ $.ajax({
         setChartBookingAndCanel(data);
     },
     error: function () {
-        alert("ERROR to process call api!!");
+        U.messageBox("ERROR", "ERROR to process call api!!");
     }
 });

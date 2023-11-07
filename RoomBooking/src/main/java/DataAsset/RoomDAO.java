@@ -9,9 +9,10 @@ import model.Room;
 
 public class RoomDAO extends BaseDataAsset<Room> {
 
-    public static List<Room> rooms;
+    public List<Room> rooms;
+
     public RoomDAO() {
-        if(rooms == null){
+        if (rooms == null) {
             rooms = new ArrayList<>();
         }
     }
@@ -28,13 +29,13 @@ public class RoomDAO extends BaseDataAsset<Room> {
                            );""";
         try {
             PreparedStatement st = getConnection().prepareStatement(searchSql);
-            st.setString(1,date);
+            st.setString(1, date);
             st.setInt(2, slot);
             ResultSet resultSet = st.executeQuery();
             while (resultSet.next()) {
-               listRooms.add(new Room(resultSet.getInt("RoomID")
-                       , resultSet.getString("RoomNumber")
-                       , resultSet.getDouble("Price")));
+                listRooms.add(new Room(resultSet.getInt("RoomID"),
+                         resultSet.getString("RoomNumber"),
+                         resultSet.getDouble("Price")));
             }
 
         } catch (Exception e) {
@@ -43,21 +44,27 @@ public class RoomDAO extends BaseDataAsset<Room> {
         return listRooms;
     }
 
+    private List<Room> Rooms() throws ClassNotFoundException {
+        rooms.clear();
+        try {
+            String sqlQuery = "SELECT * FROM Rooms";
+            PreparedStatement st = getConnection().prepareStatement(sqlQuery);
+            ResultSet resultSet = st.executeQuery();
+
+            while (resultSet.next()) {
+                rooms.add(new Room(resultSet.getInt("RoomID"), resultSet.getString("RoomNumber"), resultSet.getDouble("Price")));
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rooms;
+    }
+
     @Override
     public List<Room> getList() throws ClassNotFoundException {
-        if(rooms.size() <= 0 ){
-            try {
-                String sqlQuery = "SELECT * FROM Rooms";
-                PreparedStatement st = getConnection().prepareStatement(sqlQuery);
-                ResultSet resultSet = st.executeQuery();
-
-                while (resultSet.next()) {
-                    rooms.add(new Room(resultSet.getInt("RoomID"), resultSet.getString("RoomNumber"), resultSet.getDouble("Price")));
-                }
-                resultSet.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        if (rooms.size() <= 0) {
+            Rooms();
         }
         return rooms;
     }
@@ -69,20 +76,20 @@ public class RoomDAO extends BaseDataAsset<Room> {
 
     @Override
     public Room read(int id) {
-       Room room = null;
+        Room room = null;
         String searchSql = """
                            SELECT *
                            FROM rooms
                            WHERE RoomId = ? """;
         try {
             PreparedStatement st = getConnection().prepareStatement(searchSql);
-            st.setInt(1,id);
+            st.setInt(1, id);
             ResultSet resultSet = st.executeQuery();
             if (resultSet.next()) {
-               room = new Room(resultSet.getInt("RoomID")
-                       , resultSet.getString("RoomNumber")
-                       , resultSet.getDouble("Price"));
-               return room;
+                room = new Room(resultSet.getInt("RoomID"),
+                         resultSet.getString("RoomNumber"),
+                         resultSet.getDouble("Price"));
+                return room;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,10 +105,11 @@ public class RoomDAO extends BaseDataAsset<Room> {
                            WHERE RoomID = ? """;
         try {
             PreparedStatement st = getConnection().prepareStatement(searchSql);
-            st.setDouble(1,newData.getPrice());
-            st.setInt(2,newData.id);
+            st.setDouble(1, newData.getPrice());
+            st.setInt(2, newData.id);
             boolean result = st.executeUpdate() > 1;
-            if(result){
+            if (result) {
+                Rooms();
                 return true;
             }
         } catch (Exception e) {

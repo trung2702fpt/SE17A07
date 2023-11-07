@@ -52,7 +52,9 @@
         </div>
     </div>
 </div>
+<div id="messageBox"></div>
 <script src="inlcude/asset/responseData/loginWithGoogle.js"></script>
+<div id="loadingScreen"></div>
 <!--<div id="loadingScreen" class="position-absolute hide" style="display: flex;
      justify-content: center;
      align-items: center;

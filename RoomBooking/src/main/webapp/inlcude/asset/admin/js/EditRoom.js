@@ -17,13 +17,12 @@ function Search() {
                 alert(`not found id room : ${idSearchRoom}`);
                 return;
             }
-            console.log(typeof  data)
-            $('#idRoom').html(data.id);
-            $('#numberRoom').html(data.roomNumber);
+            $('#idRoom').val(data.id);
+            $('#numberRoom').val(data.roomNumber);
             $('#priceRoom').val(data.price);
         },
         error: function () {
-            alert("ERROR to process call api!!");
+            U.messageBox("ERROR", "ERROR to process call api!!");
         }
     });
 }
@@ -40,7 +39,7 @@ function Update() {
         url: "/RoomBooking/EditRoom",
         method: "GET",
         data:{
-            idRoom: idSearchRoom,
+            idRoom: $('#idRoom').val(),
             price: price,
         },
         success: function (data) {
@@ -53,7 +52,7 @@ function Update() {
             
         },
         error: function () {
-            alert("ERROR to process call api!!");
+            U.messageBox("ERROR", "ERROR to process call api!!");
         }
     });
 }

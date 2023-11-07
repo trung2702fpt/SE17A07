@@ -4,13 +4,16 @@ $(document).ready(function () {
     $.ajax({
         url: "/RoomBooking/GetEquipments",
         method: "GET",
+        data:{
+            admin: "user"
+        },
         success: function (data) {
             $("#bodyTableEquipments").html(data);
             SetDataTable();
             U.hideProcess();
         },
         error: function () {
-            alert("ERROR to process call api!!");
+            U.messageBox("ERROR", "ERROR to process call api!!");
         }
     });
 });

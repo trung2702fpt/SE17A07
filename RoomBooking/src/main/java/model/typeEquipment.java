@@ -9,6 +9,9 @@ public class typeEquipment {
         this.name = name;
     }
 
+    public typeEquipment(int id) {
+        this.id = id;
+    }
     public typeEquipment() {
     }
 

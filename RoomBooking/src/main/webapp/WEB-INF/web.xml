@@ -52,6 +52,22 @@
         <servlet-name>SearchRoom</servlet-name>
         <servlet-class>Controller.Admin.SearchRoom</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchEquipment</servlet-name>
+        <servlet-class>Controller.Admin.SearchEquipment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getTypeEquipment</servlet-name>
+        <servlet-class>Controller.Admin.getTypeEquipment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateEquipment</servlet-name>
+        <servlet-class>Controller.Admin.updateEquipment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sendReport</servlet-name>
+        <servlet-class>Controller.sendReport</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -103,6 +119,22 @@
     <servlet-mapping>
         <servlet-name>SearchRoom</servlet-name>
         <url-pattern>/SearchRoom</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchEquipment</servlet-name>
+        <url-pattern>/SearchEquipment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getTypeEquipment</servlet-name>
+        <url-pattern>/getTypeEquipment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateEquipment</servlet-name>
+        <url-pattern>/updateEquipment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sendReport</servlet-name>
+        <url-pattern>/sendReport</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

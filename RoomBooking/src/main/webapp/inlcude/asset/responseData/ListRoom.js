@@ -10,7 +10,7 @@ $(document).ready(function () {
             U.hideProcess();
         },
         error: function () {
-            alert("ERROR to process call api!!");
+            U.messageBox("ERROR", "ERROR to process call api!!");
         }
     });
 });

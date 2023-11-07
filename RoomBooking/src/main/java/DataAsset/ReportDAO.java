@@ -2,54 +2,39 @@ package DataAsset;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Report;
 
 public class ReportDAO extends BaseDataAsset<Report> {
 
-    public static boolean insertReport(Report report) throws ClassNotFoundException {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        Random random = new Random();
-        UserDAO userdao = new UserDAO();
+    private int GetLastId() throws ClassNotFoundException {
+        int id = 0;
         try {
-            if (userdao.read(report.getUserID()) == null) {
-                System.out.println("User không tồn tại trong cơ sở dữ liệu.");
-                return false;
+            Connection conn = Utils.Connect.getConnection();
+            String sql = """
+                         SELECT TOP 1 ReportID
+                         FROM Report
+                         ORDER BY ReportID DESC;""";
+            PreparedStatement st = getConnection().prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt("ReportID");
+            } else {
+                id = 1;
             }
-            conn = Utils.Connect.getConnection();
-            String sql = "INSERT INTO [FPTBooking].[dbo].[Report] ([ReportID], [UserID], [Time], [Title], [Content], [Status], [Reply]) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?)";
-            int randomReportID = random.nextInt(1000000); // Số nguyên ngẫu nhiên trong khoảng 0-999999
-            stmt = conn.prepareStatement(sql);
-
-            stmt.setInt(1, randomReportID);
-            stmt.setInt(2, report.getUserID());
-            stmt.setString(3, report.getTime());
-            stmt.setString(4, report.getTitle());
-            stmt.setString(5, report.getContent());
-            stmt.setBoolean(6, report.getStatus());
-            stmt.setString(7, report.getReply());
-
-            int rowsAffected = stmt.executeUpdate();
-            return rowsAffected > 0;
+            return id;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
-        } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
+        return 0;
     }
 
     @Override
@@ -59,7 +44,31 @@ public class ReportDAO extends BaseDataAsset<Report> {
 
     @Override
     public void create(Report data) throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            String sql = "INSERT INTO [FPTBooking].[dbo].[Report] ([ReportID], [UserID], [Time], [Title], [Content], [Status]) "
+                    + "VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            int id = GetLastId();
+            if (id == 0) {
+                throw new Exception();
+            }
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy, h:mm:ss a");
+            Date date = sdf.parse(data.getTime());
+            Timestamp timestamp = new Timestamp(date.getTime());
+            stmt.setInt(1, id + 1);
+            stmt.setInt(2, data.getUserID());
+            stmt.setTimestamp(3, timestamp);
+            stmt.setString(4, data.getTitle());
+            stmt.setString(5, data.getContent());
+            stmt.setBoolean(6, data.getStatus());
+
+            int rowsAffected = stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(ReportDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

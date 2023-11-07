@@ -13,7 +13,7 @@ $(document).ready(function () {
 function setSlotByDate() {
     var selectedDate = new Date(event.target.value);
     if (selectedDate.getDay() === 0) {
-        alert('Không thể chọn Chủ Nhật.');
+        U.messageBox("ERROR", 'Không thể chọn Chủ Nhật.');
         event.target.value = '';
         return;
     }
@@ -71,15 +71,15 @@ function addOption(text, value) {
 
 function searchByName() {
     if (slotSelect.val() === '') {
-        alert("Overtime to book room for today!");
+        U.messageBox("Message", "Overtime to book room for today!");
         return;
     }
 
     if (dateSelect.val() === "") {
-        alert("Please select your date or slot!!");
+        U.messageBox("Message", "Please select your date or slot!!");
         return;
     }
-
+    U.showProcess();
     $.ajax({
         url: "/RoomBooking/searchApi",
         type: "get",
@@ -90,9 +90,10 @@ function searchByName() {
         success: function (rop) {
             $("#contentSearchroom").html(rop);
             SetDataTable();
+            U.hideProcess();
         },
         error: function (e) {
-            alert("ERROR to process call api!!");
+            U.messageBox("ERROR", "ERROR to process call api!!");
         }
     });
 }
@@ -111,15 +112,15 @@ function SetDataTable() {
 
 function booking() {
     $("#bookingDialog").dialog({
-        autoOpen: false, // Tự động không hiển thị khi trang tải
-        width: 400, // Độ rộng của hộp thoại
-        modal: true, // Chế độ modal để không tương tác với nền
+        autoOpen: false,
+        width: 400,
+        modal: true,
         buttons: {
             "Đặt phòng": function () {
                 var selectedDate = "2";
                 var bookingInfo = "2";
 
-                alert("Bạn đã đặt phòng vào ngày " + selectedDate + " với thông tin: " + bookingInfo);
+                U.messageBox("Message", "Bạn đã đặt phòng vào ngày " + selectedDate + " với thông tin: " + bookingInfo);
                 $(this).dialog("close");
             },
             Hủy: function () {
@@ -128,7 +129,6 @@ function booking() {
         }
     });
 
-    // Kích hoạt hộp thoại khi nút "Đặt phòng" được bấm
     $("#openDialog").on("click", function () {
         $("#bookingDialog").dialog("open");
     });

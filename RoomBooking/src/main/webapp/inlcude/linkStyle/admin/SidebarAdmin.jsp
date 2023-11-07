@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="managing.jsp">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-school"></i>
         </div>
@@ -38,8 +38,8 @@
         <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Pages:</h6>
-                <a class="collapse-item" href="">View List</a>
-                <a class="collapse-item" href="">Edit</a>
+                <a class="collapse-item" href="viewListEquipments.jsp">View List</a>
+                <a class="collapse-item" href="editEquipment.jsp">Edit</a>
             </div>
         </div>
     </li>

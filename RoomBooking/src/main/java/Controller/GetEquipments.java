@@ -17,16 +17,21 @@ public class GetEquipments extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
+        String admin = request.getParameter("admin");
+        String forSearch = "<tr class=\"candidates-list\">\n";
         PrintWriter out = response.getWriter();
         EquipmentDAO eqDao = new EquipmentDAO();
         List<Equipment> equipments = eqDao.getList();
         if (!equipments.isEmpty()) {
             for (Equipment equipment : equipments) {
-                out.println("<tr class=\"candidates-list\">\n"
+                if(admin.equals("admin")){
+                    forSearch = "<tr class=\"candidates-list\" onclick='SearchForEdit("+ equipment.id +")'>\n";
+                }
+                out.println(forSearch
                         + "                                            <td>" + equipment.id + "</td>\n"
                         + "                                            <td class=\"title\">\n"
                         + "                                                <div class=\"thumb\">\n"
-                        + "                                                    <img class=\"img-fluid w-25\" src=\"inlcude/asset/images/equipment/" + equipment.type.name + ".png\" alt=\"\">\n"
+                        + "                                                    <img class=\"img-fluid w-50\" src=\"inlcude/asset/images/equipment/" + equipment.type.name + ".png\" alt=\"\">\n"
                         + "                                                </div>\n"
                         + "                                            </td>\n"
                         + "                                            <td>" + equipment.name + "</td>\n"
