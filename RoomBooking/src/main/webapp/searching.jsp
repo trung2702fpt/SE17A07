@@ -39,6 +39,7 @@
                         </select>
                     </div>
                     <a href="#" class="btn btn-dark my-auto" onclick="searchByName(); return false;">Search</a>
+                    <button onclick="downloadExcel()">Download Excel</button>
                 </div>
 
                 <div class="mt-3 col-md-12">
@@ -66,5 +67,19 @@
         <%@include file="inlcude/linkStyle/footer.jsp" %>
         <%@include file="inlcude/linkStyle/js_link.jsp" %>
         <script type="text/javascript" src="inlcude/asset/responseData/searchRoom.js"></script>
+        <<script>
+            function downloadExcel() {
+    $.ajax({
+        url: '/RoomBooking/downloadExcel', // Thay thế bằng đường dẫn tới servlet của bạn
+        type: 'GET',
+        success: function() {
+            console.log('Excel file downloaded successfully.');
+        },
+        error: function() {
+            console.error('Failed to download Excel file.');
+        }
+    });
+}
+        </script>
     </body>
 </html>

@@ -1,4 +1,3 @@
-getTypeEquipment.class
 Controller\GetHistory.class
 model\google\GooglePojo.class
 DataAsset\EquipmentDAO.class
@@ -18,6 +17,7 @@ Controller\Login.class
 model\User.class
 Utils\DownloadExcel.class
 model\typeEquipment.class
+Controller\DownloadExcelServlet.class
 model\StaticBooking.class
 Controller\Equipment.class
 Controller\Room.class
@@ -30,4 +30,3 @@ DataAsset\HistoryDAO.class
 Controller\StaticAdmin.class
 model\google\Constants.class
 Utils\Validate.class
-loginAdmin.class
