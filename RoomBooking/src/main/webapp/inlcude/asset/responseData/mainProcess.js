@@ -23,29 +23,66 @@ var U = {
         $('#loadingModal').modal('hide');
     },
     messageBox: function (title, message) {
-        var modal = $('<div class="modal fade" tabindex="-1" role="dialog">');
-        modal.append('<div class="modal-dialog modal-dialog-centered" role="document">');
-        var modalContent = $('<div class="modal-content">');
-
-        var modalHeader = $('<div class="modal-header">');
-        modalHeader.append('<h5 class="modal-title">' + title + '</h5>');
-        modalHeader.append('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
-        modalHeader.find('.close').append('<span aria-hidden="true">&times;</span>');
-
-        var modalBody = $('<div class="modal-body">' + message + '</div>');
-
-        var modalFooter = $('<div class="modal-footer">');
-        modalFooter.append('<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>');
-
-        modalContent.append(modalHeader);
-        modalContent.append(modalBody);
-        modalContent.append(modalFooter);
-
-        modal.find('.modal-dialog').append(modalContent);
-
-        $('#messageBox').html(modal);
-
-        modal.modal('show');
+        $('#messageBox').empty().append('<div class=\"confirmMessage\">' + message + '</div>').css('display', '');
+        $('#messageBox').dialog(
+                {
+                    modal: true,
+                    resizable: false,
+                    title: title,
+                    width: 400,
+                    overlay: {
+                        opacity: 0.5,
+                        background: '#999'
+                    },
+                    buttons:
+                            [
+                                {
+                                    text: "No",
+                                    "class": 'epn-btn epn-btn-cancel d-inline-block',
+                                    click: function () {
+                                        $(this).dialog('close');
+                                        $('#messageBox').empty();
+                                    }
+                                },
+                                {
+                                    text: "Yes",
+                                    "class": 'epn-btn epn-btn-dark-blue d-inline-block',
+                                    click: function () {
+                                        yesHandler();
+                                        $(this).dialog('close');
+                                        $('#messageBox').empty();
+                                    }
+                                }
+                            ],
+                    close: function () {
+                        $(this).dialog('destroy');
+                        $('#messageBox').empty();
+                    }
+                }
+        );
+//        var modal = $('<div class="modal fade" tabindex="-1" role="dialog">');
+//        modal.append('<div class="modal-dialog modal-dialog-centered" role="document">');
+//        var modalContent = $('<div class="modal-content">');
+//
+//        var modalHeader = $('<div class="modal-header">');
+//        modalHeader.append('<h5 class="modal-title">' + title + '</h5>');
+//        modalHeader.append('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
+//        modalHeader.find('.close').append('<span aria-hidden="true">&times;</span>');
+//
+//        var modalBody = $('<div class="modal-body">' + message + '</div>');
+//
+//        var modalFooter = $('<div class="modal-footer">');
+//        modalFooter.append('<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>');
+//
+//        modalContent.append(modalHeader);
+//        modalContent.append(modalBody);
+//        modalContent.append(modalFooter);
+//
+//        modal.find('.modal-dialog').append(modalContent);
+//
+//        $('#messageBox').html(modal);
+//
+//        modal.modal('show');
     }
 };
 
@@ -65,3 +102,4 @@ function setActiveNav(tabName) {
         }
     });
 }
+
