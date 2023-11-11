@@ -65,13 +65,13 @@ public class Room extends HttpServlet {
                 + "                                    <td>" + index++ + "</td>\n"
                 + "                                    <td class=\"title\">\n"
                 + "                                        <div class=\"thumb\">\n"
-                + "                                            <img class=\"img-fluid w-25\" src=\"inlcude/asset/images/gallery1.jpg\" alt=\"\">\n"
+                + "                                            <img class=\"img-fluid w-25\" src=\"./asset/images/gallery1.jpg\" alt=\"\">\n"
                 + "                                        </div>\n"
                 + "                                    </td>\n"
                 + "                                    <td>" + o.getRoomNumber() + "</td>\n"
                 + "                                    <td>" + o.getPrice() + "</td>\n"
                 + "                                    <td>\n"
-                + "                                        <a type=\"button\" href='#' onclick='openDialog(" + o.getId() + ")' class=\"btn btn-primary\" data-toggle=\"modal\"\n"
+                + "                                        <a type=\"button\" href='#' onclick='openDialog(" + o.getId() + ","+o.getPrice()+")' class=\"btn btn-primary\" data-toggle=\"modal\"\n"
                 + "            data-target=\".bd-example-modal-lg\">Booking</a>\n"
                 + "                                    </td>\n"
                 + "                                </tr>");
@@ -98,7 +98,7 @@ public class Room extends HttpServlet {
                     + " <td>" + room.id + "</td>\n"
                     + " <td class=\"title\">\n"
                     + "      <div class=\"thumb\">\n"
-                    + "           <img class=\"img-fluid w-25\" src=\"inlcude/asset/images/gallery1.jpg\" alt=\"\">\n"
+                    + "           <img class=\"img-fluid w-25\" src=\"./asset/images/gallery1.jpg\" alt=\"\">\n"
                     + "       </div>\n"
                     + " </td>\n"
                     + " <td>" + room.roomNumber + "</td>\n"
@@ -122,6 +122,5 @@ public class Room extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
+    }
 }

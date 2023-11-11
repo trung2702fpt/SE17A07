@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="inlcude/linkStyle/head_link.jsp" %>
+        <%@include file="viewerComponent/head_link.jsp" %>
         <link href="inlcude\asset\vendor\fontawesome-free\css\all.min.css" rel="stylesheet" type="text/css">
         <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-        <link href="inlcude/asset/css/sb-admin-2.min.css" rel="stylesheet">
+        <link href="./asset/css/sb-admin-2.min.css" rel="stylesheet">
     </head>
     <body>
         <%
@@ -19,7 +19,7 @@
         <div id="page-top">
 
             <div id="wrapper">
-                <%@include file="inlcude/linkStyle/admin/SidebarAdmin.jsp" %>
+                <%@include file="viewerComponent/admin/SidebarAdmin.jsp" %>
                 <div class="row container mt-5">
                     <div class="col-md-4 container">
                         <h2>Edit Room</h2>
@@ -49,15 +49,13 @@
                     </div>
 
                     <div class="col-md-6">
-                        <img src="./inlcude/asset/images/gallery1.jpg" alt="alt" class="img-fluid w-100">
+                        <img src="./asset/images/gallery1.jpg" alt="alt" class="img-fluid w-100">
                     </div>
                 </div>
                 <!-- Content end -->
             </div>
         </div>
-        <%@include file="inlcude/linkStyle/js_link.jsp" %>
-        <script type="text/javascript">
-        </script>
-        <script src="inlcude/asset/admin/js/EditRoom.js"></script>
+        <%@include file="viewerComponent/js_link.jsp" %>
+        <script src="./asset/admin/js/EditRoom.js"></script>
     </body>
 </html>

@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <%@include file="inlcude/linkStyle/head_link.jsp" %>
+        <%@include file="viewerComponent/head_link.jsp" %>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     </head>
     <body class="main-layout">
-        <%@include file="inlcude/linkStyle/header.jsp" %>
+        <%@include file="viewerComponent/header.jsp" %>
         <div class="back_re">
             <div class="container">
                 <div class="row">
@@ -56,8 +56,8 @@
         <!-- end gallery -->
 
         <!--  footer -->
-        <%@include file="inlcude/linkStyle/footer.jsp" %>
-        <%@include file="inlcude/linkStyle/js_link.jsp" %>
-        <script src="inlcude/asset/responseData/ListRoom.js"></script>
+        <%@include file="viewerComponent/footer.jsp" %>
+        <%@include file="viewerComponent/js_link.jsp" %>
+        <script src="./asset/responseData/ListRoom.js"></script>
     </body>
 </html>

@@ -49,31 +49,42 @@ public class Equipment extends HttpServlet {
             e.printStackTrace();
         }
     }
-    
-    private void getList(HttpServletRequest request, HttpServletResponse response, EquipmentDAO eqDao) throws IOException{
+
+    private void getList(HttpServletRequest request, HttpServletResponse response, EquipmentDAO eqDao) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
         String admin = request.getParameter("admin");
+        String select = request.getParameter("select");
         String forSearch = "<tr class=\"candidates-list\">\n";
         PrintWriter out = response.getWriter();
-        
+
         List<model.Equipment> equipments = eqDao.getList();
         if (!equipments.isEmpty()) {
             for (model.Equipment equipment : equipments) {
-                if(admin.equals("admin")){
-                    forSearch = "<tr class=\"candidates-list\" onclick='SearchForEdit("+ equipment.id +")'>\n";
+                if (select.equals("true")) {
+                    out.println("<tr class=\"candidates-list\" id="+equipment.id+" onclick='selectEquiment(this)'  style=\"cursor: pointer\">\n"
+                            + "                                            <td>" + equipment.id + "</td>\n"
+                            + "                                            <td>" + equipment.name + "</td>\n"
+                            + "                                            <td>" + equipment.des + "</td>\n"
+                            + "                                            <td>" + equipment.price + "</td>\n"
+                            + "                                            <td>" + equipment.type.name + "</td>\n"
+                            + "                                        </tr>");
+                } else {
+                    if (admin.equals("admin")) {
+                        forSearch = "<tr class=\"candidates-list\" onclick='SearchForEdit(" + equipment.id + ")'>\n";
+                    }
+                    out.println(forSearch
+                            + "                                            <td>" + equipment.id + "</td>\n"
+                            + "                                            <td class=\"title\">\n"
+                            + "                                                <div class=\"thumb\">\n"
+                            + "                                                    <img class=\"img-fluid w-50\" src=\"./asset/images/equipment/" + equipment.type.name + ".png\" alt=\"\">\n"
+                            + "                                                </div>\n"
+                            + "                                            </td>\n"
+                            + "                                            <td>" + equipment.name + "</td>\n"
+                            + "                                            <td>" + equipment.des + "</td>\n"
+                            + "                                            <td>" + equipment.price + "</td>\n"
+                            + "                                            <td>" + equipment.type.name + "</td>\n"
+                            + "                                        </tr>");
                 }
-                out.println(forSearch
-                        + "                                            <td>" + equipment.id + "</td>\n"
-                        + "                                            <td class=\"title\">\n"
-                        + "                                                <div class=\"thumb\">\n"
-                        + "                                                    <img class=\"img-fluid w-50\" src=\"inlcude/asset/images/equipment/" + equipment.type.name + ".png\" alt=\"\">\n"
-                        + "                                                </div>\n"
-                        + "                                            </td>\n"
-                        + "                                            <td>" + equipment.name + "</td>\n"
-                        + "                                            <td>" + equipment.des + "</td>\n"
-                        + "                                            <td>" + equipment.price + "</td>\n"
-                        + "                                            <td>" + equipment.type.name + "</td>\n"
-                        + "                                        </tr>");
             }
         } else {
             out.println("<tr>"

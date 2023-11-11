@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="inlcude/linkStyle/head_link.jsp" %>
+        <%@include file="viewerComponent/head_link.jsp" %>
         <title>ADMIN</title>
     </head>
     <body>
@@ -47,10 +47,10 @@
                         </form>
                                 <span style="color: red">${requestScope.ErrorMessage}</span>
                     </div>
-                    <img src="inlcude/asset/images/logo.webp" alt="#" />
+                    <img src="./asset/images/logo.webp" alt="#" />
                 </div>
             </div>
         </section>
-        <%@include file="inlcude/linkStyle/js_link.jsp" %>
+        <%@include file="viewerComponent/js_link.jsp" %>
     </body>
 </html>

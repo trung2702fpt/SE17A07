@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="inlcude/linkStyle/head_link.jsp" %>
+        <%@include file="viewerComponent/head_link.jsp" %>
     </head>
     <body>
         <div id="notfound">

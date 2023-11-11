@@ -21,7 +21,7 @@ public enum EnumSlot {
         return startTime.format(timeFormatter);
     }
 
-    public static String getTimeSlot(int value) {
+    public static String getTimeSlotInt(int value) {
         EnumSlot slot = null;
         switch (value) {
             case 1 -> {
@@ -47,4 +47,5 @@ public enum EnumSlot {
             default -> throw new IllegalArgumentException("Giá trị không hợp lệ: " + value);
         }
     }
+    
 }

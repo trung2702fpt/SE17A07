@@ -6,10 +6,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="inlcude/linkStyle/head_link.jsp" %>
+        <%@include file="viewerComponent/head_link.jsp" %>
     </head>
     <body class="main-layout">
-        <%@include file="inlcude/linkStyle/header.jsp" %>
+        <%@include file="viewerComponent/header.jsp" %>
         <div class="back_re">
             <div class="container">
                 <div class="row">
@@ -55,8 +55,8 @@
             </div>
         </div>
 
-        <%@include file="inlcude/linkStyle/footer.jsp" %>
-        <%@include file="inlcude/linkStyle/js_link.jsp" %>
-        <script src="inlcude/asset/responseData/ListEquipment.js"></script>
+        <%@include file="viewerComponent/footer.jsp" %>
+        <%@include file="viewerComponent/js_link.jsp" %>
+        <script src="./asset/responseData/ListEquipment.js"></script>
     </body>
 </html>

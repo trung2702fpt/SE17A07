@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="inlcude/linkStyle/head_link.jsp" %>
+        <%@include file="viewerComponent/head_link.jsp" %>
         <style>
             .report_main{
                 height: 300px;
@@ -29,7 +29,7 @@
         </style>
     </head>
     <body>
-        <%@include file="inlcude/linkStyle/header.jsp" %> 
+        <%@include file="viewerComponent/header.jsp" %> 
         <div class="back_re">
             <div class="container">
                 <div class="row">
@@ -73,8 +73,8 @@
                 </div>
             </section>
         </div>
-        <%@include file="inlcude/linkStyle/footer.jsp" %>
-        <%@include file="inlcude/linkStyle/js_link.jsp" %>
-        <script src="./inlcude/asset/responseData/sendReport.js"></script>
+        <%@include file="viewerComponent/footer.jsp" %>
+        <%@include file="viewerComponent/js_link.jsp" %>
+        <script src="./asset/responseData/sendReport.js"></script>
     </body>
 </html>

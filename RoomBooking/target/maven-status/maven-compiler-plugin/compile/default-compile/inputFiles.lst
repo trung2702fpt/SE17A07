@@ -1,14 +1,16 @@
+D:\gitClone\SE17A07\RoomBooking\src\main\java\Controller\ajaxPayment.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\DataAsset\RoomDAO.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\Controller\GetHistory.java
+D:\gitClone\SE17A07\RoomBooking\src\main\java\model\VNpay\ConfigVNPay.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\DataAsset\ReportDAO.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\Controller\sendMailServlet.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\Controller\Equipment.java
-D:\gitClone\SE17A07\RoomBooking\src\main\java\getTypeEquipment.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\model\google\GoogleUtils.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\DataAsset\BaseDataAsset.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\model\StaticBooking.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\Controller\StaticAdmin.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\model\google\Constants.java
+D:\gitClone\SE17A07\RoomBooking\src\main\java\model\requestBooking.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\DataAsset\HistoryDAO.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\model\EnumSlot.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\Utils\Validate.java
@@ -16,7 +18,7 @@ D:\gitClone\SE17A07\RoomBooking\src\main\java\Utils\DownloadExcel.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\DataAsset\TypeEquipmentDAO.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\Controller\logout.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\Controller\Room.java
-D:\gitClone\SE17A07\RoomBooking\src\main\java\loginAdmin.java
+D:\gitClone\SE17A07\RoomBooking\src\main\java\Controller\getTypeEquipment.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\Controller\Login.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\model\Report.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\model\User.java
@@ -29,6 +31,8 @@ D:\gitClone\SE17A07\RoomBooking\src\main\java\model\google\GooglePojo.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\DataAsset\HistoryCheckoutDAO.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\model\Room.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\model\typeEquipment.java
+D:\gitClone\SE17A07\RoomBooking\src\main\java\Controller\loginAdmin.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\Utils\Connect.java
+D:\gitClone\SE17A07\RoomBooking\src\main\java\Controller\RoomBooking.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\DataAsset\EquipmentDAO.java
 D:\gitClone\SE17A07\RoomBooking\src\main\java\model\Equipment.java

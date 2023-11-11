@@ -1,0 +1,14 @@
+.carousel {
+    width: 300px; /* Điều chỉnh độ rộng của slider theo mong muốn */
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #f8f9fa; /* Màu nền của slider */
+}
+
+/* Điều chỉnh vị trí của nút chuyển trang */
+.carousel-control-prev, .carousel-control-next {
+    top: 50%;
+    transform: translateY(-50%);
+}

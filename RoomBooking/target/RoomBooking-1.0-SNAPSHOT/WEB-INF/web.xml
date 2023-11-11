@@ -44,6 +44,14 @@
         <servlet-name>Report</servlet-name>
         <servlet-class>Controller.Report</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RoomBooking</servlet-name>
+        <servlet-class>Controller.RoomBooking</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ajaxPayment</servlet-name>
+        <servlet-class>Controller.ajaxPayment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>Report</servlet-name>
         <url-pattern>/Report</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RoomBooking</servlet-name>
+        <url-pattern>/RoomBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ajaxPayment</servlet-name>
+        <url-pattern>/ajaxPayment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
