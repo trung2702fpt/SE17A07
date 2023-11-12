@@ -95,7 +95,8 @@ function setDataEquipment() {
         method: "GET",
         data: {
             admin: "admin",
-            action: "getList"
+            action: "getList",
+            select: "false"
         },
         success: function (data) {
             $("#bodyTableEquipments").html(data);

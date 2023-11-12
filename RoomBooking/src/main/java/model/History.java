@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 public class History {
-
+    private boolean isCancel;
     private int roomID;
     private Timestamp bookingDate;
     private int slotID;
@@ -21,9 +21,8 @@ public class History {
         this.slotID = slotID;
     }
     
-    public History(int roomID, Timestamp bookingDate, int slotID, Timestamp cancelDate) {
+    public History(int roomID, Timestamp bookingDate, Timestamp cancelDate) {
         this.roomID = roomID;
-        this.slotID = slotID;
         this.cancelDate = cancelDate;
         this.bookingDate = bookingDate;
     }
@@ -84,4 +83,13 @@ public class History {
     public void setCancelDate(Timestamp cancelDate) {
         this.cancelDate = cancelDate;
     }
+
+    public boolean isIsCancel() {
+        return isCancel;
+    }
+
+    public void setIsCancel(boolean isCancel) {
+        this.isCancel = isCancel;
+    }
+    
 }

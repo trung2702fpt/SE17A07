@@ -1,6 +1,11 @@
 package Controller;
 
+import DataAsset.BookingDAO;
+import DataAsset.RoomDAO;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,22 +21,45 @@ public class RoomBooking extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
+        String action = request.getParameter("action");
         try {
-            int slotRequest = Integer.parseInt(request.getParameter("slotSelected"));
-            String idRoom = request.getParameter("idRoom");
-            double price = Double.parseDouble(request.getParameter("price"));
-            String date = request.getParameter("date");
-            String slot = EnumSlot.getTimeSlotInt(slotRequest);
             User user = (User) session.getAttribute("ACCOUNT_USER");
-            requestBooking reBooking = new requestBooking(Integer.parseInt(idRoom), date+" "+slot, user.getId());
-            reBooking.setPriceOfRoom(price);
-            session.setAttribute("RequestBooking", reBooking);
-            request.setAttribute("date", date);
-            request.setAttribute("slot", slot);
-            request.setAttribute("slotRequest", slotRequest);
-            request.setAttribute("idRoom", idRoom);
-            request.setAttribute("isSelectDate", true);
-            request.getRequestDispatcher("SelectEquipment.jsp").forward(request, response);
+            if(user == null){
+                response.sendRedirect("searching.jsp");
+                return;
+            }
+            switch (action) {
+                case "Booking":
+                    int slotRequest = Integer.parseInt(request.getParameter("slotSelected"));
+                    String idRoom = request.getParameter("idRoom");
+                    double price = Double.parseDouble(request.getParameter("price"));
+                    String date = request.getParameter("date");
+                    String slot = EnumSlot.getTimeSlotInt(slotRequest);
+                    requestBooking reBooking = new requestBooking(Integer.parseInt(idRoom), date + " " + slot, user.getId(), slotRequest);
+                    reBooking.setPriceOfRoom(price);
+                    session.setAttribute("RequestBooking", reBooking);
+                    request.setAttribute("date", date);
+                    request.setAttribute("slot", slot);
+                    request.setAttribute("slotRequest", slotRequest);
+                    request.setAttribute("idRoom", idRoom);
+                    request.setAttribute("isSelectDate", true);
+                    request.getRequestDispatcher("SelectEquipment.jsp").forward(request, response);
+                    break;
+                case "cancel":
+                    RoomDAO dAO = new RoomDAO();
+                    BookingDAO bdao = new BookingDAO();
+                    String dateSearch = request.getParameter("date");
+                    int idUser = user.getId();
+                    Calendar cld = Calendar.getInstance(TimeZone.getTimeZone("Etc/GMT+7"));
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                    String dateCancel = formatter.format(cld.getTime());
+                    
+                    int idbooking = dAO.getIdByDate(dateSearch);
+                    if (bdao.cancelBooking(idbooking)) {
+                        bdao.updateAction(dateCancel, dateSearch, idUser);
+                    }
+                    break;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

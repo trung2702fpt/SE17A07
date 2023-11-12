@@ -34,7 +34,7 @@ public class ajaxPayment extends HttpServlet {
         try {
             response.setContentType("application/json;charset=UTF-8");
             HttpSession session = request.getSession();
-            List<Integer> listIdEquipments = new ArrayList<>();
+            List<model.Equipment> listIdEquipments = new ArrayList<>();
             StringBuilder stringBuilder = new StringBuilder();
             ObjectMapper objectMapper = new ObjectMapper();
             EquipmentDAO eqDao = new EquipmentDAO();
@@ -54,18 +54,20 @@ public class ajaxPayment extends HttpServlet {
 
             for (String idString : equipmentSelected) {
                 int idInteger = Integer.parseInt(idString);
-                amountRequest += eqDao.read(idInteger).getPrice();
-                listIdEquipments.add(idInteger);
+                model.Equipment equipment = eqDao.read(idInteger);
+                amountRequest += equipment.getPrice();
+                listIdEquipments.add(equipment);
             }
 
             requestBooking.setEquipments(listIdEquipments);
             requestBooking.setAmountEquipment(amountRequest);
+            requestBooking.setAmount(requestBooking.getPriceOfRoom() + requestBooking.getAmountEquipment());
 
             //vnpay config 
             String vnp_Version = "2.1.0";
             String vnp_Command = "pay";
             String orderType = "other";
-            long amount = (long) ((requestBooking.getAmountEquipment() + requestBooking.getPriceOfRoom()) * 100000);
+            long amount = (long) (requestBooking.getAmount() * 100000);
 
             String vnp_TxnRef = ConfigVNPay.getRandomNumber(8);
             String vnp_IpAddr = ConfigVNPay.getIpAddress(request);
@@ -95,7 +97,7 @@ public class ajaxPayment extends HttpServlet {
             cld.add(Calendar.MINUTE, 15);
             String vnp_ExpireDate = formatter.format(cld.getTime());
             vnp_Params.put("vnp_ExpireDate", vnp_ExpireDate);
-            requestBooking.setTimePayment(vnp_CreateDate);
+            requestBooking.setTimePayment(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(cld.getTime()));
             List fieldNames = new ArrayList(vnp_Params.keySet());
             Collections.sort(fieldNames);
             StringBuilder hashData = new StringBuilder();

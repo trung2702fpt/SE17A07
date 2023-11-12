@@ -6,24 +6,27 @@ public class requestBooking {
     public int idRoom;
     public String time;
     public int userId;
+    public int slotId;
     public double amountEquipment;
     public double priceOfRoom;
-    public List<Integer> equipments;
+    public List<Equipment> equipments;
     public String timePayment;
+    public double amount;
     public requestBooking() {
     }
 
-    public requestBooking(int idRoom, String time, int userId, List<Integer> equipments) {
+    public requestBooking(int idRoom, String time, int userId, List<Equipment> equipments) {
         this.idRoom = idRoom;
         this.time = time;
         this.userId = userId;
         this.equipments = equipments;
     }
 
-    public requestBooking(int idRoom, String time, int userId) {
+    public requestBooking(int idRoom, String time, int userId, int slotId) {
         this.idRoom = idRoom;
         this.time = time;
         this.userId = userId;
+        this.slotId = slotId;
     }
 
     public int getIdRoom() {
@@ -50,11 +53,11 @@ public class requestBooking {
         this.userId = userId;
     }
 
-    public List<Integer> getEquipments() {
+    public List<Equipment> getEquipments() {
         return equipments;
     }
 
-    public void setEquipments(List<Integer> equipments) {
+    public void setEquipments(List<Equipment> equipments) {
         this.equipments = equipments;
     }
 
@@ -81,6 +84,21 @@ public class requestBooking {
     public void setTimePayment(String timePayment) {
         this.timePayment = timePayment;
     }
-    
+
+    public int getSlotId() {
+        return slotId;
+    }
+
+    public void setSlotId(int slotId) {
+        this.slotId = slotId;
+    }
+
+    public double getAmount() {
+        return this.amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
     
 }

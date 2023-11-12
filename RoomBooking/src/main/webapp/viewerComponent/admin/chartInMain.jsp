@@ -6,16 +6,6 @@
                 <i class="fas fa-chart-pie mr-1"></i>
                 Statis
             </h3>
-            <div class="card-tools">
-                <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#revenue-chart" data-toggle="tab">A Year</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#sales-chart" data-toggle="tab">Cancelation by month</a>
-                    </li>
-                </ul>
-            </div>
         </div><!-- /.card-header -->
         <div class="card-body">
             <div class="tab-content p-0">
@@ -29,9 +19,6 @@
                     <div class="chart-area">
                         <canvas id="myAreaChart"></canvas>
                     </div>
-                </div>
-                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                    <canvas id="cancelationChart" height="300" style="height: 300px;"></canvas>
                 </div>
             </div>
         </div><!-- /.card-body -->

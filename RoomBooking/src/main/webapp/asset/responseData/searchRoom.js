@@ -7,6 +7,7 @@ $(document).ready(function () {
 
     var currentDate = new Date().toISOString().slice(0, 10);
     dateSelect.attr("min", currentDate);
+    SetDataTable();
 });
 
 
@@ -90,7 +91,6 @@ function searchByName() {
         },
         success: function (rop) {
             $("#contentSearchroom").html(rop);
-            SetDataTable();
             U.hideProcess();
         },
         error: function (e) {
@@ -140,6 +140,7 @@ function openDialog(idRoom , price) {
     var idSlot = $("#slotSelect").val();
     var date = $("#dateSelect").val();
     $('#contentPopupBooking').html(`<form action="RoomBooking" id="formBooking" methos="POST">
+        <input type="hidden" name="action" value="Booking">
             <div class="p-2">
                                 <h2 id="titleRoom" class="card-title"> Room ${idRoom}</h2>
                                 <input type="hidden" name="idRoom" value="${idRoom}">

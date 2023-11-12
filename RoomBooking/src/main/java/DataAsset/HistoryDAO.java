@@ -15,32 +15,33 @@ public class HistoryDAO extends BaseDataAsset<History> {
         List<History> historys = new ArrayList<>();
         try {
             String sqlQuery = """
-                              SELECT
-                                  R.RoomID,
-                                  H.BookingDate,
-                                  B.SlotID,
-                                  H.CancelationDate,
-                                  CASE
-                                      WHEN GETDATE() > H.BookingDate THEN 1
-                                      ELSE 0
-                                  END AS isUsed
-                              FROM
-                                  Rooms R
-                                  INNER JOIN Bookings B ON R.RoomID = B.RoomID
-                                  INNER JOIN BookingHistoryAction H ON R.RoomID = H.RoomID
-                              WHERE
-                                  H.UserID = ?""";
+                             SELECT DISTINCT
+                             	H.RoomID,
+                             	H.BookingDate,
+                             	H.CancelationDate,
+                             	CASE
+                             		WHEN GETDATE() > H.BookingDate THEN 1
+                             	ELSE 0
+                             	END AS isUsed,
+                             	CASE
+                             		WHEN H.CancelationDate IS NOT NULL THEN 1
+                             	ELSE 0
+                             	END AS isCanceled
+                             FROM
+                             	Bookings B, BookingHistoryAction H
+                             WHERE
+                             	H.UserID = ? AND H.RoomID = B.RoomID
+                             ORDER BY BookingDate DESC""";
             PreparedStatement st = getConnection().prepareStatement(sqlQuery);
             st.setInt(1, id);
-            try (ResultSet resultSet = st.executeQuery()) {
+            try ( ResultSet resultSet = st.executeQuery()) {
                 while (resultSet.next()) {
                     History booking = new History(
                             resultSet.getInt("RoomID"),
                             resultSet.getTimestamp("BookingDate"),
-                            resultSet.getInt("SlotID"),
                             resultSet.getTimestamp("CancelationDate")
                     );
-                    
+                    booking.setIsCancel(resultSet.getInt("isCanceled") == 1);
                     booking.setIsUsed(resultSet.getInt("isUsed") == 1);
                     historys.add(booking);
                 }

@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.EnumSlot;
 
 public class Room extends HttpServlet {
 
@@ -52,9 +53,11 @@ public class Room extends HttpServlet {
     }
 
     private void filRooms(HttpServletRequest request, HttpServletResponse response, RoomDAO roomdao) throws IOException, ClassNotFoundException, Exception {
-        String dateRequest = request.getParameter("dateSelect");
+        
         String slotRequest = request.getParameter("slotSelect");
         int slotSelected = Integer.parseInt(slotRequest);
+        String timeSlot = EnumSlot.getTimeSlotInt(slotSelected);
+        String dateRequest = request.getParameter("dateSelect") +" "+timeSlot;
         RoomDAO db = new RoomDAO();
         try {
             List<model.Room> rooms = db.searchByDateAndSlOT(slotSelected, dateRequest);

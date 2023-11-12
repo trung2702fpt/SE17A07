@@ -1,11 +1,14 @@
 $(document).ready(function () {
-    U.showProcess();
     $.ajax({
         url: "/RoomBooking/Equipment",
         method: "GET",
+        beforeSend: function (xhr) {
+            U.showProcess();
+        },
         data:{
             admin: "user",
-            action: "getList"
+            action: "getList",
+            select: "false"
         },
         success: function (data) {
             $("#bodyTableEquipments").html(data);

@@ -1,9 +1,11 @@
 
 $(document).ready(function () {
-    U.showProcess();
     $.ajax({
         url: "/RoomBooking/Room",
         method: "GET",
+        beforeSend: function (xhr) {
+            U.showProcess();
+        },
         data:{
             action: "getList",
         },

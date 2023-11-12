@@ -52,6 +52,10 @@
         <servlet-name>ajaxPayment</servlet-name>
         <servlet-class>Controller.ajaxPayment</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addNewBooking</servlet-name>
+        <servlet-class>Controller.addNewBooking</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>ajaxPayment</servlet-name>
         <url-pattern>/ajaxPayment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addNewBooking</servlet-name>
+        <url-pattern>/addNewBooking</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

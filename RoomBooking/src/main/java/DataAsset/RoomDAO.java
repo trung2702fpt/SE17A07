@@ -17,6 +17,24 @@ public class RoomDAO extends BaseDataAsset<Room> {
         }
     }
 
+    public int getIdByDate(String date) {
+        String searchSql = """
+                           SELECT BookingID
+                           FROM Bookings 
+                           WHERE BookingDate = ? ;""";
+        try {
+            PreparedStatement st = getConnection().prepareStatement(searchSql);
+            st.setString(1, date);
+            ResultSet resultSet = st.executeQuery();
+            if(resultSet.next()){
+             return resultSet.getInt("BookingID");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
     public List<Room> searchByDateAndSlOT(int slot, String date) {
         List<Room> listRooms = new ArrayList<>();
         String searchSql = """

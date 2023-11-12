@@ -44,16 +44,19 @@ public class GetHistory extends HttpServlet {
             if (history.getCancelDate() != null) {
                 cancel = "<td>" + history.getCancelDate() + "</td>";
             } else {
-                if (history.isIsUsed()) {
-                    cancel = " <td> Time was over </td>";
+                if (history.isIsCancel()) {
+                    cancel = " <td class='text-danger'> Canceled </td>";
                 } else {
-                    cancel = " <td> <a href='#' onclick='alert(123)' class='btn btn-dark my-auto text-light nav-link'>Cancel</a> </td>";
+                    if (history.isIsUsed()) {
+                        cancel = " <td> Time was over </td>";
+                    } else {
+                        cancel = " <td> <a href='#' onclick='callCencalBooking(\""+history.getBookingDate()+"\")' class='btn btn-dark my-auto text-light nav-link'>Cancel</a> </td>";
+                    }
                 }
             }
             out.println("<tr>"
                     + "<td>" + history.getRoomID() + "</td>"
                     + "<td>" + history.getBookingDate().toString() + "</td>"
-                    + "<td>" + history.getSlotID() + "</td>"
                     + cancel
                     + "</tr>");
         }

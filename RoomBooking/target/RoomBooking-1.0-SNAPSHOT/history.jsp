@@ -30,12 +30,11 @@
         <div class="mt-3 col-md-12 row">
             <div class="card-body col-md-6" >
                 <h4 class="text-center">Booking</h4>
-                <table id="tableListHistory" class="table table-bordered table-hover">
+                <table id="tableListHistory" class="table table-bordered table-hover text-center">
                     <thead>
                         <tr>
-                            <th>Room ID</th>
+                            <th>Room</th>
                             <th>Booking Date</th>
-                            <th>Slot</th>
                             <th>Cancel</th>
                         </tr>
                     </thead>
@@ -47,7 +46,7 @@
             
             <div class="card-body col-md-6">
                 <h4 class="text-center">Report</h4>
-                <table id="tableListReport" class="table table-bordered table-hover">
+                <table id="tableListReport" class="table table-bordered table-hover text-center">
                     <thead>
                         <tr>
                             <th>ID</th>
