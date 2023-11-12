@@ -1,14 +1,16 @@
 function SendReport(){
     var title = $("#title").val();
     var content = $("#report").val();
-    var time = new Date().toLocaleString();
+    var time = (new Date().toLocaleString()).split(" ");
+    var timeReport = `${time[1]} ${time[0]}`;
+    
     $.ajax({
         url: "/RoomBooking/Report",
         method: "GET",
         data:{
             title: title,
             content: content,
-            time: time,
+            time: timeReport,
             action: "sendReport"
         },
         success: function (data) {

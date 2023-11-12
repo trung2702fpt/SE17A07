@@ -86,7 +86,7 @@ public class ReportDAO extends BaseDataAsset<Report> {
             if (id == 0) {
                 throw new Exception();
             }
-            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy, h:mm:ss a");
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss");
             Date date = sdf.parse(data.getTime());
             Timestamp timestamp = new Timestamp(date.getTime());
             stmt.setInt(1, id + 1);

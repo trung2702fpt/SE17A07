@@ -18,7 +18,6 @@ model\Equipment.class
 model\History.class
 DataAsset\TypeEquipmentDAO.class
 model\requestBooking.class
-.netbeans_automatic_build
 Controller\Login.class
 model\User.class
 Utils\DownloadExcel.class
