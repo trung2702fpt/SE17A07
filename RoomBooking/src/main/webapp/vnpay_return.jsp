@@ -97,12 +97,9 @@
         </div>  
         <%@include file="viewerComponent/js_link.jsp" %>
         <script type="text/javascript">
-            var status = false;
             <%
                 if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
-            %>
-            status = true;
-            <%
+                    out.print("var status = true");
                 }
             %>
             if (status) {
