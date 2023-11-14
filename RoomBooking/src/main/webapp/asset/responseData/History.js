@@ -55,20 +55,24 @@ function SetDataTable() {
     });
 }
 
-function callCencalBooking(d) {
-    $.ajax({
-        url: "/RoomBooking/RoomBooking",
-        method: "GET",
-        data: {
-            date: d,
-            action: "cancel"
-        },
-        success: function (data) {
-            location.reload();
-        },
-        error: function () {
-            U.messageBox("ERROR", "ERROR to process call api!!");
-            U.hideProcess();
-        }
-    });
+function callCencalBooking(d, slot, roomId) {
+    U.boxConfirm("Message Box", "Are you sure to cencel this room", function () {
+        $.ajax({
+            url: "/RoomBooking/RoomBooking",
+            method: "GET",
+            data: {
+                date: d,
+                action: "cancel",
+                slot: slot,
+                roomId: roomId
+            },
+            success: function (data) {
+                location.reload();
+            },
+            error: function () {
+                U.messageBox("ERROR", "ERROR to process call api!!");
+                U.hideProcess();
+            }
+        });
+    })
 }

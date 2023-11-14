@@ -122,16 +122,16 @@ public class BookingDAO extends Connect {
         return false;
     }
     
-    public boolean updateAction(String dateCancel,String DateBoooking, int idUser ) {
+    public boolean updateAction(String dateCancel,String DateBoooking, int idUser, int idBooking ) {
         try {
             String sql = """
                          UPDATE [dbo].[BookingHistoryAction]
                               SET [CancelationDate] = ?
-                            WHERE BookingDate = ? AND UserID = ?""";
+                            WHERE ID = ? AND UserID = ?""";
             PreparedStatement stmt = getConnection().prepareStatement(sql);
             
             stmt.setString(1, dateCancel);
-            stmt.setString(2, DateBoooking);
+            stmt.setInt(2, idBooking);
             stmt.setInt(3, idUser);
 
             int rowsAffected = stmt.executeUpdate();

@@ -10,6 +10,52 @@ import model.User;
 
 public class UserDAO extends BaseDataAsset<User> {
 
+    public int getLastId(){
+        String sql = """
+                     select top 1 UserID 
+                     from Users
+                     order by UserID desc
+                     """;
+        try {
+            PreparedStatement stm = getConnection().prepareCall(sql);
+            ResultSet resultSet = stm.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt("UserID");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
+    public User isExisted(User user) {
+        User newUser = null;
+        String sql = """
+                     select * 
+                     from Users
+                     where Email = ?
+                     """;
+        try {
+            PreparedStatement stm = getConnection().prepareCall(sql);
+            stm.setString(1, user.getEmail());
+            ResultSet resultSet = stm.executeQuery();
+            if (resultSet.next()) {
+                newUser = new User(
+                        resultSet.getInt("UserID"),
+                        resultSet.getString("Name"),
+                        resultSet.getString("Email"),
+                        resultSet.getInt("RoleID"),
+                        resultSet.getString("IDStudent"),
+                        resultSet.getString("Image")
+                );
+                return newUser;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public User InsertUser(User user) throws ClassNotFoundException {
         User userCheck = null;
         try {
@@ -50,7 +96,28 @@ public class UserDAO extends BaseDataAsset<User> {
 
     @Override
     public void create(User data) throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = """
+                     INSERT INTO [dbo].[Users]
+                                ([Name]
+                                ,[Email]
+                                ,[RoleID]
+                                ,[IDStudent]
+                                ,[Image])
+                          VALUES
+                                (?,?,?,?,?)
+                     """;
+        try {
+            PreparedStatement stm = getConnection().prepareCall(sql);
+            stm.setString(1, data.getName());
+            stm.setString(2, data.getEmail());
+            stm.setInt(3, data.getRoleid());
+            stm.setString(4, data.getIdStudent());
+            stm.setString(5, data.getImage());
+            stm.executeUpdate();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

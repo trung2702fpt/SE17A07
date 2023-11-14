@@ -60,8 +60,7 @@
                             <p>Title</p>
                             <input type="text" id="title" class="report_input_title" name="title">
                             <p>Message</p>
-                            <textarea id="report" rows="3" cols="60" name="message">
-                            </textarea>
+                            <textarea id="report" rows="3" cols="60" name="message"></textarea>
                             <c:if test="${sessionScope.ACCOUNT_USER != null}">
                                 <button class="btn-sendfeedback" onclick="SendReport()" type="button">Send Feedback</button>
                             </c:if>

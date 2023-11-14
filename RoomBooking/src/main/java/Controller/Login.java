@@ -38,7 +38,12 @@ public class Login extends HttpServlet {
                     String idStudent = matcherSplit(emailUser.split("@")[0], "([a-z]{2})([0-9]{6})");
                     String nameUser = emailUser.split("@")[0].replace(idStudent, "");
                     User user = new User(nameUser, emailUser, 1, idStudent, picture);
-                    User userLogin = uDao.InsertUser(user);
+                    User userLogin = uDao.isExisted(user);
+                    if(userLogin == null){
+                        uDao.create(user);
+                        int lastUserId = uDao.getLastId();
+                        userLogin = uDao.read(lastUserId);
+                    }
                     session.setAttribute("ACCOUNT_USER", userLogin);
                     session.setAttribute("user", user);
                     url = "home.jsp";

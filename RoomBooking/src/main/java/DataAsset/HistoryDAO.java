@@ -1,12 +1,10 @@
 package DataAsset;
 
-import Utils.Connect;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.EnumSlot;
 import model.History;
 
 public class HistoryDAO extends BaseDataAsset<History> {
@@ -15,23 +13,24 @@ public class HistoryDAO extends BaseDataAsset<History> {
         List<History> historys = new ArrayList<>();
         try {
             String sqlQuery = """
-                             SELECT DISTINCT
-                             	H.RoomID,
-                             	H.BookingDate,
-                             	H.CancelationDate,
-                             	CASE
-                             		WHEN GETDATE() > H.BookingDate THEN 1
-                             	ELSE 0
-                             	END AS isUsed,
-                             	CASE
-                             		WHEN H.CancelationDate IS NOT NULL THEN 1
-                             	ELSE 0
-                             	END AS isCanceled
-                             FROM
-                             	Bookings B, BookingHistoryAction H
-                             WHERE
-                             	H.UserID = ? AND H.RoomID = B.RoomID
-                             ORDER BY BookingDate DESC""";
+                        SELECT DISTINCT
+                        b.SlotID,
+                                                     	H.RoomID,
+                                                     	H.BookingDate,
+                                                     	H.CancelationDate,
+                                                     	CASE
+                                                     		WHEN GETDATE() > H.BookingDate THEN 1
+                                                     	ELSE 0
+                                                     	END AS isUsed,
+                                                     	CASE
+                                                     		WHEN H.CancelationDate IS NOT NULL THEN 1
+                                                     	ELSE 0
+                                                     	END AS isCanceled
+                                                     FROM
+                                                     	BookingHistoryAction H, Bookings B
+                                                     WHERE
+                                                     	H.UserID = ? 
+                                                     ORDER BY BookingDate DESC""";
             PreparedStatement st = getConnection().prepareStatement(sqlQuery);
             st.setInt(1, id);
             try ( ResultSet resultSet = st.executeQuery()) {
@@ -43,6 +42,7 @@ public class HistoryDAO extends BaseDataAsset<History> {
                     );
                     booking.setIsCancel(resultSet.getInt("isCanceled") == 1);
                     booking.setIsUsed(resultSet.getInt("isUsed") == 1);
+                    booking.setSlotID(resultSet.getInt("SlotID"));
                     historys.add(booking);
                 }
             }

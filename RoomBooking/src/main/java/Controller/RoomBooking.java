@@ -49,14 +49,17 @@ public class RoomBooking extends HttpServlet {
                     RoomDAO dAO = new RoomDAO();
                     BookingDAO bdao = new BookingDAO();
                     String dateSearch = request.getParameter("date");
+                    int slotCa = Integer.parseInt(request.getParameter("slot"));
+                    int roomId = Integer.parseInt(request.getParameter("roomId"));
                     int idUser = user.getId();
+                    
                     Calendar cld = Calendar.getInstance(TimeZone.getTimeZone("Etc/GMT+7"));
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                     String dateCancel = formatter.format(cld.getTime());
                     
-                    int idbooking = dAO.getIdByDate(dateSearch);
+                    int idbooking = dAO.getIdByDate(dateSearch, slotCa, idUser, roomId);
                     if (bdao.cancelBooking(idbooking)) {
-                        bdao.updateAction(dateCancel, dateSearch, idUser);
+                        bdao.updateAction(dateCancel, dateSearch, idUser ,idbooking);
                     }
                     break;
             }

@@ -50,7 +50,7 @@ public class GetHistory extends HttpServlet {
                     if (history.isIsUsed()) {
                         cancel = " <td> Time was over </td>";
                     } else {
-                        cancel = " <td> <a href='#' onclick='callCencalBooking(\""+history.getBookingDate()+"\")' class='btn btn-dark my-auto text-light nav-link'>Cancel</a> </td>";
+                        cancel = " <td> <a href='#' onclick='callCencalBooking(\""+history.getBookingDate()+"\",\""+history.getSlotID()+"\", \""+history.getRoomID()+"\")' class='btn btn-dark my-auto text-light nav-link'>Cancel</a> </td>";
                     }
                 }
             }

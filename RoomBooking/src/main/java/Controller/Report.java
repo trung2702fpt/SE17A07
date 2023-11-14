@@ -6,7 +6,10 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -50,7 +53,10 @@ public class Report extends HttpServlet {
                     User user = (User) request.getSession().getAttribute("ACCOUNT_USER");
                     String title = request.getParameter("title");
                     String content = request.getParameter("content");
-                    String time = request.getParameter("time");
+
+                    Calendar cld = Calendar.getInstance(TimeZone.getTimeZone("Etc/GMT+7"));
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                    String time = formatter.format(cld.getTime());
 
                     ReportDAO Rdao = new ReportDAO();
                     model.Report sendReport = new model.Report(user.getId(), time, title, content, false);
@@ -73,13 +79,17 @@ public class Report extends HttpServlet {
         if (type.equals("user")) {
             for (model.Report report : reports) {
                 if (report.getUserID() == user.getId()) {
+                    String re = " <td>NONE</td>\n";
+                    if(report.getReply() != null){
+                        re = " <td> <a href='#' onclick='U.messageBox(\"Message\", \""+report.getReply()+"\");' class='btn btn-dark my-auto text-light nav-link'>View</a> </td>";
+                    }
                     out.println("<tr class=\"candidates-list\">\n"
                             + " <td>" + report.getReportID() + "</td>\n"
                             + " <td>" + report.getTitle() + " </td>\n"
                             + " <td>" + report.getContent() + "</td>\n"
                             + " <td>" + report.getTime() + "</td>\n"
-                            + " <td>" + report.getReply() + "</td>\n"
-                            + "</tr>");
+                            + re
+                            +"</tr>");
                 }
             }
         } else {

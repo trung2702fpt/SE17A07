@@ -79,19 +79,18 @@ public class ReportDAO extends BaseDataAsset<Report> {
     @Override
     public void create(Report data) throws SQLException, ClassNotFoundException {
         try {
-            String sql = "INSERT INTO [FPTBooking].[dbo].[Report] ([ReportID], [UserID], [Time], [Title], [Content], [Status]) "
+            String sql = "INSERT INTO [FPTBooking].[dbo].[Report] "
+                    + "([ReportID], [UserID], [Time], [Title], [Content], [Status]) "
                     + "VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = getConnection().prepareStatement(sql);
             int id = GetLastId();
             if (id == 0) {
                 throw new Exception();
             }
-            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss");
-            Date date = sdf.parse(data.getTime());
-            Timestamp timestamp = new Timestamp(date.getTime());
+           
             stmt.setInt(1, id + 1);
             stmt.setInt(2, data.getUserID());
-            stmt.setTimestamp(3, timestamp);
+            stmt.setString(3, data.getTime());
             stmt.setString(4, data.getTitle());
             stmt.setString(5, data.getContent());
             stmt.setBoolean(6, data.getStatus());
