@@ -56,6 +56,24 @@ public class UserDAO extends BaseDataAsset<User> {
         return null;
     }
 
+    public int getCountUser() throws ClassNotFoundException{
+        int count = 0;
+        try {
+            String sql = """
+                     Select COUNT(UserID) as countUser
+                     FROM Users
+                     """;
+            PreparedStatement stm = getConnection().prepareCall(sql);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                count = rs.getInt("countUser");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+    
     public User InsertUser(User user) throws ClassNotFoundException {
         User userCheck = null;
         try {

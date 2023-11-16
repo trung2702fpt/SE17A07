@@ -1,3 +1,8 @@
+<%
+    if(request.getAttribute("getStatics") == null){
+        request.getRequestDispatcher("getStatics").forward(request, response);
+    }
+%>
 <div class="row">
     <div class="col-xl-4 col-md-4 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
@@ -6,7 +11,8 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Booked (Daily)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
+                        
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">${sessionScope.bookedDaily}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -24,7 +30,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Used (Daily)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">${sessionScope.roomUsed}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -42,7 +48,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Feedback (Daily)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">${sessionScope.feadBackInDay}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -61,7 +67,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Booked (Year)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">${sessionScope.countbookedYear}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -78,8 +84,8 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Used (Year)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
+                            User</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">${sessionScope.countUser}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -99,12 +105,12 @@
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${sessionScope.persentCancel}%</div>
                             </div>
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
                                     <div class="progress-bar bg-danger" role="progressbar"
-                                         style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                         style="width: ${sessionScope.persentCancel}%" aria-valuenow="${sessionScope.persentCancel}" aria-valuemin="0"
                                          aria-valuemax="100"></div>
                                 </div>
                             </div>
@@ -126,7 +132,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Feedback (year)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">${sessionScope.feadBackInYear}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>

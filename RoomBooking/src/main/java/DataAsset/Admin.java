@@ -18,7 +18,7 @@ public class Admin extends Connect {
             st.setString(1, email);
             st.setString(2, id);
 
-            try (ResultSet resultSet = st.executeQuery()) {
+            try ( ResultSet resultSet = st.executeQuery()) {
                 if (resultSet.next()) {
                     canLogin = true;
                 }
@@ -64,7 +64,7 @@ public class Admin extends Connect {
             st.setInt(3, year);
             st.setInt(4, year);
             st.setInt(5, year);
-            try (ResultSet resultSet = st.executeQuery()) {
+            try ( ResultSet resultSet = st.executeQuery()) {
                 while (resultSet.next()) {
                     list.add(new StaticBooking(resultSet.getInt("rooms_booked"), resultSet.getInt("rooms_cancelled")));
                 }
@@ -73,5 +73,122 @@ public class Admin extends Connect {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public int getBookedDailyCount(String date) {
+        int bookedDaily = 0;
+        String sql = "SELECT COUNT(ID) AS BookedDaily\n"
+                + "FROM BookingHistoryAction\n"
+                + "WHERE BookingDate > ?";
+        try {
+            PreparedStatement st = getConnection().prepareStatement(sql);
+            st.setString(1, date);
+            ResultSet resultSet = st.executeQuery();
+
+            if (resultSet.next()) {
+                bookedDaily = resultSet.getInt("BookedDaily");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return bookedDaily;
+    }
+
+    public int getBookedYearCount() {
+        int bookedYear = 0;
+        String sql = "SELECT COUNT(ID) AS BookedYear\n"
+                + "	FROM BookingHistoryAction";
+        try {
+            PreparedStatement st = getConnection().prepareStatement(sql);
+            ResultSet resultSet = st.executeQuery();
+
+            if (resultSet.next()) {
+                bookedYear = resultSet.getInt("BookedYear");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return bookedYear;
+    }
+
+    public int getpPersenCancel() {
+        int booked = 0;
+        int cancel = 0;
+        int result = 0;
+        String sql = "SELECT COUNT(ID) AS Booked,\n"
+                + "	(SELECT COUNT(ID)\n"
+                + "	FROM BookingHistoryAction\n"
+                + "	WHERE CancelationDate is NOT NULL\n"
+                + "	) as cancel\n"
+                + "	FROM BookingHistoryAction";
+        try {
+            PreparedStatement st = getConnection().prepareStatement(sql);
+            ResultSet resultSet = st.executeQuery();
+
+            if (resultSet.next()) {
+                booked = resultSet.getInt("Booked");
+                cancel = resultSet.getInt("cancel");
+                result = (cancel / booked) * 100;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return booked;
+    }
+
+    public int getFeedbackInDay(String date) {
+        int count = 0;
+        String sql = "SELECT COUNT(ReportID) AS countReport\n"
+                + "	FROM Report\n"
+                + "	WHERE Time > ?";
+        try {
+            PreparedStatement st = getConnection().prepareStatement(sql);
+            st.setString(1, date);
+            ResultSet resultSet = st.executeQuery();
+
+            if (resultSet.next()) {
+                count = resultSet.getInt("countReport");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return count;
+    }
+
+    public int getFeedbackInYear() {
+        int count = 0;
+        String sql = "SELECT COUNT(ReportID) AS countReport\n"
+                + "	FROM Report\n";
+        try {
+            PreparedStatement st = getConnection().prepareStatement(sql);
+            ResultSet resultSet = st.executeQuery();
+
+            if (resultSet.next()) {
+                count = resultSet.getInt("countReport");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return count;
+    }
+
+    public int getBookedUsed(String date, String currentTime) {
+        int bookedUsedInDay = 0;
+        String sql = "SELECT COUNT(ID) AS bookedUsedInDay\n"
+                + "FROM BookingHistoryAction\n"
+                + "WHERE BookingDate > ? AND BookingDate < ?";
+        try {
+            PreparedStatement st = getConnection().prepareStatement(sql);
+            st.setString(1, date);
+            st.setString(2, currentTime);
+            ResultSet resultSet = st.executeQuery();
+
+            if (resultSet.next()) {
+                bookedUsedInDay = resultSet.getInt("bookedUsedInDay");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return bookedUsedInDay;
     }
 }

@@ -85,6 +85,9 @@
                 <!-- Content end -->
             </div>
         </div>
+        <div id="messageBox"></div>
+        <div id="confirmBox"></div>
+        <div id="loadingScreen"></div>
         <%@include file="viewerComponent/js_link.jsp" %>
         <script type="text/javascript">
         </script>

@@ -47,10 +47,10 @@ function Update() {
         },
         success: function (data) {
             if(data == "fail"){
-                U.messageBox("ERROR", "fail to update");
+                U.messageBox("ERROR", "Fail to update");
                 return;
             }else{
-                U.messageBox("Message Box", "update success");
+                U.messageBox("Message Box", "Update success");
             }
             
         },

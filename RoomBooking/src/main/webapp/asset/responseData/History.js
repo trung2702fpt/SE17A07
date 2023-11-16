@@ -1,19 +1,8 @@
 
 $(document).ready(function () {
-    U.showProcess();
+    
     SetDataTable();
-    $.ajax({
-        url: "/RoomBooking/GetHistory",
-        method: "GET",
-        success: function (data) {
-            $("#historyTableBody").html(data);
-            U.hideProcess();
-        },
-        error: function () {
-            U.messageBox("ERROR", "ERROR to process call api!!");
-            U.hideProcess();
-        }
-    });
+    getHistory();
 
     $.ajax({
         url: "/RoomBooking/Report",
@@ -32,6 +21,22 @@ $(document).ready(function () {
         }
     });
 });
+
+function getHistory(){
+    $("#historyTableBody").empty();
+    $.ajax({
+        url: "/RoomBooking/GetHistory",
+        method: "GET",
+        success: function (data) {
+            $("#historyTableBody").html(data);
+            U.hideProcess();
+        },
+        error: function () {
+            U.messageBox("ERROR", "ERROR to process call api!!");
+            U.hideProcess();
+        }
+    });
+}
 
 function SetDataTable() {
     $('#tableListHistory').DataTable({
@@ -67,7 +72,8 @@ function callCencalBooking(d, slot, roomId) {
                 roomId: roomId
             },
             success: function (data) {
-                location.reload();
+                console.log(123);
+                getHistory();
             },
             error: function () {
                 U.messageBox("ERROR", "ERROR to process call api!!");
