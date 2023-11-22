@@ -1,6 +1,7 @@
 package Controller;
 
 import DataAsset.ReportDAO;
+import Utils.StringExtention;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Comment;
 import model.User;
 
 public class Report extends HttpServlet {
@@ -37,30 +39,44 @@ public class Report extends HttpServlet {
                     break;
                 case "edit":
                     idReport = Integer.parseInt(request.getParameter("idReport"));
-                    String emailUser = request.getParameter("emailUser");
                     String repContent = request.getParameter("repContent");
-                    model.Report newReport = new model.Report(idReport, true, repContent, emailUser);
-                    boolean isSuccess = reDao.update(idReport, newReport);
+                    Comment commentReply = null;
+                    if(request.getParameter("user")== null){
+                        commentReply = new Comment(true, repContent, StringExtention.GetCurrentDate());
+                        reDao.reply(idReport, false);
+                    }else{
+                        commentReply = new Comment(false, repContent, StringExtention.GetCurrentDate());
+                        reDao.reply(idReport, true);
+                    }
+                    
+                    boolean isSuccess = reDao.createComment(commentReply, idReport);
                     if (!isSuccess) {
                         objectJSON = objectMapper.writeValueAsString("fail");
+                        response.getWriter().write(objectJSON);
+                        break;
                     }
                     response.getWriter().write(objectJSON);
                     break;
                 case "getList":
                     getList(request, response, reDao);
                     break;
-                case "sendReport":
+                case "createReport":
                     User user = (User) request.getSession().getAttribute("ACCOUNT_USER");
                     String title = request.getParameter("title");
                     String content = request.getParameter("content");
 
-                    Calendar cld = Calendar.getInstance(TimeZone.getTimeZone("Etc/GMT+7"));
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                    String time = formatter.format(cld.getTime());
-
+                    String time = StringExtention.GetCurrentDate();
+                    Comment newComment = new Comment(false, content, time);
                     ReportDAO Rdao = new ReportDAO();
-                    model.Report sendReport = new model.Report(user.getId(), time, title, content, false);
+                    model.Report sendReport = new model.Report(user.getId(), time, title, true);
                     Rdao.create(sendReport);
+                    Rdao.createComment(newComment, 0);
+                    break;
+                case "getComment":
+                    idReport = Integer.parseInt(request.getParameter("idReport"));
+                    List<Comment> comments = reDao.getComments(idReport);
+                    objectJSON = objectMapper.writeValueAsString(comments);
+                    response.getWriter().write(objectJSON);
                     break;
             }
         } catch (Exception e) {
@@ -80,22 +96,21 @@ public class Report extends HttpServlet {
             for (model.Report report : reports) {
                 if (report.getUserID() == user.getId()) {
                     String re = " <td>NONE</td>\n";
-                    if(report.getReply() != null){
-                        re = " <td> <a href='#' onclick='U.messageBox(\"Message\", \""+report.getReply()+"\");' class='btn btn-dark my-auto text-light nav-link'>View</a> </td>";
-                    }
+                    String show = report.isIsReaded() ? "none" : "block";
+                    
                     out.println("<tr class=\"candidates-list\">\n"
                             + " <td>" + report.getReportID() + "</td>\n"
-                            + " <td>" + report.getTitle() + " </td>\n"
-                            + " <td>" + report.getContent() + "</td>\n"
+                            + " <td id='report_"+report.getReportID()+"'>" + report.getTitle() + " </td>\n"
                             + " <td>" + report.getTime() + "</td>\n"
-                            + re
+                            + "<td> <a href=\"#\" onclick=\"viewChat("+report.getReportID()+")\" class=\"btn btn-dark my-auto text-light nav-link position-relative\">View\n" +
+                                "<span class=\"badge badge-danger badge-pill position-absolute\" style=\"top: 0; right: 0; display: "+show+";\" id=\"notification-dot\">!</span></a> </td>"
                             +"</tr>");
                 }
             }
         } else {
             for (model.Report report : reports) {
                 String status = " <td class='text-success'> Answered </td>\n";
-                if (!report.getStatus()) {
+                if (report.isIsNewComment()) {
                     status = " <td class='text-danger'> Not Yet </td>\n";
                 }
                 out.println("<tr class=\"candidates-list\" onclick='searchReport(" + report.getReportID() + ")'>\n"
@@ -107,7 +122,7 @@ public class Report extends HttpServlet {
             }
         }
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

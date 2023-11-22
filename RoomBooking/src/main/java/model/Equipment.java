@@ -1,13 +1,23 @@
 package model;
 
 public class Equipment {
+
     public int id;
     public String name;
     public String des;
     public double price;
     public typeEquipment type;
+    public int quanlity;
 
     public Equipment() {
+    }
+
+    public Equipment(String name, String des, double price, typeEquipment type, int quanlity) {
+        this.name = name;
+        this.des = des;
+        this.price = price;
+        this.type = type;
+        this.quanlity = quanlity;
     }
 
     public Equipment(int id, String name, String des, double price, typeEquipment type) {
@@ -16,6 +26,14 @@ public class Equipment {
         this.des = des;
         this.price = price;
         this.type = type;
+    }
+
+    public int getQuanlity() {
+        return quanlity;
+    }
+
+    public void setQuanlity(int quanlity) {
+        this.quanlity = quanlity;
     }
 
     public int getId() {
@@ -56,5 +74,5 @@ public class Equipment {
 
     public void setType(typeEquipment type) {
         this.type = type;
-    }    
+    }
 }

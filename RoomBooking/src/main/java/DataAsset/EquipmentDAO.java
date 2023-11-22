@@ -120,4 +120,36 @@ public class EquipmentDAO extends BaseDataAsset<Equipment> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public List<Equipment> getListEquipmentByBookingId(int id){
+        equipments.clear();
+        try {
+            String sqlQuery = """
+                                  SELECT E.EquipmentName, E.Description, E.Price, E.TypeID, EB.Quantity, T.Name
+                                  FROM Equipment E
+                                  JOIN EquipmentBookings EB ON EB.EquipmentID = E.EquipmentID
+                                  JOIN TypeEquipment T ON T.TypeID = E.TypeID
+                                  WHERE EB.BookingID = ?
+                              """;
+            PreparedStatement st = getConnection().prepareStatement(sqlQuery);
+            st.setInt(1, id);
+            ResultSet resultSet = st.executeQuery();
+
+            while (resultSet.next()) {
+                typeEquipment type = new typeEquipment(resultSet.getInt("TypeID"), resultSet.getString("Name"));
+                Equipment eq = new Equipment(
+                        resultSet.getString("EquipmentName"),
+                        resultSet.getString("Description"),
+                        resultSet.getDouble("Price"),
+                        type,
+                        resultSet.getInt("Quantity"));
+                equipments.add(eq);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return equipments;
+    }
 }

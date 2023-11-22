@@ -49,7 +49,7 @@ public class RoomDAO extends BaseDataAsset<Room> {
                            WHERE r.RoomId NOT IN (
                                SELECT b.RoomId
                                FROM Bookings b
-                               WHERE b.BookingDate = ? AND b.SlotID = ? 
+                               WHERE b.BookingDate = ? AND b.SlotID = ? AND IsCancel = 0 
                            );""";
         try {
             PreparedStatement st = getConnection().prepareStatement(searchSql);

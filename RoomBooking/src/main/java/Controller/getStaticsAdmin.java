@@ -6,6 +6,7 @@ package Controller;
 
 import DataAsset.Admin;
 import DataAsset.UserDAO;
+import Utils.StringExtention;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -29,10 +30,9 @@ public class getStaticsAdmin extends HttpServlet {
             HttpSession session = request.getSession();
             Calendar cld = Calendar.getInstance(TimeZone.getTimeZone("Etc/GMT+7"));
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-            SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             String date = formatter.format(cld.getTime());
             date += " 00:00:00";
-            String currentTime = formatter2.format(cld.getTime());
+            String currentTime = StringExtention.GetCurrentDate();
             getStatic = ad.getBookedDailyCount(date);
             session.setAttribute("bookedDaily", getStatic);
             session.setAttribute("countUser", dAO.getCountUser());

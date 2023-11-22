@@ -8,7 +8,7 @@ function SendReport(){
         data:{
             title: title,
             content: content,
-            action: "sendReport"
+            action: "createReport"
         },
         success: function (data) {
             if (data == "fail") {

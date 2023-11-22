@@ -1,6 +1,7 @@
 package Controller;
 
 import DataAsset.EquipmentDAO;
+import Utils.StringExtention;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
@@ -97,7 +98,7 @@ public class ajaxPayment extends HttpServlet {
             cld.add(Calendar.MINUTE, 15);
             String vnp_ExpireDate = formatter.format(cld.getTime());
             vnp_Params.put("vnp_ExpireDate", vnp_ExpireDate);
-            requestBooking.setTimePayment(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(cld.getTime()));
+            requestBooking.setTimePayment(StringExtention.GetCurrentDate());
             List fieldNames = new ArrayList(vnp_Params.keySet());
             Collections.sort(fieldNames);
             StringBuilder hashData = new StringBuilder();

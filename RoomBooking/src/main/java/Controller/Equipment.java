@@ -60,7 +60,7 @@ public class Equipment extends HttpServlet {
         List<model.Equipment> equipments = eqDao.getList();
         if (!equipments.isEmpty()) {
             for (model.Equipment equipment : equipments) {
-                if (select.equals("true")) {
+                if (select != null && select.equals("true")) {
                     out.println("<tr class=\"candidates-list\" id="+equipment.id+" onclick='selectEquiment(this)'  style=\"cursor: pointer\">\n"
                             + "                                            <td>" + equipment.id + "</td>\n"
                             + "                                            <td>" + equipment.name + "</td>\n"

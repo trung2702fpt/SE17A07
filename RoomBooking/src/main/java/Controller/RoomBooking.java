@@ -2,6 +2,7 @@ package Controller;
 
 import DataAsset.BookingDAO;
 import DataAsset.RoomDAO;
+import Utils.StringExtention;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -53,14 +54,10 @@ public class RoomBooking extends HttpServlet {
                     int roomId = Integer.parseInt(request.getParameter("roomId"));
                     int idUser = user.getId();
                     
-                    Calendar cld = Calendar.getInstance(TimeZone.getTimeZone("Etc/GMT+7"));
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                    String dateCancel = formatter.format(cld.getTime());
+                    String dateCancel = StringExtention.GetCurrentDate();
                     
                     int idbooking = dAO.getIdByDate(dateSearch, slotCa, idUser, roomId);
-                    if (bdao.cancelBooking(idbooking)) {
-                        bdao.updateAction(dateCancel, dateSearch, idUser ,idbooking);
-                    }
+                    bdao.updateAction(dateCancel, dateSearch, idUser ,idbooking);
                     break;
             }
         } catch (Exception e) {

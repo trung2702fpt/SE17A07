@@ -24,7 +24,8 @@ public class addNewBooking extends HttpServlet {
                 return;
             }
             if (booking != null) {
-                if(bdao.insertRoomBooking(booking)){
+                boolean isInserted = bdao.insertRoomBooking(booking);
+                if(isInserted){
                     List<model.Equipment> equipments = booking.getEquipments();
                     if(equipments.size() > 0){
                         for (model.Equipment equipment : equipments) {

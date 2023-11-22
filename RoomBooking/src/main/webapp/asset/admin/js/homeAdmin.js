@@ -94,7 +94,8 @@ var toolTipChart = {backgroundColor: "rgb(255,255,255)",
     displayColors: false,
     intersect: false,
     mode: 'index',
-    caretPadding: 10, }
+    caretPadding: 10, 
+}
 
 function setChartBookingAndCanel(data) {
     var booked = new Array();

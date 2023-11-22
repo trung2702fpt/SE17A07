@@ -1,9 +1,12 @@
 package Controller;
 
+import DataAsset.BookingDAO;
 import DataAsset.HistoryDAO;
+import Utils.StringExtention;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +26,10 @@ public class GetHistory extends HttpServlet {
         PrintWriter out = response.getWriter();
         HistoryDAO historyDAO = new HistoryDAO();
         HttpSession session = request.getSession();
+        
         User user = (User) session.getAttribute("ACCOUNT_USER");
+        BookingDAO bdao = new BookingDAO();
+        
         List<History> histories = historyDAO.GetBookings(user.getId());
         if (user == null) {
             out.println("<tr>"
@@ -41,6 +47,8 @@ public class GetHistory extends HttpServlet {
 
         for (History history : histories) {
             String cancel;
+            String date = StringExtention.ConverDateToString(history.getBookingDate());
+            int idBooking = bdao.getId(date, history.getSlotID(), user.getId(), history.getRoomID());
             if (history.getCancelDate() != null) {
                 cancel = "<td>" + history.getCancelDate() + "</td>";
             } else {
@@ -58,6 +66,7 @@ public class GetHistory extends HttpServlet {
                     + "<td>" + history.getRoomID() + "</td>"
                     + "<td>" + history.getBookingDate().toString() + "</td>"
                     + cancel
+                    + "<td> <a href='viewDetailBooking.jsp?IdBooking="+idBooking+"' class='btn btn-dark my-auto text-light nav-link'>Detail</a> </td>"
                     + "</tr>");
         }
     }

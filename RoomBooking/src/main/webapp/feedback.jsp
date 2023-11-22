@@ -38,16 +38,24 @@
                                     <input type="text" class="form-control" id="userEmail" readonly>
                                 </div>
                             </div>
-                            <div class="form-group container">
-                                <label for="priceRoom">Content: </label>
-                                <textarea type="text" class="form-control" rows="10" id="content" value="" readonly></textarea>
-                            </div>
-                            <div class="form-group container">
-                                <label for="priceRoom">Reply:</label>
-                                <textarea type="text" class="form-control" rows="10" id="reply" value=""></textarea>
-                            </div>
+                            <div class="col-md-8 offset-md-2">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Chat Box
+                                    </div>
+                                    <div class="card-body" id="chat-box" style="max-height: 500px; overflow: auto">
 
-                            <button type="button" class="btn btn-success" onclick="RepReport()">Send</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="input-group">
+                                            <input type="text" id="message-input" class="form-control" placeholder="Type a message..." readonly>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

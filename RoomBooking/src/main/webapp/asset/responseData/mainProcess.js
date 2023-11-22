@@ -1,4 +1,8 @@
 var U = {
+    scrollToEdd: function (idElement) {
+        const $chatContainer = $(idElement);
+        $chatContainer.scrollTop($chatContainer.prop('scrollHeight'));
+    },
     showProcess: function () {
         var loadingModal = $('<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog">');
         loadingModal.append('<div class="modal-dialog modal-dialog-centered" role="document">');
@@ -110,4 +114,3 @@ function setActiveNav(tabName) {
         }
     });
 }
-

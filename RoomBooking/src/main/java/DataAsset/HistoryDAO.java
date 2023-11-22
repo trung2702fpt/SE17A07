@@ -13,24 +13,19 @@ public class HistoryDAO extends BaseDataAsset<History> {
         List<History> historys = new ArrayList<>();
         try {
             String sqlQuery = """
-                        SELECT DISTINCT
-                        b.SlotID,
-                                                     	H.RoomID,
-                                                     	H.BookingDate,
-                                                     	H.CancelationDate,
-                                                     	CASE
-                                                     		WHEN GETDATE() > H.BookingDate THEN 1
-                                                     	ELSE 0
-                                                     	END AS isUsed,
-                                                     	CASE
-                                                     		WHEN H.CancelationDate IS NOT NULL THEN 1
-                                                     	ELSE 0
-                                                     	END AS isCanceled
-                                                     FROM
-                                                     	BookingHistoryAction H, Bookings B
-                                                     WHERE
-                                                     	H.UserID = ? 
-                                                     ORDER BY BookingDate DESC""";
+                        SELECT DISTINCT RoomID, BookingDate, CancelationDate, SlotID,
+                            CASE
+                            	WHEN GETDATE() > BookingDate THEN 1
+                            ELSE 0
+                            END AS isUsed,
+                            CASE
+                            	WHEN CancelationDate IS NOT NULL THEN 1
+                            ELSE 0
+                            END AS isCanceled
+                            
+                            FROM BookingHistoryAction
+                            WHERE UserID = ?
+                            ORDER BY BookingDate DESC""";
             PreparedStatement st = getConnection().prepareStatement(sqlQuery);
             st.setInt(1, id);
             try ( ResultSet resultSet = st.executeQuery()) {

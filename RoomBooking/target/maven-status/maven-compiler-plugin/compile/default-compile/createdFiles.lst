@@ -3,6 +3,7 @@ Controller\GetHistory.class
 model\google\GooglePojo.class
 DataAsset\EquipmentDAO.class
 model\EnumSlot.class
+Utils\StringExtention.class
 model\google\GoogleUtils.class
 Controller\logout.class
 DataAsset\BaseDataAsset.class
@@ -13,6 +14,7 @@ Utils\Connect.class
 DataAsset\UserDAO.class
 model\VNpay\ConfigVNPay.class
 DataAsset\Admin.class
+Controller\DetailBooked.class
 model\Report.class
 model\Equipment.class
 model\History.class
@@ -25,6 +27,7 @@ Controller\RoomBooking.class
 model\typeEquipment.class
 model\StaticBooking.class
 Controller\Equipment.class
+model\Booking.class
 Controller\Room.class
 model\Room.class
 model\HistoryCheckout.class
@@ -37,3 +40,5 @@ Controller\StaticAdmin.class
 Controller\addNewBooking.class
 model\google\Constants.class
 Utils\Validate.class
+Controller\getStaticsAdmin.class
+model\Comment.class

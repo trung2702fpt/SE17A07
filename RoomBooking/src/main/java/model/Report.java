@@ -1,114 +1,95 @@
 package model;
 
 public class Report {
-    private int id;
     private int reportID;
     private int userID;
     private String time;
     private String title;
-    private String content;
-    private boolean status;
-    private String reply;
-    private String emailUser;
-        
+    private boolean isReaded;
+    private boolean isNewComment;
+    private String email;
+    
     public Report() {
     }
 
-    public Report(int reportID, int userID, String time, String title, String content, boolean status, String reply, String emailUser) {
+     public Report(int reportID, int userID, String time, String title, String email) {
         this.reportID = reportID;
         this.userID = userID;
         this.time = time;
         this.title = title;
-        this.content = content;
-        this.status = status;
-        this.reply = reply;
-        this.emailUser = emailUser;
+        this.email = email;
     }
     
-    public Report(int reportID, int userID, String time, String title, String content, boolean status, String reply) {
+    public Report(int reportID, int userID, String time, String title, boolean isReaded, boolean isNewComment) {
         this.reportID = reportID;
         this.userID = userID;
         this.time = time;
         this.title = title;
-        this.content = content;
-        this.status = status;
-        this.reply = reply;
+        this.isReaded = isReaded;
+        this.isNewComment = isNewComment;
     }
-    
-    public Report(int reportID, boolean status, String reply, String emailUser) {
-        this.reportID = reportID;
-        this.status = status;
-        this.reply = reply;
-        this.emailUser = emailUser;
-    }
-    
-    public Report(int userID, String time, String title, String content, boolean status) {
+
+    public Report(int userID, String time, String title, boolean isReaded) {
         this.userID = userID;
         this.time = time;
         this.title = title;
-        this.content = content;
-        this.status = status;
-    }
-    
-    public Report(int userID, String time, String title, String content, boolean status, String reply) {
-        this.userID = userID;
-        this.time = time;
-        this.title = title;
-        this.content = content;
-        this.status = status;
-        this.reply = reply;
+        this.isReaded = isReaded;
     }
 
     public int getReportID() {
         return reportID;
     }
 
+    public void setReportID(int reportID) {
+        this.reportID = reportID;
+    }
+
     public int getUserID() {
         return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getTime() {
         return time;
     }
 
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     public String getTitle() {
         return title;
     }
 
-    public String getContent() {
-        return content;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public boolean getStatus() {
-        return status;
+    public boolean isIsReaded() {
+        return isReaded;
     }
 
-    public String getReply() {
-        return reply;
+    public void setIsReaded(boolean isReaded) {
+        this.isReaded = isReaded;
     }
 
-    public int getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isIsNewComment() {
+        return isNewComment;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public String getEmailUser() {
-        return emailUser;
-    }
-
-    public void setEmailUser(String emailUser) {
-        this.emailUser = emailUser;
+    public void setIsNewComment(boolean isNewComment) {
+        this.isNewComment = isNewComment;
     }
     
 }
