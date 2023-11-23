@@ -27,7 +27,7 @@ public class Room extends HttpServlet {
                 case "search":
                     idRoom = Integer.parseInt(request.getParameter("idRoom"));
                     objectJSON = objectMapper.writeValueAsString(roomdao.read(idRoom));
-                    response.getWriter().write(objectJSON);
+                    
                     break;
                 case "edit":
                     idRoom = Integer.parseInt(request.getParameter("idRoom"));
@@ -37,76 +37,27 @@ public class Room extends HttpServlet {
                     if (!isSuccess) {
                         objectJSON = objectMapper.writeValueAsString("fail");
                     }
-                    response.getWriter().write(objectJSON);
+                    
                     break;
                 case "getList":
-                    getList(response, roomdao);
+                    List<model.Room> Listrooms = roomdao.getList();
+                    objectJSON = objectMapper.writeValueAsString(Listrooms);
+                    
                     break;
                 case "filterRoom":
-                    filRooms(request, response, roomdao);
+                    String slotRequest = request.getParameter("slotSelect");
+                    int slotSelected = Integer.parseInt(slotRequest);
+                    String timeSlot = EnumSlot.getTimeSlotInt(slotSelected);
+                    String dateRequest = request.getParameter("dateSelect") + " " + timeSlot;
+                    List<model.Room> rooms = roomdao.searchByDateAndSlOT(slotSelected, dateRequest);
+                    objectJSON = objectMapper.writeValueAsString(rooms);
+                    
                     break;
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-
-    }
-
-    private void filRooms(HttpServletRequest request, HttpServletResponse response, RoomDAO roomdao) throws IOException, ClassNotFoundException, Exception {
-        
-        String slotRequest = request.getParameter("slotSelect");
-        int slotSelected = Integer.parseInt(slotRequest);
-        String timeSlot = EnumSlot.getTimeSlotInt(slotSelected);
-        String dateRequest = request.getParameter("dateSelect") +" "+timeSlot;
-        RoomDAO db = new RoomDAO();
-        try {
-            List<model.Room> rooms = db.searchByDateAndSlOT(slotSelected, dateRequest);
-            PrintWriter out = response.getWriter();
-            int index = 1;
-            for (model.Room o : rooms) {
-                out.println("<tr class=\"candidates-list\">\n"
-                + "                                    <td>" + index++ + "</td>\n"
-                + "                                    <td class=\"title\">\n"
-                + "                                        <div class=\"thumb\">\n"
-                + "                                            <img class=\"img-fluid w-25\" src=\"./asset/images/gallery1.jpg\" alt=\"\">\n"
-                + "                                        </div>\n"
-                + "                                    </td>\n"
-                + "                                    <td>" + o.getRoomNumber() + "</td>\n"
-                + "                                    <td>" + o.getPrice() + "</td>\n"
-                + "                                    <td>\n"
-                + "                                        <a type=\"button\" href='#' onclick='openDialog(" + o.getId() + ","+o.getPrice()+")' class=\"btn btn-primary\" data-toggle=\"modal\"\n"
-                + "            data-target=\".bd-example-modal-lg\">Booking</a>\n"
-                + "                                    </td>\n"
-                + "                                </tr>");
-            };
-        } catch (IOException e) {
-            throw new Exception();
-        }
-    }
-    
-    private void getList(HttpServletResponse response, RoomDAO roomdao) throws IOException, ClassNotFoundException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        List<model.Room> Listrooms = roomdao.getList();
-
-        if (Listrooms.size() <= 0) {
-            out.println("<tr>"
-                    + "<td colspan=\"4\"><h2 class='text-center'>EMPTY ROOM!!</h2></td>"
-                    + "</tr>");
-            return;
-        }
-
-        for (model.Room room : Listrooms) {
-            out.println("<tr class=\"candidates-list\">\n"
-                    + " <td>" + room.id + "</td>\n"
-                    + " <td class=\"title\">\n"
-                    + "      <div class=\"thumb\">\n"
-                    + "           <img class=\"img-fluid w-25\" src=\"./asset/images/gallery1.jpg\" alt=\"\">\n"
-                    + "       </div>\n"
-                    + " </td>\n"
-                    + " <td>" + room.roomNumber + "</td>\n"
-                    + " <td>" + room.price + "</td>\n"
-                    + "</tr>");
+        }finally{
+            response.getWriter().write(objectJSON);
         }
     }
 

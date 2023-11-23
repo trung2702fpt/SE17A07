@@ -3,6 +3,7 @@ package Controller;
 import DataAsset.BookingDAO;
 import DataAsset.HistoryDAO;
 import Utils.StringExtention;
+import Utils.Validate;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -26,17 +27,11 @@ public class GetHistory extends HttpServlet {
         PrintWriter out = response.getWriter();
         HistoryDAO historyDAO = new HistoryDAO();
         HttpSession session = request.getSession();
-        
+
         User user = (User) session.getAttribute("ACCOUNT_USER");
         BookingDAO bdao = new BookingDAO();
-        
+
         List<History> histories = historyDAO.GetBookings(user.getId());
-        if (user == null) {
-            out.println("<tr>"
-                    + "<td colspan=\"4\"><h2 class='text-center'><a class='btn btn-dark my-auto text-light nav-link' href=\"login.jsp\">Login</a></h2></td>"
-                    + "</tr>");
-            return;
-        }
 
         if (histories.isEmpty()) {
             out.println("<tr>"
@@ -55,10 +50,10 @@ public class GetHistory extends HttpServlet {
                 if (history.isIsCancel()) {
                     cancel = " <td class='text-danger'> Canceled </td>";
                 } else {
-                    if (history.isIsUsed()) {
-                        cancel = " <td> Time was over </td>";
+                    if (history.isIsUsed() || Validate.isOverTimeBooking(date)) {
+                        cancel = " <td> Time was over for cancel </td>";
                     } else {
-                        cancel = " <td> <a href='#' onclick='callCencalBooking(\""+history.getBookingDate()+"\",\""+history.getSlotID()+"\", \""+history.getRoomID()+"\")' class='btn btn-dark my-auto text-light nav-link'>Cancel</a> </td>";
+                        cancel = " <td> <a href='#' onclick='callCencalBooking(\"" + history.getBookingDate() + "\",\"" + history.getSlotID() + "\", \"" + history.getRoomID() + "\")' class='btn btn-dark my-auto text-light nav-link'>Cancel</a> </td>";
                     }
                 }
             }
@@ -66,7 +61,7 @@ public class GetHistory extends HttpServlet {
                     + "<td>" + history.getRoomID() + "</td>"
                     + "<td>" + history.getBookingDate().toString() + "</td>"
                     + cancel
-                    + "<td> <a href='viewDetailBooking.jsp?IdBooking="+idBooking+"' class='btn btn-dark my-auto text-light nav-link'>Detail</a> </td>"
+                    + "<td> <a href='viewDetailBooking.jsp?IdBooking=" + idBooking + "' class='btn btn-dark my-auto text-light nav-link'>Detail</a> </td>"
                     + "</tr>");
         }
     }

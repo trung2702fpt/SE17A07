@@ -7,9 +7,9 @@
     </head>
     <body>
         <%
-//            if (session.getAttribute("ACCOUNT_USER") == null) {
-//                response.sendRedirect("home.jsp");
-//            }
+            if (session.getAttribute("ACCOUNT_USER") == null) {
+                response.sendRedirect("home.jsp");
+            }
 %>
         <%@include file="viewerComponent/header.jsp" %> 
 

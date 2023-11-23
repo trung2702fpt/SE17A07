@@ -2,16 +2,33 @@ $(document).ready(function () {
     $.ajax({
         url: "/RoomBooking/Equipment",
         method: "GET",
-        data: {
-            admin: "admin",
-            action: "getList",
-            select: "true"
-        },
+        dataType: 'JSON',
         beforeSend: function (xhr) {
             U.showProcess();
         },
+        data:{
+            action: "getList",
+        },
         success: function (data) {
-            $("#bodyTableEquipments").html(data);
+            console.log(data);
+            var html = "";
+            if(data.length <=0){
+                html = "<tr><td colspan=\"6\"><h2 class='text-center'>EMPTY EQUIPMETN!!</h2></td></tr>";
+                $("#bodyTableEquipments").html(html);
+                U.hideProcess();
+                return;
+            }
+            data.forEach((equipment)=>{
+                html += `<tr class="candidates-list" id="${equipment.id}" onclick='selectEquiment(this)'  style="cursor: pointer">
+                            <td>${equipment.id}</td>
+                            <td>${equipment.name}</td>
+                            <td>${equipment.des}</td>
+                            <td>${equipment.price}</td>
+                            <td>${equipment.type.name}</td>
+                        </tr>`;
+            })
+            
+            $("#bodyTableEquipments").html(html);
             SetDataTable();
             U.hideProcess();
         },

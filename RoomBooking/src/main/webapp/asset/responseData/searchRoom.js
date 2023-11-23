@@ -47,6 +47,14 @@ function setSlotByDate() {
 
         if (time < 15) {
             addOption("Slot 5 (3-5 PM)", 5);
+        }
+
+        if (time < 17) {
+            addOption("Slot 6 (5-7 PM)", 4);
+        }
+
+        if (time < 19) {
+            addOption("Slot 7 (7-9 PM)", 5);
         } else {
             addOption("It overtime to order room", '');
         }
@@ -57,6 +65,8 @@ function setSlotByDate() {
         addOption("Slot 3 (11 AM - 1 PM)", 3);
         addOption("Slot 4 (1-3 PM)", 4);
         addOption("Slot 5 (3-5 PM)", 5);
+        addOption("Slot 6 (5-7 PM)", 6);
+        addOption("Slot 7 (7-9 PM)", 7);
     }
 }
 
@@ -84,13 +94,38 @@ function searchByName() {
     $.ajax({
         url: "/RoomBooking/Room",
         type: "get",
+        dataType: 'JSON',
         data: {
             dateSelect: dateSelect.val(),
             slotSelect: slotSelect.val(),
             action: "filterRoom",
         },
-        success: function (rop) {
-            $("#contentSearchroom").html(rop);
+        success: function (data) {
+            console.log(data);
+            var html = '';
+            if(data.length <= 0){
+                html = "<tr><td colspan='4'><h2 class='text-center'>EMPTY ROOM!!</h2></td></tr>";
+                $("#bodyTableRoom").html(html);
+                U.hideProcess();
+                return;
+            }
+            
+            data.forEach((room, index)=>{
+                html += `<tr class="candidates-list">
+                            <td>${index}</td>
+                            <td class="title">
+                                <div class="thumb">
+                                    <img class="img-fluid w-25" src="./asset/images/gallery1.jpg" alt="">
+                                </div>
+                            </td>
+                            <td>${room.roomNumber}</td>
+                            <td>${room.price}</td>
+                            <td>
+                                <a type="button" href='#' onclick='openDialog(${room.id},()${room.price})' class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Booking</a>
+                            </td>
+                        </tr>`;
+            });
+            $("#contentSearchroom").html(html);
             U.hideProcess();
         },
         error: function (e) {
@@ -136,7 +171,7 @@ function booking() {
     });
 }
 
-function openDialog(idRoom , price) {
+function openDialog(idRoom, price) {
     var idSlot = $("#slotSelect").val();
     var date = $("#dateSelect").val();
     $('#contentPopupBooking').html(`<form action="RoomBooking" id="formBooking" methos="POST">
@@ -159,7 +194,7 @@ function openDialog(idRoom , price) {
 
 function submitForm() {
     var formBooking = $('#formBooking');
-    
+
     if (!formBooking) {
         return;
     }

@@ -1,4 +1,6 @@
 package Utils;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,4 +11,14 @@ public class Validate {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+     
+     public static boolean isOverTimeBooking(String dateString){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime dateTime = LocalDateTime.parse(dateString, formatter);
+        LocalDateTime now = LocalDateTime.now();
+        if (dateTime.isAfter(now)) {
+            return true;
+        }
+        return false;
+     }
 }

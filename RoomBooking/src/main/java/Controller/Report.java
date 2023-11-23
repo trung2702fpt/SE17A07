@@ -35,7 +35,6 @@ public class Report extends HttpServlet {
                 case "search":
                     idReport = Integer.parseInt(request.getParameter("idReport"));
                     objectJSON = objectMapper.writeValueAsString(reDao.read(idReport));
-                    response.getWriter().write(objectJSON);
                     break;
                 case "edit":
                     idReport = Integer.parseInt(request.getParameter("idReport"));
@@ -52,13 +51,14 @@ public class Report extends HttpServlet {
                     boolean isSuccess = reDao.createComment(commentReply, idReport);
                     if (!isSuccess) {
                         objectJSON = objectMapper.writeValueAsString("fail");
-                        response.getWriter().write(objectJSON);
                         break;
                     }
-                    response.getWriter().write(objectJSON);
+                    
                     break;
                 case "getList":
-                    getList(request, response, reDao);
+                    List<model.Report> reports = reDao.getList();
+                    objectJSON = objectMapper.writeValueAsString(reports);
+                    
                     break;
                 case "createReport":
                     User user = (User) request.getSession().getAttribute("ACCOUNT_USER");
@@ -76,51 +76,16 @@ public class Report extends HttpServlet {
                     idReport = Integer.parseInt(request.getParameter("idReport"));
                     List<Comment> comments = reDao.getComments(idReport);
                     objectJSON = objectMapper.writeValueAsString(comments);
-                    response.getWriter().write(objectJSON);
+                    
                     break;
             }
         } catch (Exception e) {
             objectJSON = objectMapper.writeValueAsString("fail");
-            response.getWriter().write(objectJSON);
             e.printStackTrace();
+        }finally{
+            response.getWriter().write(objectJSON);
         }
 
-    }
-
-    private void getList(HttpServletRequest request, HttpServletResponse response, ReportDAO reDao) throws IOException, SQLException, ClassNotFoundException {
-        PrintWriter out = response.getWriter();
-        String type = request.getParameter("type");
-        User user = (User) request.getSession().getAttribute("ACCOUNT_USER");
-        List<model.Report> reports = reDao.getList();
-        if (type.equals("user")) {
-            for (model.Report report : reports) {
-                if (report.getUserID() == user.getId()) {
-                    String re = " <td>NONE</td>\n";
-                    String show = report.isIsReaded() ? "none" : "block";
-                    
-                    out.println("<tr class=\"candidates-list\">\n"
-                            + " <td>" + report.getReportID() + "</td>\n"
-                            + " <td id='report_"+report.getReportID()+"'>" + report.getTitle() + " </td>\n"
-                            + " <td>" + report.getTime() + "</td>\n"
-                            + "<td> <a href=\"#\" onclick=\"viewChat("+report.getReportID()+")\" class=\"btn btn-dark my-auto text-light nav-link position-relative\">View\n" +
-                                "<span class=\"badge badge-danger badge-pill position-absolute\" style=\"top: 0; right: 0; display: "+show+";\" id=\"notification-dot\">!</span></a> </td>"
-                            +"</tr>");
-                }
-            }
-        } else {
-            for (model.Report report : reports) {
-                String status = " <td class='text-success'> Answered </td>\n";
-                if (report.isIsNewComment()) {
-                    status = " <td class='text-danger'> Not Yet </td>\n";
-                }
-                out.println("<tr class=\"candidates-list\" onclick='searchReport(" + report.getReportID() + ")'>\n"
-                        + " <td>" + report.getReportID() + "</td>\n"
-                        + " <td>" + report.getTitle() + " </td>\n"
-                        + " <td>" + report.getTime() + "</td>\n"
-                        + status
-                        + "</tr>");
-            }
-        }
     }
     
     @Override

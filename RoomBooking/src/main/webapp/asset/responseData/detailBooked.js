@@ -50,3 +50,13 @@ $(document).ready(function () {
         }
     });
 });
+
+function isOverTimeBooking(dateString) {
+    var givenDate = new Date(dateString);
+    var now = new Date();
+
+    if (givenDate > now) {
+        return true;
+    }
+    return false;
+}

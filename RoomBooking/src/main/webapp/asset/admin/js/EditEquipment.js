@@ -66,16 +66,15 @@ function Update() {
 }
 
 $(document).ready(function () {
-    U.showProcess();
     setDataEquipment();
     $.ajax({
         url: "/RoomBooking/getTypeEquipment",
         method: "GET",
+        dataType: 'JSON',
         data: {
             admin: "admin"
         },
         success: function (data) {
-            data = JSON.parse(data);
             var html = '';
             data.forEach((elemetn) => html += `<option value="${elemetn.id}">${elemetn.name}</option>`);
             $('#typeEquipment').html(html);
@@ -93,13 +92,38 @@ function setDataEquipment() {
     $.ajax({
         url: "/RoomBooking/Equipment",
         method: "GET",
-        data: {
-            admin: "admin",
+        dataType: 'JSON',
+        beforeSend: function (xhr) {
+            U.showProcess();
+        },
+        data:{
             action: "getList",
-            select: "false"
         },
         success: function (data) {
-            $("#bodyTableEquipments").html(data);
+            console.log(data);
+            var html = "";
+            if(data.length <=0){
+                html = "<tr><td colspan=\"6\"><h2 class='text-center'>EMPTY EQUIPMETN!!</h2></td></tr>";
+                $("#bodyTableEquipments").html(html);
+                U.hideProcess();
+                return;
+            }
+            data.forEach((equipment)=>{
+                html += `<tr class="candidates-list" onclick='SearchForEdit(${equipment.id})'>
+                            <td>${equipment.id}</td>
+                            <td class="title">
+                                <div class="thumb">
+                                    <img class="img-fluid w-50" src="./asset/images/equipment/${equipment.type.name}.png" alt="">
+                                </div>
+                            </td>
+                            <td>${equipment.name}</td>
+                            <td>${equipment.des}</td>
+                            <td>${equipment.price}</td>
+                            <td>${equipment.type.name}</td>
+                        </tr>`;
+            })
+            
+            $("#bodyTableEquipments").html(html);
             U.hideProcess();
         },
         error: function () {

@@ -3,6 +3,7 @@ $(document).ready(function () {
     $.ajax({
         url: "/RoomBooking/Room",
         method: "GET",
+        dataType: 'JSON',
         beforeSend: function (xhr) {
             U.showProcess();
         },
@@ -10,7 +11,28 @@ $(document).ready(function () {
             action: "getList",
         },
         success: function (data) {
-            $("#bodyTableRoom").html(data);
+            console.log(data);
+            var html = '';
+            if(data.length <= 0){
+                html = "<tr><td colspan=\"4\"><h2 class='text-center'>EMPTY ROOM!!</h2></td></tr>";
+                $("#bodyTableRoom").html(html);
+                U.hideProcess();
+                return;
+            }
+            
+            data.forEach((room)=>{
+                html += `<tr class="candidates-list">
+                            <td>${room.id}</td>
+                            <td class="title">
+                                <div class="thumb">
+                                    <img class="img-fluid w-25" src="./asset/images/gallery1.jpg" alt="">
+                                </div>\n"
+                            </td>
+                            <td>${room.roomNumber}</td>
+                            <td>${room.price}</td>
+                        </tr>`;
+            });
+            $("#bodyTableRoom").html(html);
             SetDataTable();
             U.hideProcess();
         },

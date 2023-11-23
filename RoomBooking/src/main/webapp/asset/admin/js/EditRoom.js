@@ -31,12 +31,15 @@ function Search() {
 
 function Update() {
     var idSearchRoom = $('#roomSearch').val();
-    var price = $('#priceRoom').val();
-    if(!idSearchRoom || idSearchRoom.trim() == "" || !price || price.trim() == ""){
-        alert("Pls input id room or price to update");
+    var price = Number.parseInt($('#priceRoom').val());
+    if(!idSearchRoom || idSearchRoom.trim() == ""){
+        U.messageBox('Message',"Pls input id room or price to update");
         return;
     }
-    
+    if(price <= 0){
+        U.messageBox('Message',"Price do not zero or negative");
+        return;
+    }
     $.ajax({
         url: "/RoomBooking/Room",
         method: "GET",

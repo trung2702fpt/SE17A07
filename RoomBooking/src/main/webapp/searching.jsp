@@ -36,6 +36,8 @@
                             <option value="3">Slot 3 (11 AM - 1 PM)</option>
                             <option value="4">Slot 4 (1-3 PM)</option>
                             <option value="5">Slot 5 (3-5 PM)</option>
+                            <option value="6">Slot 6 (5-7 PM)</option>
+                            <option value="7">Slot 7 (7-9 PM)</option>
                         </select>
                     </div>
                     <a href="#" class="btn btn-dark my-auto" onclick="searchByName(); return false;">Search</a>

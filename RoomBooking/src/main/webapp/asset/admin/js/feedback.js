@@ -21,13 +21,32 @@ function getReports() {
     $.ajax({
         url: "/RoomBooking/Report",
         method: "GET",
+        dataType: 'JSON',
         data: {
-            type: "admin",
+            type: "user",
             action: "getList"
         },
         success: function (data) {
-            $("#reportTableBody").html(data);
+            console.log(data);
+            var html = '';
+            if(data.length <= 0){
+                html = "<tr><td colspan='4'><h2 class='text-center'>EMPTY HISTORY!!</h2></td></tr>";
+                $("#reportTableBody").html(html);
+                U.hideProcess();
+                return;
+            }
             
+            data.forEach((report, index)=>{
+                var status = report.isNewComment ?" <td class='text-danger'> Not Yet </td>" : " <td class='text-success'> Answered </td>";
+                    html += `<tr class="candidates-list" onclick='searchReport(${report.reportID})'>
+                        <td>${report.reportID}</td>
+                        <td>${report.title}</td>
+                        <td>${report.time} </td>
+                        ${status} status
+                        </tr>`;
+            });
+            
+            $("#reportTableBody").html(html);
             U.hideProcess();
         },
         error: function () {

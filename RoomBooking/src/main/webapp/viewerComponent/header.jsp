@@ -31,7 +31,7 @@
                             </li>
                             <c:if test="${sessionScope.ACCOUNT_USER != null}">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="private.jsp">Private</a>
+                                    <a class="nav-link" href="history.jsp">History</a>
                                 </li>
                                 <li style="margin-top: 2px;">
                                     <p class="bg-success p-1" style="color: white; border-radius: 2px">${sessionScope.user.getEmail()}</p>

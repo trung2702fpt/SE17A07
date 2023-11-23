@@ -8,8 +8,11 @@ import org.apache.http.client.fluent.Request;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class GoogleUtils {
+
     public static String getToken(final String code) throws ClientProtocolException, IOException {
         String response = Request.Post(Constants.GOOGLE_LINK_GET_TOKEN)
                 .bodyForm(Form.form().add("client_id", Constants.GOOGLE_CLIENT_ID)
@@ -30,5 +33,12 @@ public class GoogleUtils {
         System.out.println(googlePojo);
         return googlePojo;
 
+    }
+
+    public static void main(String[] args) {
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(now.toString());
+        LocalDateTime h = now.plus(30, ChronoUnit.MINUTES);
+        System.out.println(h.toString());
     }
 }

@@ -40,9 +40,6 @@
                             </div>
                             <div class="col-md-8 offset-md-2">
                                 <div class="card">
-                                    <div class="card-header">
-                                        Chat Box
-                                    </div>
                                     <div class="card-body" id="chat-box" style="max-height: 500px; overflow: auto">
 
                                     </div>
