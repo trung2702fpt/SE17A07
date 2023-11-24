@@ -121,7 +121,7 @@ function searchByName() {
                             <td>${room.roomNumber}</td>
                             <td>${room.price}</td>
                             <td>
-                                <a type="button" href='#' onclick='openDialog(${room.id},()${room.price})' class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Booking</a>
+                                <a type="button" href='#' onclick='openDialog(${room.id},${room.price})' class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Booking</a>
                             </td>
                         </tr>`;
             });
