@@ -10,7 +10,7 @@
             if (session.getAttribute("ACCOUNT_USER") == null) {
                 response.sendRedirect("home.jsp");
             }
-%>
+        %>
         <%@include file="viewerComponent/header.jsp" %> 
 
         <div class="back_re">
@@ -30,7 +30,12 @@
         <div class="mt-3 col-md-12 row">
             <div class="card-body col-6" style="border-right: silver solid 2px ">
                 <h4 class="text-center">Information Booked</h4>
-
+                <div class="pl-5 shadow p-3 mb-5 bg-white rounded">
+                        <p class="p-1">Room: 201</p>
+                        <p class="p-1">Date: 21/12/2023</p>
+                        <p class="p-1">Slot: 3 (11PM-13PM)</p>
+                        <p class="p-1">Money: 200.000 VND</p>
+                </div>
             </div>
 
             <div class="card-body col-6">
@@ -45,7 +50,7 @@
                         </tr>
                     </thead>
                     <tbody id="equipmentsTableBody">
-                        
+
                     </tbody>
                 </table>
             </div>
