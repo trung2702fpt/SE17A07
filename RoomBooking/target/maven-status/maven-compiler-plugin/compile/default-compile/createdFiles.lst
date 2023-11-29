@@ -13,6 +13,7 @@ DataAsset\BookingDAO.class
 Utils\Connect.class
 DataAsset\UserDAO.class
 model\VNpay\ConfigVNPay.class
+Controller\ManagementBooking.class
 DataAsset\Admin.class
 Controller\DetailBooked.class
 model\Report.class
@@ -39,6 +40,7 @@ DataAsset\HistoryDAO.class
 Controller\StaticAdmin.class
 Controller\addNewBooking.class
 model\google\Constants.class
+model\ViewBooking.class
 Utils\Validate.class
 Controller\getStaticsAdmin.class
 model\Comment.class

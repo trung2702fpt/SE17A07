@@ -17,6 +17,7 @@ public class Booking {
     public double priceRoom;
     public double amount;
     public boolean isOutTime;
+    private String email;
 
     public Booking() {
     }
@@ -67,6 +68,14 @@ public class Booking {
         return priceRoom;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     public void setPriceRoom(double priceRoom) {
         this.priceRoom = priceRoom;
     }

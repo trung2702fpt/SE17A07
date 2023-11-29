@@ -35,9 +35,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="title d-flex">
-                            <!--<button id="goBackButton" class="btn btn-dark my-auto">Back</button>-->
                             <a href="home.jsp" class="btn btn-dark my-auto">Back</a>
-                            <h2 class="ml-5">Report</h2>
+                            <h2 class="ml-5">FEEDBACK</h2>
                         </div>
                     </div>
                 </div>

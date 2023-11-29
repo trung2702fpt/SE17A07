@@ -5,11 +5,13 @@ import Utils.StringExtention;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Booking;
 import model.Equipment;
+import model.ViewBooking;
 import model.requestBooking;
 
 public class BookingDAO extends Connect {
@@ -33,6 +35,27 @@ public class BookingDAO extends Connect {
         return 0;
     }
 
+    public boolean checkForUpdate(int slot, String date){
+        try {
+            String sql = """
+                         SELECT *
+                         FROM Bookings
+                         WHERE SlotID = ? AND BookingDate = ?""";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.setInt(1, slot);
+            stmt.setString(2, date);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(ReportDAO.class.getName()).log(Level.ALL.SEVERE, null, ex);
+        }
+        return true;
+    }
+    
     public boolean insertRoomBooking(requestBooking booking) {
         try {
             String sql = "INSERT INTO [dbo].[Bookings] VALUES(?,?,?,?,?)";
@@ -53,6 +76,43 @@ public class BookingDAO extends Connect {
         return false;
     }
 
+    public List<ViewBooking> getListBookings() throws ClassNotFoundException{
+        List<ViewBooking> historys = new ArrayList<>();
+        try {
+            String sqlQuery = """
+                        SELECT DISTINCT RoomID, BookingDate, CancelationDate, SlotID, u.Email, u.UserID,
+                        CASE
+                            WHEN GETDATE() > BookingDate THEN 1
+                            ELSE 0
+                        END AS isUsed,
+                        CASE
+                            WHEN CancelationDate IS NOT NULL THEN 1
+                            ELSE 0
+                        END AS isCanceled
+                        FROM BookingHistoryAction
+                        JOIN Users u on u.UserID = BookingHistoryAction.UserID
+                        ORDER BY BookingDate DESC""";
+            PreparedStatement st = getConnection().prepareStatement(sqlQuery);
+            try ( ResultSet resultSet = st.executeQuery()) {
+                while (resultSet.next()) {
+                    ViewBooking booking = new ViewBooking();
+                    booking.setRoomID(resultSet.getInt("RoomID"));
+                    booking.setBookingDate(resultSet.getString("BookingDate"));
+                    booking.setCancelDate(resultSet.getString("CancelationDate"));
+                    booking.setIsCancel(resultSet.getInt("isCanceled") == 1);
+                    booking.setIsUsed(resultSet.getInt("isUsed") == 1);
+                    booking.setSlotID(resultSet.getInt("SlotID"));
+                    booking.setEmail(resultSet.getString("Email"));
+                    booking.setUserId(resultSet.getInt("UserID"));
+                    historys.add(booking);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return historys;
+    }
+    
     public boolean inssertEquipmentBooking(Equipment equipment) {
         try {
             String sql = "INSERT INTO [dbo].[EquipmentBookings] VALUES (?,?,?,?)";
@@ -166,6 +226,7 @@ public class BookingDAO extends Connect {
                            	END AS IsOutTime
                            FROM Bookings B
                            JOIN Payments P ON P.BookingID = B.BookingID
+                           JOIN Users U ON P.UserID = U.UserID
                            JOIN Rooms R ON R.RoomID = B.RoomID
                            WHERE B.BookingID = ? ;
                            """;
@@ -187,6 +248,7 @@ public class BookingDAO extends Connect {
                         resultSet.getDouble("Amount"),
                         resultSet.getDouble("Price"),
                         resultSet.getString("RoomNumber"));
+                booking.setEmail(resultSet.getString("Email"));
                 booking.setIsOutTime(resultSet.getBoolean("IsOutTime"));
                 booking.setEquipments(edao.getListEquipmentByBookingId(idBooking));
                 return booking;

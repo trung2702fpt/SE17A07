@@ -7,7 +7,6 @@ import Utils.Validate;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,46 +22,50 @@ public class GetHistory extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        HistoryDAO historyDAO = new HistoryDAO();
-        HttpSession session = request.getSession();
+        try {
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            HistoryDAO historyDAO = new HistoryDAO();
+            HttpSession session = request.getSession();
 
-        User user = (User) session.getAttribute("ACCOUNT_USER");
-        BookingDAO bdao = new BookingDAO();
+            User user = (User) session.getAttribute("ACCOUNT_USER");
+            BookingDAO bdao = new BookingDAO();
 
-        List<History> histories = historyDAO.GetBookings(user.getId());
+            List<History> histories = historyDAO.GetBookings(user.getId());
 
-        if (histories.isEmpty()) {
-            out.println("<tr>"
-                    + "<td colspan=\"4\"><h2 class='text-center'>EMPTY HISTORY!!</h2></td>"
-                    + "</tr>");
-            return;
-        }
+            if (histories.isEmpty()) {
+                out.println("<tr>"
+                        + "<td colspan=\"4\"><h2 class='text-center'>EMPTY HISTORY!!</h2></td>"
+                        + "</tr>");
+                return;
+            }
 
-        for (History history : histories) {
-            String cancel;
-            String date = StringExtention.ConverDateToString(history.getBookingDate());
-            int idBooking = bdao.getId(date, history.getSlotID(), user.getId(), history.getRoomID());
-            if (history.getCancelDate() != null) {
-                cancel = "<td>" + history.getCancelDate() + "</td>";
-            } else {
-                if (history.isIsCancel()) {
-                    cancel = " <td class='text-danger'> Canceled </td>";
+            for (History history : histories) {
+                String cancel;
+                String date = StringExtention.ConverDateToString(history.getBookingDate());
+                int idBooking = bdao.getId(date, history.getSlotID(), user.getId(), history.getRoomID());
+                if (history.getCancelDate() != null) {
+                    cancel = "<td>" + history.getCancelDate().toString() + "</td>";
                 } else {
-                    if (history.isIsUsed() || Validate.isOverTimeBooking(date)) {
-                        cancel = " <td> Time was over for cancel </td>";
+                    if (history.isIsCancel()) {
+                        cancel = " <td class='text-danger'> Canceled </td>";
                     } else {
-                        cancel = " <td> <a href='#' onclick='callCencalBooking(\"" + history.getBookingDate() + "\",\"" + history.getSlotID() + "\", \"" + history.getRoomID() + "\")' class='btn btn-dark my-auto text-light nav-link'>Cancel</a> </td>";
+                        if (history.isIsUsed() || Validate.isOverTimeBooking(date)) {
+                            cancel = " <td> Time was over for cancel </td>";
+                        } else {
+                            cancel = " <td> <a href='#' onclick='callCencalBooking(\"" + history.getBookingDate() + "\",\"" + history.getSlotID() + "\", \"" + history.getRoomID() + "\")' class='btn btn-dark my-auto text-light nav-link'>Cancel</a> </td>";
+                        }
                     }
                 }
+                out.println("<tr>"
+                        + "<td>" + history.getRoomID() + "</td>"
+                        + "<td>" + history.getBookingDate().toString() + "</td>"
+                        + cancel
+                        + "<td> <a href='viewDetailBooking.jsp?IdBooking=" + idBooking + "' class='btn btn-dark my-auto text-light nav-link'>Detail</a> </td>"
+                        + "</tr>");
             }
-            out.println("<tr>"
-                    + "<td>" + history.getRoomID() + "</td>"
-                    + "<td>" + history.getBookingDate().toString() + "</td>"
-                    + cancel
-                    + "<td> <a href='viewDetailBooking.jsp?IdBooking=" + idBooking + "' class='btn btn-dark my-auto text-light nav-link'>Detail</a> </td>"
-                    + "</tr>");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

@@ -21,14 +21,12 @@ $(document).ready(function () {
             data.forEach((equipment)=>{
                 html += `<tr class="candidates-list">
                             <td>${equipment.id}</td>
-                            <td class="title">
-                                <div class="thumb">
-                                    <img class="img-fluid w-50" src="./asset/images/equipment/${equipment.type.name}.png" alt="">
-                                </div>
+                            <td>
+                                <img class="img-fluid w-25" src="./asset/images/equipment/${equipment.type.name}.png" alt="">
                             </td>
                             <td>${equipment.name}</td>
                             <td>${equipment.des}</td>
-                            <td>${equipment.price}</td>
+                            <td>${equipment.price}<span>.000 VND</span></td>
                             <td>${equipment.type.name}</td>
                         </tr>`;
             })

@@ -1,4 +1,5 @@
 
+// Sẽ chạy khi viewer được laod thành công
 $(document).ready(function () {
     SetDataTable();
     getHistory();
@@ -38,6 +39,7 @@ function getReport() {
                 }
             });
             
+            // nó tương tự như thằng innerHTML bên DOM
             $("#reportTableBody").html(html);
             U.hideProcess();
         },

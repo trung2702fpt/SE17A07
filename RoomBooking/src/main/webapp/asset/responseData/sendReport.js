@@ -2,6 +2,7 @@ function SendReport(){
     var title = $("#title").val();
     var content = $("#report").val();
     
+    // Tạo mới feedback
     $.ajax({
         url: "/RoomBooking/Report",
         method: "GET",

@@ -8,8 +8,9 @@ public enum EnumSlot {
     SLOT_2(LocalTime.of(9, 0, 0)),
     SLOT_3(LocalTime.of(11, 0, 0)),
     SLOT_4(LocalTime.of(13, 0, 0)),
-    SLOT_5(LocalTime.of(15, 0, 0));
-
+    SLOT_5(LocalTime.of(15, 0, 0)),
+    SLOT_6(LocalTime.of(17, 0, 0)),
+    SLOT_7(LocalTime.of(19, 0, 0));
     private final LocalTime startTime;
     private static final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
     
@@ -42,6 +43,14 @@ public enum EnumSlot {
             }
             case 5 -> {
                 slot = EnumSlot.SLOT_5;
+                return slot.getStartTime();
+            }
+            case 6 -> {
+                slot = EnumSlot.SLOT_6;
+                return slot.getStartTime();
+            }
+            case 7 -> {
+                slot = EnumSlot.SLOT_7;
                 return slot.getStartTime();
             }
             default -> throw new IllegalArgumentException("Giá trị không hợp lệ: " + value);

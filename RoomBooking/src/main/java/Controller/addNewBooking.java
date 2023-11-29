@@ -23,6 +23,7 @@ public class addNewBooking extends HttpServlet {
                 response.sendRedirect("home.jsp");
                 return;
             }
+            // thêm booking mới vào database
             if (booking != null) {
                 boolean isInserted = bdao.insertRoomBooking(booking);
                 if(isInserted){

@@ -19,24 +19,35 @@
                         <h4 class="text-center">Information Booked</h4>
                         <div class="pl-5 shadow p-3 mb-5 bg-white rounded">
                             <div class="form-group">
-                                <label for="priceRoom">Room:</label>
-                                <input type="text" class="form-control" id="id" value="201" readonly>
+                                <label for="User">User:</label>
+                                <input type="text" class="form-control" id="User" value="..." disabled="true">
                             </div>
                             <div class="form-group">
-                                <label for="priceRoom">Date:</label>
-                                <input type="text" class="form-control" id="id" value="21/12/2023" readonly>
+                                <label for="idRoom">Room:</label>
+                                <input type="text" class="form-control" id="idRoom" value="..." disabled="true">
                             </div>
                             <div class="form-group">
-                                <label for="priceRoom">Slot:</label>
-                                <input type="text" class="form-control" id="id" value="3 (11PM-13PM)" readonly>
+                                <label for="dateBooking">Date:</label>
+                                <input type="date" class="form-control" id="dateBooking" onchange="setDisableAccept()" />
                             </div>
                             <div class="form-group">
-                                <label for="priceRoom">Money:</label>
-                                <input type="text" class="form-control" id="id" value="200.000 VND" readonly>
+                                <label for="slot">Slot:</label>
+                                <select class="form-select" id="slot" onchange="setDisableAccept()">
+                                    <option value="1">Slot 1 (7-9 AM)</option>
+                                    <option value="2">Slot 2 (9-11 AM)</option>
+                                    <option value="3">Slot 3 (11 AM - 1 PM)</option>
+                                    <option value="4">Slot 4 (1-3 PM)</option>
+                                    <option value="5">Slot 5 (3-5 PM)</option>
+                                    <option value="6">Slot 6 (5-7 PM)</option>
+                                    <option value="7">Slot 7 (7-9 PM)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                Money: <span id="amount" ></span>.000 VND
                             </div>
                             <div class="d-flex justify-content-around">
-                                <button type="button" class="btn btn-success">Check</button>
-                                <button type="button" class="btn btn-success">Accept</button>
+                                <input id="btnCheckToUpdate" type="button" class="btn btn-success" onclick="checkForUpdate()" value="Check"/>
+                                <input id="btnAccept" type="button" class="btn btn-success" disabled="true" value="Accept">
                             </div>
                         </div>
                     </div>
@@ -59,14 +70,12 @@
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </body>
 </html>
 
 <%@include file="viewerComponent/js_link.jsp" %>
+<script src="./asset/admin/js/ticketBooking.js"></script>
 </body>
 </html>
 

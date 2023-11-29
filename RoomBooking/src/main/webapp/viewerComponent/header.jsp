@@ -27,7 +27,7 @@
                                 <a class="nav-link" href="listRooms.jsp">Room</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="report.jsp">Report</a>
+                                <a class="nav-link" href="report.jsp">Feedback</a>
                             </li>
                             <c:if test="${sessionScope.ACCOUNT_USER != null}">
                                 <li class="nav-item">

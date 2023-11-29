@@ -54,7 +54,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Pages:</h6>
                 <a class="collapse-item" href="feedback.jsp">View list</a>
-                <a class="collapse-item" href="categoryManagement.html">Management</a>
+                <a class="collapse-item" href="bookingManagement.jsp">Management</a>
             </div>
         </div>
     </li>
@@ -66,3 +66,6 @@
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 </ul>
+<div id="messageBox"></div>
+<div id="confirmBox"></div>
+<div id="loadingScreen"></div>

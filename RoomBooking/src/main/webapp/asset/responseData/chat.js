@@ -1,6 +1,7 @@
 var urlParams = new URLSearchParams(window.location.search);
 var ID_report = Number.parseInt(urlParams.get('id'));
 var TITLE = urlParams.get('title');
+
 $(document).ready(()=>{
     viewChat(ID_report);
 });
@@ -20,6 +21,7 @@ function viewChat(idReport) {
             idReport: idReport,
         },
         success: function (data) {
+            console.log(data);
             if (!data || data == "fail") {
                 U.messageBox("ERROR", "ERROR to process call api!!");
                 return;

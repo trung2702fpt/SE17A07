@@ -37,11 +37,12 @@ $(document).ready(function () {
                 html += `<tr>
                             <td>${item.name}</td>
                             <td>${item.des}</td>
-                            <td>${item.price}</td>
+                            <td>${item.price}<span>.000 VND</span></td>
                             <td>${item.quanlity}</td>
                         </tr>`;
             } 
             $('#equipmentsTableBody').html(html);
+            setDetail(data);
             $('#RoomTitle').html(data.id);
         },
         error: function () {
@@ -59,4 +60,12 @@ function isOverTimeBooking(dateString) {
         return true;
     }
     return false;
+}
+
+function setDetail(data){
+    $('#idRoom').html(data.roomName);
+    $('#dateBooking').html(data.dateBook);
+    $('#slot').html(data.slotId);
+    $('#amount').html(data.amount);
+    $('#datePaied').html(data.datePaied);
 }

@@ -64,6 +64,10 @@
         <servlet-name>DetailBooked</servlet-name>
         <servlet-class>Controller.DetailBooked</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagementBooking</servlet-name>
+        <servlet-class>Controller.ManagementBooking</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>DetailBooked</servlet-name>
         <url-pattern>/DetailBooked</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagementBooking</servlet-name>
+        <url-pattern>/ManagementBooking</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

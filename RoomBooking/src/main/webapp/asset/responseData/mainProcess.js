@@ -114,3 +114,19 @@ function setActiveNav(tabName) {
         }
     });
 }
+
+function compareDates(inputDateString) {
+  const inputDate = new Date(inputDateString.replace(/-/g, '/'));
+
+  if (isNaN(inputDate)) {
+    return false;
+  }
+
+  const currentDate = new Date();
+  
+  if (inputDate > currentDate) {
+    return true; // chưa vượt quá ngày hiện tại
+  } else{
+    return false; // đã vượt quá ngày hiện tại
+  }
+}

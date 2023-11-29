@@ -50,11 +50,11 @@ function setSlotByDate() {
         }
 
         if (time < 17) {
-            addOption("Slot 6 (5-7 PM)", 4);
+            addOption("Slot 6 (5-7 PM)", 6);
         }
 
         if (time < 19) {
-            addOption("Slot 7 (7-9 PM)", 5);
+            addOption("Slot 7 (7-9 PM)", 7);
         } else {
             addOption("It overtime to order room", '');
         }

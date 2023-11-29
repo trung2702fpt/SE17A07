@@ -5,12 +5,8 @@ import Utils.StringExtention;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
-import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -56,11 +52,13 @@ public class Report extends HttpServlet {
                     
                     break;
                 case "getList":
+                    // Lấy danh sách feedback của người dùng
                     List<model.Report> reports = reDao.getList();
                     objectJSON = objectMapper.writeValueAsString(reports);
                     
                     break;
                 case "createReport":
+                    // Tạo mới report
                     User user = (User) request.getSession().getAttribute("ACCOUNT_USER");
                     String title = request.getParameter("title");
                     String content = request.getParameter("content");
