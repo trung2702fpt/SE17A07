@@ -3,12 +3,14 @@ var ID_report = Number.parseInt(urlParams.get('id'));
 var TITLE = urlParams.get('title');
 
 $(document).ready(()=>{
-    viewChat(ID_report);
+    setInterval(()=>viewChat(ID_report), 1000);
 });
 
 function viewChat(idReport) {
+    $("#chat-box").html("");
     $("#message-input").attr("readonly", false);
     $('#title_chat_box').html(TITLE);
+    
     $.ajax({
         url: "/RoomBooking/Report",
         method: "GET",

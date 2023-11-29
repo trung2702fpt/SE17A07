@@ -50,7 +50,7 @@ public class GetHistory extends HttpServlet {
                     if (history.isIsCancel()) {
                         cancel = " <td class='text-danger'> Canceled </td>";
                     } else {
-                        if (history.isIsUsed() || Validate.isOverTimeBooking(date)) {
+                        if (history.isIsUsed()) {
                             cancel = " <td> Time was over for cancel </td>";
                         } else {
                             cancel = " <td> <a href='#' onclick='callCencalBooking(\"" + history.getBookingDate() + "\",\"" + history.getSlotID() + "\", \"" + history.getRoomID() + "\")' class='btn btn-dark my-auto text-light nav-link'>Cancel</a> </td>";

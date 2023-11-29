@@ -67,6 +67,11 @@ function Update() {
 
 $(document).ready(function () {
     setDataEquipment();
+    getTypeEquipment()
+    SetDataTable();
+});
+
+function getTypeEquipment(){
     $.ajax({
         url: "/RoomBooking/getTypeEquipment",
         method: "GET",
@@ -85,8 +90,7 @@ $(document).ready(function () {
             U.hideProcess();
         }
     });
-    SetDataTable();
-});
+}
 
 function setDataEquipment() {
     $.ajax({
