@@ -8,6 +8,10 @@ $(document).ready(function () {
         },
         data:{
             action: "getList",
+<<<<<<< Updated upstream
+=======
+            select: "true"
+>>>>>>> Stashed changes
         },
         success: function (data) {
             console.log(data);

@@ -50,6 +50,53 @@ public class Equipment extends HttpServlet {
           response.getWriter().write(objectJSON);  
         }
     }
+<<<<<<< Updated upstream
+=======
+
+    private void getList(HttpServletRequest request, HttpServletResponse response, EquipmentDAO eqDao) throws IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String admin = request.getParameter("admin");
+        String select = request.getParameter("select");
+        String forSearch = "<tr class=\"candidates-list\">\n";
+        PrintWriter out = response.getWriter();
+
+        List<model.Equipment> equipments = eqDao.getList();
+        if (!equipments.isEmpty()) {
+            for (model.Equipment equipment : equipments) {
+                if (select != null && select.equals("true")) {
+                    out.println("<tr class=\"candidates-list\" id="+equipment.id+" onclick='selectEquiment(this)'  style=\"cursor: pointer\">\n"
+                            + "                                            <td>" + equipment.id + "</td>\n"
+                            + "                                            <td>" + equipment.name + "</td>\n"
+                            + "                                            <td>" + equipment.des + "</td>\n"
+                            + "                                            <td>" + equipment.price + "</td>\n"
+                            + "                                            <td>" + equipment.type.name + "</td>\n"
+                            + " </tr>");
+                } else {
+                    if (admin.equals("admin")) {
+                        forSearch = "<tr class=\"candidates-list\" onclick='SearchForEdit(" + equipment.id + ")'>\n";
+                    }
+                    out.println(forSearch
+                            + "                                            <td>" + equipment.id + "</td>\n"
+                            + "                                            <td class=\"title\">\n"
+                            + "                                                <div class=\"thumb\">\n"
+                            + "                                                    <img class=\"img-fluid w-50\" src=\"./asset/images/equipment/" + equipment.type.name + ".png\" alt=\"\">\n"
+                            + "                                                </div>\n"
+                            + "                                            </td>\n"
+                            + "                                            <td>" + equipment.name + "</td>\n"
+                            + "                                            <td>" + equipment.des + "</td>\n"
+                            + "                                            <td>" + equipment.price + "</td>\n"
+                            + "                                            <td>" + equipment.type.name + "</td>\n"
+                            + "                                        </tr>");
+                }
+            }
+        } else {
+            out.println("<tr>"
+                    + "<td colspan=\"6\"><h2 class='text-center'>EMPTY EQUIPMETN!!</h2></td>"
+                    + "</tr>");
+        }
+    }
+
+>>>>>>> Stashed changes
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
