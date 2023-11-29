@@ -31,11 +31,11 @@
             <div class="card-body col-6" style="border-right: silver solid 2px ">
                 <h4 class="text-center">Information Booked</h4>
                 <div class="pl-5 shadow p-3 mb-5 bg-white rounded">
-                    <p class="p-1">Room: <sapn id="idRoom"></sapn></p>
-                    <p class="p-1">Date: <sapn id="dateBooking"></sapn></p>
-                    <p class="p-1">Slot: <sapn id="slot"></sapn></p>
-                    <p class="p-1">Money: <sapn id="amount"></sapn></p>
-                    <p class="p-1">Date Paied: <sapn id="datePaied"></sapn></p>
+                    <p class="p-1">Room: <span id="idRoom"></span></p>
+                    <p class="p-1">Date: <span id="dateBooking"></span></p>
+                    <p class="p-1">Slot: <span id="slot"></span></p>
+                    <p class="p-1">Money: <span id="amount"></span>.000 VND</p>
+                    <p class="p-1">Date Paied: <span id="datePaied"></span></p>
                 </div>
             </div>
 

@@ -3,7 +3,7 @@ var ID_report = Number.parseInt(urlParams.get('id'));
 var TITLE = urlParams.get('title');
 
 $(document).ready(()=>{
-    setInterval(()=>viewChat(ID_report), 1000);
+    setInterval(()=>viewChat(ID_report), 3000);
 });
 
 function viewChat(idReport) {
@@ -15,9 +15,6 @@ function viewChat(idReport) {
         url: "/RoomBooking/Report",
         method: "GET",
         dataType: 'JSON',
-        beforeSend: function (xhr) {
-            U.showProcess();
-        },
         data: {
             action: "getComment",
             idReport: idReport,
@@ -46,12 +43,10 @@ function viewChat(idReport) {
             $("#chat-box").html(html);
             setTimeout(()=>{
                 U.scrollToEdd('#chat-box');
-            }, 300);            
-            U.hideProcess();
+            }, 300);         
         },
         error: function () {
             U.messageBox("ERROR", "ERROR to process call api!!");
-            U.hideProcess();
         }
     });
 }

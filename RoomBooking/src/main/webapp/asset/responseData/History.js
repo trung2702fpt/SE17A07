@@ -19,15 +19,15 @@ function getReport() {
         success: function (data) {
             console.log(data);
             var html = '';
-            if(data.length <= 0){
+            if (data.length <= 0) {
                 html = "<tr><td colspan='4'><h2 class='text-center'>EMPTY HISTORY!!</h2></td></tr>";
                 $("#reportTableBody").html(html);
                 U.hideProcess();
                 return;
             }
-            
-            data.forEach((report, index)=>{
-                if(report.userID === idUser){
+
+            data.forEach((report, index) => {
+                if (report.userID === idUser) {
                     var show = report.isReaded ? "none" : "block";
                     html += `<tr class="candidates-list">
                                 <td>${report.reportID}</td>
@@ -38,7 +38,7 @@ function getReport() {
                             </tr>`;
                 }
             });
-            
+
             // nó tương tự như thằng innerHTML bên DOM
             $("#reportTableBody").html(html);
             U.hideProcess();
