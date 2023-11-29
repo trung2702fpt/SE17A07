@@ -43,10 +43,11 @@
                             <div class="form-group">
                                 <label for="priceRoom">Type:</label>
                                 <select id="typeEquipment" class="form-select">
-                                    <option value="value">text</option>
+                                    <option value="">text</option>
                                 </select>
                             </div>
                             <button type="button" class="btn btn-success" onclick="Update()">Update</button>
+                            <button type="button" class="btn btn-dark ml-5" onclick="addNew()">Add New</button>
                         </div>
                     </div>
 

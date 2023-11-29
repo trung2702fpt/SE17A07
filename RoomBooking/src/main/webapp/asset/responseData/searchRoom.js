@@ -186,6 +186,7 @@ function openDialog(idRoom, price) {
                             </div>
                             <div class="p-2">
                                 <p id="slotSelected" class="card-text"> Slot: ${idSlot}</p>
+    <p class="p-2">Each room has <b>30 sets</b> of tables and chairs</p>
     <input type="hidden" name="slotSelected" value="${idSlot}">
     <input type="hidden" name="price" value="${price}">
                             </div>

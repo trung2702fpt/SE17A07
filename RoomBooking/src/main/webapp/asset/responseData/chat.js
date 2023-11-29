@@ -3,7 +3,7 @@ var ID_report = Number.parseInt(urlParams.get('id'));
 var TITLE = urlParams.get('title');
 
 $(document).ready(()=>{
-    setInterval(()=>viewChat(ID_report), 3000);
+    viewChat(ID_report);
 });
 
 function viewChat(idReport) {

@@ -148,3 +148,43 @@ function SetDataTable() {
         "responsive": true,
     });
 }
+
+function addNew(){
+    var id = $('#id').val();
+    var name = $('#name').val();
+    var des = $('#des').val();
+    var price = $('#price').val();
+    var type = $('#typeEquipment').val();
+    if (!name || name.trim() == "" || !des || des.trim() == "" || !price || price.trim() == "" || !type || type.trim() == "") {
+        U.messageBox("ERROR","Pls input all fild before edit!!");
+        return;
+    }
+    
+    $.ajax({
+        url: "/RoomBooking/Equipment",
+        method: "GET",
+        data: {
+            id: id,
+            name: name,
+            des: des,
+            type: type,
+            price: price,
+            action: "addNew"
+        },
+        success: function (data) {
+            if (data == "fail") {
+                U.messageBox("ERROR","Fail to update");
+                return;
+            } else {
+                U.messageBox("Message", "add new equipment successfully");
+                $("#bodyTableEquipments").empty();
+                U.hideProcess();
+                setDataEquipment();
+            }
+        },
+        error: function () {
+            U.messageBox("ERROR", "ERROR to process call api!!");
+            U.hideProcess();
+        }
+    });
+}

@@ -58,7 +58,26 @@ public class EquipmentDAO extends BaseDataAsset<Equipment> {
 
     @Override
     public void create(Equipment data) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String searchSql = """
+                           INSERT INTO [dbo].[Equipment]
+                                      ([EquipmentName]
+                                      ,[Description]
+                                      ,[Price]
+                                      ,[TypeID])
+                                VALUES (?,?,?,?)""";
+        try {
+            PreparedStatement st = getConnection().prepareStatement(searchSql);
+            st.setString(1, data.getName());
+            st.setString(2, data.getDes());
+            st.setDouble(3, data.getPrice());
+            st.setInt(4, data.getType().getId());
+            int value = st.executeUpdate();
+            if(value <= 1){
+                throw new Exception();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
