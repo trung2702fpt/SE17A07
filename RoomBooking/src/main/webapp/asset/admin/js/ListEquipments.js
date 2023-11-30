@@ -3,11 +3,8 @@ $(document).ready(function () {
         url: "/RoomBooking/Equipment",
         method: "GET",
         dataType: 'JSON',
-        beforeSend: function (xhr) {
-            U.showProcess();
-        },
         data:{
-            action: "getList",
+            action: "getList"
         },
         success: function (data) {
             console.log(data);
@@ -28,10 +25,10 @@ $(document).ready(function () {
                             </td>
                             <td>${equipment.name}</td>
                             <td>${equipment.des}</td>
-                            <td>${equipment.price}</td>
+                            <td>${equipment.price}<span>.000 VND</span></td>
                             <td>${equipment.type.name}</td>
                         </tr>`;
-            })
+            });
             
             $("#bodyTableEquipments").html(html);
             SetDataTable();

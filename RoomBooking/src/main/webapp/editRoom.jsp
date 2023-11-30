@@ -45,6 +45,7 @@
                                 <input type="text" class="form-control" id="priceRoom" value="">
                             </div>
                             <button type="button" class="btn btn-success" onclick="Update()">Update</button>
+                            <button type="button" class="btn btn-danger" onclick="Delete()">Delete</button>
                         </div>
                     </div>
 

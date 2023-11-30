@@ -6,7 +6,7 @@
         <%@include file="viewerComponent/head_link.jsp" %>
         <link rel="stylesheet" href="asset/vendor/fontawesome-free/css/all.min.css">
         <style>
-            body{background-color: #a4c1d3;}
+            body{background-color: #ececec;}
             </style>
     </head>
     <body>

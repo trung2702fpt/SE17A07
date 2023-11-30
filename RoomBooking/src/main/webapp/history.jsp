@@ -24,7 +24,7 @@
 
                         <div class="title d-flex">
                             <button id="goBackButton" class="btn btn-dark my-auto">Back</button>
-                            <h2 class="ml-5">Private</h2>
+                            <h2 class="ml-5">History</h2>
                         </div>
                     </div>
                 </div>
@@ -37,6 +37,7 @@
                 <table id="tableListHistory" class="table table-bordered table-hover text-center">
                     <thead>
                         <tr>
+                            <th>no</th>
                             <th>Room</th>
                             <th>Booking Date</th>
                             <th>Cancel</th>

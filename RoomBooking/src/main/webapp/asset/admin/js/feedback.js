@@ -1,8 +1,8 @@
 
 $(document).ready(function () {
-    U.showProcess();
     SetDataTable();
     getReports();
+    U.hideProcess();
 });
 
 function SetDataTable() {
@@ -135,7 +135,6 @@ function sendMessage() {
                 U.messageBox("ERROR", "fail to update");
                 return;
             } else {
-                U.messageBox("Message Box", "update success");
                 getReports();
                 searchReport(id);
                 setTimeout(()=>{

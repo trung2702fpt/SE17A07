@@ -3,9 +3,6 @@ $(document).ready(function () {
         url: "/RoomBooking/Equipment",
         method: "GET",
         dataType: 'JSON',
-        beforeSend: function (xhr) {
-            U.showProcess();
-        },
         data:{
             action: "getList",
         },
@@ -18,9 +15,9 @@ $(document).ready(function () {
                 U.hideProcess();
                 return;
             }
-            data.forEach((equipment)=>{
+            data.forEach((equipment, index)=>{
                 html += `<tr class="candidates-list">
-                            <td>${equipment.id}</td>
+                            <td>${index+1}</td>
                             <td>
                                 <img class="img-fluid w-25" src="./asset/images/equipment/${equipment.type.name}.png" alt="">
                             </td>

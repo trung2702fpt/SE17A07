@@ -26,10 +26,10 @@
             <div id="myCarousel" class="slide col-4" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="https://via.placeholder.com/300" alt="Slide 1">
+                        <img class="d-block w-100" src="./asset/images/listroomItem.png" alt="Slide 1">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="https://via.placeholder.com/300" alt="Slide 2">
+                        <img class="d-block w-100" src="./asset/images/equipmentItem.png" alt="Slide 2">
                     </div>
                     <!-- Thêm các slide khác nếu cần -->
                 </div>

@@ -7,10 +7,10 @@ $(document).ready(function () {
         "paging": true,
         "lengthChange": false,
         "searching": false,
-        "ordering": true,
-        "info": true,
+        "ordering": false,
+        "info": false,
         "autoWidth": false,
-        "responsive": true,
+        "responsive": true
     });
     
     $.ajax({
@@ -20,9 +20,6 @@ $(document).ready(function () {
         data: {
             action: "getDetail",
             idBooking: ID_BOOKING,
-        },
-        beforeSend: function (xhr) {
-            U.showProcess();
         },
         success: function (data) {
             console.log(data);

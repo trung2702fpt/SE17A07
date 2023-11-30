@@ -2,8 +2,7 @@ package Controller;
 
 import DataAsset.BookingDAO;
 import DataAsset.HistoryDAO;
-import Utils.StringExtention;
-import Utils.Validate;
+import Utils.StringExtention;   
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -39,7 +38,7 @@ public class GetHistory extends HttpServlet {
                         + "</tr>");
                 return;
             }
-
+            int index = 1;
             for (History history : histories) {
                 String cancel;
                 String date = StringExtention.ConverDateToString(history.getBookingDate());
@@ -57,7 +56,8 @@ public class GetHistory extends HttpServlet {
                         }
                     }
                 }
-                out.println("<tr>"
+                out.println("<tr>"+
+                        "<td>"+ index++ +"</td>"
                         + "<td>" + history.getRoomID() + "</td>"
                         + "<td>" + history.getBookingDate().toString() + "</td>"
                         + cancel

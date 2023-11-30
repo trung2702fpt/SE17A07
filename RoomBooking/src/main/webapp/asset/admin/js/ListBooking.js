@@ -7,7 +7,6 @@ $(document).ready(function () {
         },
         dataType: 'JSON',
         beforeSend: function (xhr) {
-            U.showProcess();
         },
         data:{
             action: "getList",
@@ -54,7 +53,7 @@ function SetDataTable() {
         "lengthChange": false,
         "searching": false,
         "ordering": true,
-        "info": true,
+        "info": false,
         "autoWidth": false,
         "responsive": true,
     });

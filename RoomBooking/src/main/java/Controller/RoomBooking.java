@@ -3,10 +3,9 @@ package Controller;
 import DataAsset.BookingDAO;
 import DataAsset.RoomDAO;
 import Utils.StringExtention;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.TimeZone;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,9 +22,11 @@ public class RoomBooking extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
+        ObjectMapper objectMapper = new JsonMapper();
+        String objectJSON = "";
         try {
             User user = (User) session.getAttribute("ACCOUNT_USER");
-            if(user == null){
+            if (user == null) {
                 response.sendRedirect("searching.jsp");
                 return;
             }
@@ -53,15 +54,21 @@ public class RoomBooking extends HttpServlet {
                     int slotCa = Integer.parseInt(request.getParameter("slot"));
                     int roomId = Integer.parseInt(request.getParameter("roomId"));
                     int idUser = user.getId();
-                    
+
                     String dateCancel = StringExtention.GetCurrentDate();
-                    
+
                     int idbooking = dAO.getIdByDate(dateSearch, slotCa, idUser, roomId);
-                    bdao.updateAction(dateCancel, dateSearch, idUser ,idbooking);
+                    boolean check = bdao.updateAction(dateCancel, dateSearch, idUser, idbooking);
+                    if(!check){
+                        objectJSON = objectMapper.writeValueAsString("fail");
+                    }
                     break;
             }
         } catch (Exception e) {
+            objectJSON = objectMapper.writeValueAsString("fail");
             e.printStackTrace();
+        }finally{
+            response.getWriter().write(objectJSON);
         }
     }
 

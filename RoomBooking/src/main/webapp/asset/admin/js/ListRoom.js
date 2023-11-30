@@ -3,9 +3,6 @@ $(document).ready(function () {
         url: "/RoomBooking/Room",
         method: "GET",
         dataType: 'JSON',
-        beforeSend: function (xhr) {
-            U.showProcess();
-        },
         data:{
             action: "getList",
         },
@@ -28,7 +25,8 @@ $(document).ready(function () {
                                 </div>\n"
                             </td>
                             <td>${room.roomNumber}</td>
-                            <td>${room.price}</td>
+                            <td>${room.price}<span>.000 VND</span>
+                            </td>
                         </tr>`;
             });
             $("#bodyTableRoom").html(html);

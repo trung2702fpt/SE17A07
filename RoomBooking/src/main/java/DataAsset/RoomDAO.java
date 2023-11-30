@@ -95,7 +95,16 @@ public class RoomDAO extends BaseDataAsset<Room> {
 
     @Override
     public void create(Room data) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "INSERT INTO Rooms (RoomID, RoomNumber, Price) values (?, ?, ?)";
+        try {
+            PreparedStatement st = getConnection().prepareStatement(sql);
+            st.setInt(1, data.id);
+            st.setString(2, data.roomNumber);
+            st.setDouble(3, data.price);
+            st.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -144,6 +153,14 @@ public class RoomDAO extends BaseDataAsset<Room> {
 
     @Override
     public void delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       String sql = "DELETE FROM Rooms WHERE RoomID = ?";
+        try {
+            PreparedStatement st = getConnection().prepareStatement(sql);
+            st.setInt(1, id);
+            st.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

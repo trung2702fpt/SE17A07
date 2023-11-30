@@ -67,7 +67,7 @@ function Update() {
 
 $(document).ready(function () {
     setDataEquipment();
-    getTypeEquipment()
+    getTypeEquipment();
     SetDataTable();
 });
 
@@ -97,9 +97,6 @@ function setDataEquipment() {
         url: "/RoomBooking/Equipment",
         method: "GET",
         dataType: 'JSON',
-        beforeSend: function (xhr) {
-            U.showProcess();
-        },
         data:{
             action: "getList",
         },
@@ -112,9 +109,9 @@ function setDataEquipment() {
                 U.hideProcess();
                 return;
             }
-            data.forEach((equipment)=>{
+            data.forEach((equipment, index)=>{
                 html += `<tr class="candidates-list" onclick='SearchForEdit(${equipment.id})'>
-                            <td>${equipment.id}</td>
+                            <td>${++index}</td>
                             <td class="title">
                                 <div class="thumb">
                                     <img class="img-fluid w-50" src="./asset/images/equipment/${equipment.type.name}.png" alt="">
@@ -122,11 +119,11 @@ function setDataEquipment() {
                             </td>
                             <td>${equipment.name}</td>
                             <td>${equipment.des}</td>
-                            <td>${equipment.price}</td>
+                            <td>${equipment.price}<span>.000 VND</span></td>
                             <td>${equipment.type.name}</td>
                         </tr>`;
             })
-            
+//            <td>${equipment.type.name}</td>
             $("#bodyTableEquipments").html(html);
             U.hideProcess();
         },

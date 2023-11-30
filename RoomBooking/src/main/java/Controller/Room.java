@@ -52,8 +52,20 @@ public class Room extends HttpServlet {
                     objectJSON = objectMapper.writeValueAsString(rooms);
                     
                     break;
+                case "AddNew":
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    String number = request.getParameter("number");
+                    double roomPrice = Double.parseDouble(request.getParameter("price"));
+                    model.Room room = new model.Room(id, number, roomPrice); 
+                    roomdao.create(room);
+                    break;
+                case "Delete":
+                    int roomId = Integer.parseInt(request.getParameter("roomId"));
+                    roomdao.delete(roomId);
+                    break;
             }
         } catch (Exception e) {
+            objectJSON = objectMapper.writeValueAsString("fail");
             e.printStackTrace();
         }finally{
             response.getWriter().write(objectJSON);

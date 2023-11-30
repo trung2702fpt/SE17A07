@@ -4,9 +4,6 @@ $(document).ready(function () {
         url: "/RoomBooking/Room",
         method: "GET",
         dataType: 'JSON',
-        beforeSend: function (xhr) {
-            U.showProcess();
-        },
         data:{
             action: "getList",
         },

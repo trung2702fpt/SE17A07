@@ -43,7 +43,7 @@
             </div>
         </div>
         <div>
-            <section class="report_main container">
+            <section class="report_main container pt-5">
                 <div class="report_title">
                     <h1>Give me feedback</h4>
                 </div>

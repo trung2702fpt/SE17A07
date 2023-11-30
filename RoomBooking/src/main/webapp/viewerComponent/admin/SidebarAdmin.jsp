@@ -25,6 +25,7 @@
                 <h6 class="collapse-header">Pages:</h6>
                 <a class="collapse-item" href="viewListRoom.jsp">View List</a>
                 <a class="collapse-item" href="editRoom.jsp">Edit</a>
+                <a class="collapse-item" href="addRoom.jsp">Add room</a>
             </div>
         </div>
     </li>

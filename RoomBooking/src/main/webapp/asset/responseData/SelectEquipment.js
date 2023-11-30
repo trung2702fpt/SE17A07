@@ -4,7 +4,6 @@ $(document).ready(function () {
         method: "GET",
         dataType: 'JSON',
         beforeSend: function (xhr) {
-            U.showProcess();
         },
         data:{
             action: "getList",
@@ -18,12 +17,13 @@ $(document).ready(function () {
                 U.hideProcess();
                 return;
             }
-            data.forEach((equipment)=>{
+            data.forEach((equipment, index)=>{
                 html += `<tr class="candidates-list" id="${equipment.id}" onclick='selectEquiment(this)'  style="cursor: pointer">
-                            <td>${equipment.id}</td>
+                            <td>${index+1}</td>
                             <td>${equipment.name}</td>
                             <td>${equipment.des}</td>
-                            <td>${equipment.price}</td>
+                            <td>${equipment.price}<span>.000 VND</span>
+                            </td>
                             <td>${equipment.type.name}</td>
                         </tr>`;
             })
@@ -64,7 +64,6 @@ function sendRequest() {
         dataType: 'JSON',
         data: JSON.stringify({equipmentSelected: idEquipments}),
         beforeSend: function (x) {
-            U.showProcess();
         },
         success: function (x) {
             console.log(x);

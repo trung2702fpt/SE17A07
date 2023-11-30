@@ -63,3 +63,68 @@ function Update() {
         }
     });
 }
+function Delete() {
+    var idSearchRoom = $('#roomSearch').val();
+    if(!idSearchRoom || idSearchRoom.trim() == ""){
+        U.messageBox('Message',"Pls input id room or price to update");
+        return;
+    }
+    
+    $.ajax({
+        url: "/RoomBooking/Room",
+        method: "GET",
+        data:{
+            roomId: idSearchRoom,
+            action: "Delete"
+        },
+        success: function (data) {
+            if(data == "fail"){
+                U.messageBox("ERROR", "Fail to Delete");
+                return;
+            }else{
+                U.messageBox("Message Box", "Delete success");
+            }
+            
+        },
+        error: function () {
+            U.messageBox("ERROR", "ERROR to process call api!!");
+            U.hideProcess();
+        }
+    });
+}
+
+
+function AddNew(){
+    var id = $('#idRoom').val();
+    var number = $('#numberRoom').val();
+    var price = $('#priceRoom').val();
+    
+    if (!id || id.trim() == "" || !number || number.trim() == "" || !price || price.trim() == "") {
+        U.messageBox("ERROR","Pls input all fild before edit!!");
+        return;
+    }
+    
+    $.ajax({
+        url: "/RoomBooking/Room",
+        method: "GET",
+        data: {
+            id: id,
+            number: number,
+            price: price,
+            action: "AddNew"
+        },
+        success: function (data) {
+            if (data == "fail") {
+                U.messageBox("ERROR","Fail to add");
+                return;
+            } else {
+                U.messageBox("Message", "Add new room successfully");
+                U.hideProcess();
+            }
+        },
+        error: function () {
+            U.messageBox("ERROR", "ERROR to process call api!!");
+            U.hideProcess();
+        }
+    });
+}

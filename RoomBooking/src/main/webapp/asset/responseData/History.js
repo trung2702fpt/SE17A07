@@ -1,5 +1,5 @@
 
-// Sẽ chạy khi viewer được laod thành công
+// Sẽ chạy khi viewer được load thành công
 $(document).ready(function () {
     SetDataTable();
     getHistory();
@@ -29,7 +29,7 @@ function getReport() {
             data.forEach((report, index) => {
                 if (report.userID === idUser) {
                     var show = report.isReaded ? "none" : "block";
-                    html += `<tr class="candidates-list">
+                    html += `<tr class="candidates-list">   
                                 <td>${report.reportID}</td>
                                 <td id='report_${report.reportID}'>${report.title}</td>\n"
                                 <td>${report.time}</td>\n"
@@ -55,9 +55,6 @@ function getHistory() {
     $.ajax({
         url: "/RoomBooking/GetHistory",
         method: "GET",
-        beforeSend: function (xhr) {
-            U.showProcess();
-        },
         success: function (data) {
             $("#historyTableBody").html(data);
             U.hideProcess();
@@ -74,7 +71,7 @@ function SetDataTable() {
         "paging": true,
         "lengthChange": false,
         "searching": false,
-        "ordering": true,
+        "ordering": false,
         "info": true,
         "autoWidth": false,
         "responsive": true,
@@ -84,7 +81,7 @@ function SetDataTable() {
         "paging": true,
         "lengthChange": false,
         "searching": false,
-        "ordering": true,
+        "ordering": false,
         "info": true,
         "autoWidth": false,
         "responsive": true,
@@ -92,26 +89,22 @@ function SetDataTable() {
 }
 
 function callCencalBooking(d, slot, roomId) {
-    U.boxConfirm("Message Box", "Are you sure to cencel this room", function () {
+    U.boxConfirm("Message Box", "Are you sure to cancel this room",function(){
         $.ajax({
             url: "/RoomBooking/RoomBooking",
-            method: "GET",
-            beforeSend: function (xhr) {
-                U.showProcess();
-            },
+            method: "POST",
             data: {
                 date: d,
                 action: "cancel",
                 slot: slot,
                 roomId: roomId
             },
-            success: function (data) {
+            success: function () {
                 getHistory();
             },
             error: function () {
                 U.messageBox("ERROR", "ERROR to process call api!!");
-                U.hideProcess();
             }
         });
-    })
+    });
 }

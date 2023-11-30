@@ -90,7 +90,6 @@ function searchByName() {
         U.messageBox("Message", "Please select your date or slot!!");
         return;
     }
-    U.showProcess();
     $.ajax({
         url: "/RoomBooking/Room",
         type: "get",
@@ -112,14 +111,15 @@ function searchByName() {
             
             data.forEach((room, index)=>{
                 html += `<tr class="candidates-list">
-                            <td>${index}</td>
+                            <td>${index+1}</td>
                             <td class="title">
                                 <div class="thumb">
                                     <img class="img-fluid w-25" src="./asset/images/gallery1.jpg" alt="">
                                 </div>
                             </td>
                             <td>${room.roomNumber}</td>
-                            <td>${room.price}</td>
+                            <td>${room.price}<span>.000 VND</span>
+                            </td>
                             <td>
                                 <a type="button" href='#' onclick='openDialog(${room.id},${room.price})' class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Booking</a>
                             </td>
@@ -186,7 +186,7 @@ function openDialog(idRoom, price) {
                             </div>
                             <div class="p-2">
                                 <p id="slotSelected" class="card-text"> Slot: ${idSlot}</p>
-    <p class="p-2">Each room has <b>30 sets</b> of tables and chairs</p>
+    <p class="">Each room has <b>30 sets</b> of tables and chairs</p>
     <input type="hidden" name="slotSelected" value="${idSlot}">
     <input type="hidden" name="price" value="${price}">
                             </div>

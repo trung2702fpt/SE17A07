@@ -2,18 +2,14 @@ var urlParams = new URLSearchParams(window.location.search);
 var ID_BOOKING = Number.parseInt(urlParams.get('id'));
 
 $(document).ready(function () {
-
-    var currentDate = new Date().toISOString().slice(0, 10);
-    $("#dateBooking").attr("min", currentDate);
     
     $('#tableListEquipments').DataTable({
         "paging": true,
         "lengthChange": false,
         "searching": false,
         "ordering": true,
-        "info": true,
+        "info": false,
         "autoWidth": false,
-        "responsive": true,
     });
     
     $.ajax({
@@ -23,9 +19,6 @@ $(document).ready(function () {
         data: {
             action: "getDetail",
             idBooking: ID_BOOKING,
-        },
-        beforeSend: function (xhr) {
-            U.showProcess();
         },
         success: function (data) {
             console.log(data);
@@ -94,9 +87,6 @@ function checkForUpdate(){
             idBooking: ID_BOOKING,
             slot: slot,
             date: date
-        },
-        beforeSend: function (xhr) {
-            U.showProcess();
         },
         success: function (data) {
             console.log(data);
