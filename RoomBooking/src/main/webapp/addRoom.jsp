@@ -27,10 +27,6 @@
                         <div>
                             <form>
                             <div class="form-group">
-                                <label for="priceRoom">Id Room:</label>
-                                <input type="text" class="form-control" id="idRoom" value="">
-                            </div>
-                            <div class="form-group">
                                 <label for="priceRoom">Number Room:</label>
                                 <input type="text" class="form-control" id="numberRoom" value="">
                             </div>
@@ -38,7 +34,7 @@
                                 <label for="priceRoom">Price:</label>
                                 <input type="text" class="form-control" id="priceRoom" value="">
                             </div>
-                            <button type="button" class="btn btn-success" onclick="AddNew()">Add room</button>
+                            <button type="button" class="btn btn-success" onclick="Validation()">Add room</button>
                             </form>
                         </div>
                     </div>
@@ -54,6 +50,6 @@
         <div id="confirmBox"></div>
         <div id="loadingScreen"></div>
         <%@include file="viewerComponent/js_link.jsp" %>
-        <script src="./asset/admin/js/EditRoom.js"></script>
+        <script src="./asset/admin/js/addNewRoom.js"></script>
     </body>
 </html>

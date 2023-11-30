@@ -1,4 +1,5 @@
 Controller\loginAdmin.class
+Utils\Email.class
 Controller\GetHistory.class
 model\google\GooglePojo.class
 DataAsset\EquipmentDAO.class
@@ -28,6 +29,7 @@ Controller\RoomBooking.class
 model\typeEquipment.class
 model\StaticBooking.class
 Controller\Equipment.class
+Utils\Email$1.class
 model\Booking.class
 Controller\Room.class
 model\Room.class

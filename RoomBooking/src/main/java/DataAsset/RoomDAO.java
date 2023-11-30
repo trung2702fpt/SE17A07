@@ -32,15 +32,15 @@ public class RoomDAO extends BaseDataAsset<Room> {
             st.setInt(3, iduser);
             st.setInt(4, roomid);
             ResultSet resultSet = st.executeQuery();
-            if(resultSet.next()){
-             return resultSet.getInt("BookingID");
+            if (resultSet.next()) {
+                return resultSet.getInt("BookingID");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return 0;
     }
-    
+
     public List<Room> searchByDateAndSlOT(int slot, String date) {
         List<Room> listRooms = new ArrayList<>();
         String searchSql = """
@@ -58,8 +58,8 @@ public class RoomDAO extends BaseDataAsset<Room> {
             ResultSet resultSet = st.executeQuery();
             while (resultSet.next()) {
                 listRooms.add(new Room(resultSet.getInt("RoomID"),
-                         resultSet.getString("RoomNumber"),
-                         resultSet.getDouble("Price")));
+                        resultSet.getString("RoomNumber"),
+                        resultSet.getDouble("Price")));
             }
 
         } catch (Exception e) {
@@ -83,6 +83,21 @@ public class RoomDAO extends BaseDataAsset<Room> {
             e.printStackTrace();
         }
         return rooms;
+    }
+
+    public boolean roomValidation(int id) {
+        try {
+            String sql = "select * from Rooms where RoomID = ?";
+            PreparedStatement st = getConnection().prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
@@ -120,8 +135,8 @@ public class RoomDAO extends BaseDataAsset<Room> {
             ResultSet resultSet = st.executeQuery();
             if (resultSet.next()) {
                 room = new Room(resultSet.getInt("RoomID"),
-                         resultSet.getString("RoomNumber"),
-                         resultSet.getDouble("Price"));
+                        resultSet.getString("RoomNumber"),
+                        resultSet.getDouble("Price"));
                 return room;
             }
         } catch (Exception e) {
@@ -153,7 +168,7 @@ public class RoomDAO extends BaseDataAsset<Room> {
 
     @Override
     public void delete(int id) {
-       String sql = "DELETE FROM Rooms WHERE RoomID = ?";
+        String sql = "DELETE FROM Rooms WHERE RoomID = ?";
         try {
             PreparedStatement st = getConnection().prepareStatement(sql);
             st.setInt(1, id);

@@ -20,6 +20,9 @@
     </head>
     <body>
         <%
+            if (session.getAttribute("ACCOUNT_USER") == null) {
+                response.sendRedirect("home.jsp");
+            }
             //Begin process return from VNPAY
             Map fields = new HashMap();
             for (Enumeration params = request.getParameterNames(); params.hasMoreElements();) {
@@ -106,8 +109,15 @@
                 $.ajax({
                     method: "POST",
                     url: "/RoomBooking/addNewBooking",
+                    beforeSend: function (xhr) {
+                        U.showProcess();
+                    },
                     success: function (data, textStatus, jqXHR) {
+                        U.hideProcess();
                         U.messageBox("MESSAGE BOX", "Remember your bill to check later");
+                        setTimeout(function () {
+                            window.location.href = "history.jsp";
+                        }, 3000);
                     }
                 })
             }

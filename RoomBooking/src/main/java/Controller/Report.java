@@ -1,6 +1,7 @@
 package Controller;
 
 import DataAsset.ReportDAO;
+import Utils.Email;
 import Utils.StringExtention;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
@@ -69,6 +70,8 @@ public class Report extends HttpServlet {
                     model.Report sendReport = new model.Report(user.getId(), time, title, true);
                     Rdao.create(sendReport);
                     Rdao.createComment(newComment, 0);
+                    String mess = content +"\nThank for your report we will reply soon ";
+                    Email.sendEmail(title + " (do not rep this mail)", mess, user.getEmail());
                     break;
                 case "getComment":
                     idReport = Integer.parseInt(request.getParameter("idReport"));

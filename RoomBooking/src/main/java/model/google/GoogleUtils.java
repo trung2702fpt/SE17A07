@@ -34,11 +34,4 @@ public class GoogleUtils {
         return googlePojo;
 
     }
-
-    public static void main(String[] args) {
-        LocalDateTime now = LocalDateTime.now();
-        System.out.println(now.toString());
-        LocalDateTime h = now.plus(30, ChronoUnit.MINUTES);
-        System.out.println(h.toString());
-    }
 }

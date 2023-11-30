@@ -26,7 +26,7 @@ public class Room extends HttpServlet {
                 case "search":
                     idRoom = Integer.parseInt(request.getParameter("idRoom"));
                     objectJSON = objectMapper.writeValueAsString(roomdao.read(idRoom));
-                    
+
                     break;
                 case "edit":
                     idRoom = Integer.parseInt(request.getParameter("idRoom"));
@@ -36,12 +36,12 @@ public class Room extends HttpServlet {
                     if (!isSuccess) {
                         objectJSON = objectMapper.writeValueAsString("fail");
                     }
-                    
+
                     break;
                 case "getList":
                     List<model.Room> Listrooms = roomdao.getList();
                     objectJSON = objectMapper.writeValueAsString(Listrooms);
-                    
+
                     break;
                 case "filterRoom":
                     String slotRequest = request.getParameter("slotSelect");
@@ -50,24 +50,33 @@ public class Room extends HttpServlet {
                     String dateRequest = request.getParameter("dateSelect") + " " + timeSlot;
                     List<model.Room> rooms = roomdao.searchByDateAndSlOT(slotSelected, dateRequest);
                     objectJSON = objectMapper.writeValueAsString(rooms);
-                    
+
                     break;
                 case "AddNew":
                     int id = Integer.parseInt(request.getParameter("id"));
-                    String number = request.getParameter("number");
+                    String number = "Room "+id;
                     double roomPrice = Double.parseDouble(request.getParameter("price"));
-                    model.Room room = new model.Room(id, number, roomPrice); 
+                    model.Room room = new model.Room(id, number, roomPrice);
                     roomdao.create(room);
                     break;
                 case "Delete":
                     int roomId = Integer.parseInt(request.getParameter("roomId"));
                     roomdao.delete(roomId);
                     break;
+                case "validateRoomID":
+                    int idValidate = Integer.parseInt(request.getParameter("id"));
+                    boolean validateResult = roomdao.roomValidation(idValidate);
+                    if (validateResult) {
+                        objectJSON = objectMapper.writeValueAsString("existed");
+                    } else {
+                        objectJSON = objectMapper.writeValueAsString("ok");
+                    }
+                    break;
             }
         } catch (Exception e) {
             objectJSON = objectMapper.writeValueAsString("fail");
             e.printStackTrace();
-        }finally{
+        } finally {
             response.getWriter().write(objectJSON);
         }
     }

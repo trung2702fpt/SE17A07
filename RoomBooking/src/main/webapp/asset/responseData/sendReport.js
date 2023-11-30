@@ -6,6 +6,9 @@ function SendReport(){
     $.ajax({
         url: "/RoomBooking/Report",
         method: "GET",
+        beforeSend: function (xhr) {
+            U.showProcess();
+        },
         data:{
             title: title,
             content: content,
@@ -20,6 +23,7 @@ function SendReport(){
                 $("#title").val("");
                 $("#report").val("");
             }
+            U.hideProcess();
         },
         error: function () {
             U.messageBox("ERROR", "ERROR to process call api!!");
