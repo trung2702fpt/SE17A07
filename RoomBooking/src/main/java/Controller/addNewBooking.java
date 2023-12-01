@@ -37,7 +37,15 @@ public class addNewBooking extends HttpServlet {
                         }
                     }
                     bdao.inssertPayment(booking);
-                    String mess = "Thank for your booked \n Your ID: "+ bdao.getLastID();
+                    String mess = "Thank for your booked"
+                            + "\nYour ID: "+ bdao.getLastID()
+                            + "\nTime: "+ booking.getTime()
+                            + "\nRoom: " + booking.getIdRoom()
+                            + "\nSlot: " + booking.getSlotId()
+                            + "\nAmount: " + (int)booking.getAmount() + " 000 VND"
+                            + "\nNumbers of equipment: " + booking.getEquipments().size()
+                            + "\nPlease keep this mail to check your room."
+                            + "\n--Check and send report in wed app if something wrong!--";
                     Email.sendEmail("Booking class room (do not rep this mail)", mess, user.getEmail());
                 }
             }

@@ -47,7 +47,7 @@
                             <th>Name</th>
                             <th>Description</th>
                             <th>Price</th>
-                            <th>Quality</th>
+                            <th>Quantity</th>
                         </tr>
                     </thead>
                     <tbody id="equipmentsTableBody">

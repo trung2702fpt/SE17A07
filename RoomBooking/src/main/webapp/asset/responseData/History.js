@@ -68,21 +68,21 @@ function getHistory() {
 
 function SetDataTable() {
     $('#tableListHistory').DataTable({
-        "paging": true,
+        "paging": false,
         "lengthChange": false,
         "searching": false,
         "ordering": false,
-        "info": true,
+        "info": false,
         "autoWidth": false,
         "responsive": true,
     });
 
     $('#tableListReport').DataTable({
-        "paging": true,
+        "paging": false,
         "lengthChange": false,
         "searching": false,
         "ordering": false,
-        "info": true,
+        "info": false,
         "autoWidth": false,
         "responsive": true,
     });

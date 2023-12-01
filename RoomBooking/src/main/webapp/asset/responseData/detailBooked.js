@@ -35,9 +35,10 @@ $(document).ready(function () {
                             <td>${item.name}</td>
                             <td>${item.des}</td>
                             <td>${item.price}<span>.000 VND</span></td>
-                            <td>${item.quanlity}</td>
+                           <td>${item.quanlity}</td>
                         </tr>`;
             } 
+//             <td>${item.quanlity}</td>
             $('#equipmentsTableBody').html(html);
             setDetail(data);
             $('#RoomTitle').html(data.id);
